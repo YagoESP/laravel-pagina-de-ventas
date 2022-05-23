@@ -1,0 +1,57 @@
+header{
+    background: black;
+
+    .header-main{
+        background: black;
+        padding: 1%;
+        width: 90%;
+        margin: 0rem 1rem 0rem 1rem;
+
+        .header-main-logo{
+            display: flex;
+            justify-content: start;
+            width: 70%;
+            margin-left:  auto;
+            margin-top: 1.3rem;
+
+            .header-main-logo-title h1 svg{
+                width: 2.3rem;
+            }
+        }
+
+        .header-main-menu{
+            display: flex;
+            justify-content: space-between;
+            
+            .header-main-menu-element button{
+                background: black;
+                margin-left: 3rem;
+                margin-top: 1rem;
+                cursor: pointer;
+                color: white;
+                border: none;
+                padding: 1rem;
+                font-weight: 600;
+            }
+
+            .header-main-menu-element-active button{
+                background: #2A70D5;
+                border-radius: 0.7rem;
+                border: 1px solid black;
+                color: white;
+                transition: 0.2s all;
+                margin-left: 3rem;
+                margin-top: 1rem;
+                padding: 1rem;
+                font-weight: 600;
+
+                &:hover{
+                    background: red;
+                }
+            }
+        }
+    }
+    
+}
+
+

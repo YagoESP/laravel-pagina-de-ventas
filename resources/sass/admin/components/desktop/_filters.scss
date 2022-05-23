@@ -1,0 +1,40 @@
+.filters{
+    background: #2A70D5;
+    .icon{
+        text-align: center;
+        
+        svg{
+            cursor: pointer;
+            width: 5%;
+        }
+    }
+
+    .faqs{
+        display: none;
+
+        .form-group{
+            text-align: center;
+
+           .form-label{
+               padding: 0.5rem;
+               label{
+                   color: black;
+                   font-weight: 600;
+               }
+           }
+
+           .form-input{
+               padding: 0.5rem;
+               input{
+                   border-style: none;
+                   border-bottom: 2px hsl(0, 4%, 85%) solid;
+                   width: max-content;  
+               }
+           }
+       }
+
+        &.active{
+            display: block;
+        }
+    }
+}

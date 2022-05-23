@@ -1,0 +1,32 @@
+footer{  
+    background-image: url(/images/hocico.jpg);
+    background-size: cover;
+    background-position: center 40%;
+
+    .footer-element{
+        text-align: center;
+        color: white;
+      
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        
+        .footer-element-copyright{
+            width: 50%;
+            
+            h5{
+                font-size: 2.5rem;
+            }
+        }
+
+        .footer-element-socialmedia{
+            width: 70%;
+            margin-left: auto;
+            
+            svg{
+                width: 2.7rem;
+                padding-left: 1.5rem;
+            }
+        }
+    }
+}
+

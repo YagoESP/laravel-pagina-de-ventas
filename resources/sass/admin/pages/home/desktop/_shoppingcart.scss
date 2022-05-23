@@ -1,0 +1,166 @@
+.cart{
+
+    padding: 2rem 5%;
+
+    .cart-title{
+        text-align: center;
+        margin: 2rem;
+
+        h2{
+            font-size: 700;
+            font-size: 3rem;
+        }
+    }
+    
+    .resume{
+        
+        table{
+            display: flex;
+            justify-content: space-between;
+            
+            
+            tbody{
+                width: 100%;
+            }
+
+            tr{
+                font-weight: 600;
+                font-size: 1.2rem;
+                color: white;
+                margin-right: 1rem;
+                text-align: center;
+
+                
+                
+                td{
+                    padding: 1rem ;
+
+                    input{
+                        width: 10%;
+                    }
+                    
+                }
+
+                .amount{
+                    display: flex;
+                    width:35%;
+                    margin-top: 0.5rem;
+                    margin-left: 7rem;
+                    
+                    
+                    .less{
+                        button{
+                           
+                            border: 1px solid #c4402f;
+                            border-radius: 4px;
+                            background-color: #CC4331;
+                            box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                            color: white;
+                            text-align: center;
+                            text-decoration: none;
+                            text-shadow: 0 -1px -1px #af3a2a;
+                            font-weight: 800;
+                            font-size: 1rem;
+                            transition: all 0.15s ease-in-out;
+                            
+                        }
+                    }
+    
+                    .number{
+                        color: white;
+                        font-weight: 600;
+                        font-size: 1.6rem;
+                        padding: 0rem 1rem 0rem 1rem;
+                     
+                        .show{
+                            text-align: center;
+                            width: 70%;
+                            margin: auto;
+                            
+                        }
+                    }
+                    
+                    .more{
+                        button{
+                            
+                            border: 1px solid #c4402f;
+                            border-radius: 4px;
+                            background-color: #CC4331;
+                            box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                            color: white;
+                            text-align: center;
+                            text-decoration: none;
+                            text-shadow: 0 -1px -1px #af3a2a;
+                            font-weight: 800;
+                            font-size: 1rem;
+                            transition: all 0.15s ease-in-out;
+                        }
+                    }
+                }
+
+                th{
+                    padding: 1rem;
+                }
+
+                img{
+                    max-width: 25%;
+                }
+            }
+            
+            tr:first-child{
+                border-bottom: 0.6rem solid white ;
+                width: max-content;
+            }
+        }    
+    }
+
+    .payment{
+        width: 37.5%;
+        margin-left: auto;
+        text-align: center;
+        
+        table{
+            
+            border: 1px solid white;
+
+            tr{
+               color: white;
+
+                th{
+                    padding: 1rem 0rem 1rem 0rem; 
+                    background: white;
+                    color: black;
+                    font-weight: 600;
+                    font-size: 1.15rem;
+                }
+                td{
+                    padding: 1rem;
+                    font-weight: 600;
+                    font-size: 1.15rem;
+
+                    
+                }
+                
+                
+            }
+
+            tr:last-child{
+                border-top: 1px solid white;
+            }
+        }
+
+        .payment-buttons{
+            margin: 2rem auto;
+            width: 75%;
+            display: flex;
+            
+            .back{
+                @include featuredButton(1rem);
+                padding-right: 1rem;
+            }
+            .buy{
+                @include featuredButton(1rem);
+            }
+        }
+    }
+}

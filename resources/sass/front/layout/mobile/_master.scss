@@ -1,0 +1,17 @@
+body{
+    background: black;
+    
+    
+}
+
+main{
+    
+}
+
+.desktop-only{
+    display: none !important;
+}
+
+.mobile-only{
+    display: revert !important;
+}

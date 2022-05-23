@@ -1,0 +1,80 @@
+.faqs{
+   background: #FF6347;
+   
+    .faqs-title{
+       padding-top: 2rem;
+        text-align: center;
+        h2{
+            margin-bottom: 3rem;
+        }
+    }
+
+    .faq{
+
+        background: #3F51B5;
+
+        .question{
+            
+            padding: 1.5em 1.5em;
+            color: white;
+            cursor: pointer;
+            font-size: .7em;
+            
+            transition: all .3s;
+            text-transform: uppercase;
+
+            .title{
+                display: flex;
+                margin-bottom: 1rem;
+                
+                h3{
+                    background: #3F51B5;
+                    font-size: 1.9rem;
+                    
+                }
+                .item{
+                    width: 25px;
+                    height: 10px;
+                    transition: -webkit-transform 0.8s;
+                    transition: transform 0.8s;
+                    transition: transform 0.8s, -webkit-transform 0.8s;
+                    -webkit-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    border-top: 2px solid  white;
+                    border-right: 2px solid white;
+                    transition: 1s cubic-bezier(.68,-0.55,.27,1.55);
+                    position: relative;
+                    -webkit-transform: rotate(45deg);
+                    transform: rotate(45deg);
+
+                    &.active{
+                        transition: 1s cubic-bezier(.68,-0.55,.27,1.55);
+                        
+                        transition: -webkit-transform 0.8s;
+                        transition: transform 0.8s;
+                        transition: transform 0.8s, -webkit-transform 0.8s;
+                        -webkit-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                        -webkit-transform: rotate(135deg);
+                        transform: rotate(135deg);
+                    }
+                }
+            }
+   
+            .content{
+                    opacity: 0;
+                    background: var(--nav-bg);
+                    height: var(--height);
+                    transition: 1s cubic-bezier(.68,-0.55,.27,1.55);
+                    z-index: 1;
+                &.active{
+                    opacity: 1;
+                    color: white;
+                    padding: 1rem;
+                    z-index: 1;
+                    transition: 1s cubic-bezier(.68,-0.55,.27,1.55);
+
+                   
+                }
+            }   
+        }
+    }
+}

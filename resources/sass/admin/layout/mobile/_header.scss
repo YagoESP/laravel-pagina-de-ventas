@@ -1,0 +1,184 @@
+header{
+    background: black;
+
+    .header-mobile-menu{
+        background-color: hsl(0, 0%, 0%);
+        height: 100vh;
+        left: 0;
+        position: fixed;
+        top: -100vh;
+        transition: top 0.5s;
+        width: 100%;
+
+        &.active{
+            top: 0;
+            transition: top 0.5s;
+        }
+    }
+
+    .header-main{
+        background: black;
+        padding: 1%;
+        width: 90%;
+        margin: 0rem 1rem 0rem 1rem;
+
+        
+
+        .header-main-logo{
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 1.3rem;
+
+            
+
+            .header-hamburguer{
+                position: relative;
+               
+  
+                .hamburger{
+
+                    display: block;
+                    position: absolute;
+                    top: 10px;
+                    left: 30px;
+                    cursor: pointer;
+                    z-index: 2;
+                    
+                    -webkit-user-select: none;
+                    user-select: none;
+
+                        
+
+                        &.active span{
+                            opacity: 1;
+                            transform: rotate(45deg) translate(-2px, -12px);
+                            background: white;
+                            
+                        }
+
+                        &.active span:nth-last-child(3){
+                            opacity: 0;
+                            transform: rotate(0deg) scale(0.2, 0.5);
+                        }
+
+                        &.active span:nth-last-child(1){
+                            transform: rotate(-45deg) translate(1px, 4px);
+                        }
+
+                        span{
+                            display: block;
+                            width: 40px;
+                            height: 5px;
+                            margin-bottom: 5px;
+                            position: relative;
+                            background: #cdcdcd;
+                            border-radius: 3px;
+                            
+                            z-index: 1;
+                            
+                            transform-origin: 4px 0px;
+                            
+                            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                                        background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                                        opacity 0.55s ease;
+
+                            :first-child
+                            {
+                            transform-origin: 0% 0%;
+                            }
+
+                            :nth-last-child(2)
+                            {
+                            transform-origin: 0% 100%;
+                            }
+                        }          
+                }   
+
+                #hamburger-menu{
+                    opacity: 0;
+                    background: var(--nav-bg);
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: var(--height);
+                    transition: 1s cubic-bezier(.68,-0.55,.27,1.55);
+                    z-index: 1;
+                    
+
+                    li{
+                       
+                        padding: 0.5rem;
+                        font-size: 1.3rem;
+                    }
+
+                    &.active{
+                        opacity: 1;
+                        color: white;
+                        padding: 1rem;
+                        padding-left: 10rem;
+                        padding-right: 9rem;
+                        background: #FF6347;
+                        z-index: 1;
+                        transition: 1s cubic-bezier(.68,-0.55,.27,1.55);
+
+                    }
+                }  
+            }
+
+            .header-main-logo-title{
+
+                h1{
+                    svg{
+                        width: 2.3rem;
+                    }
+                    
+                }
+                
+                &.active{
+                    transition: 0.3s;
+                    display: none;
+                }
+                
+                
+            }
+        }
+
+        .header-main-menu{
+            display: flex;
+            justify-content: space-between;
+
+            
+            
+            .header-main-menu-element button{
+                background: black;
+                margin-left: 3rem;
+                margin-top: 1rem;
+                cursor: pointer;
+                color: white;
+                border: none;
+                padding: 1rem;
+                font-weight: 600;
+            }
+
+            .header-main-menu-element-active button{
+                background: #2A70D5;
+                border-radius: 0.7rem;
+                border: 1px solid black;
+                color: white;
+                transition: 0.2s all;
+                margin-left: 3rem;
+                margin-top: 1rem;
+                padding: 1rem;
+                font-weight: 600;
+
+                &:hover{
+                    background: red;
+                }
+            }
+        }
+    }
+    
+}
+
+

@@ -1,0 +1,41 @@
+
+
+.contact{
+    padding-bottom: 5rem;
+    background: $primary-color;
+    
+    .contact-title{
+        text-align: center;
+        
+        h2{
+            color: white;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+    }
+
+    .contact-options{
+
+        width: 85%;
+        margin: auto;
+        background: #2a70d5;
+        padding: 5rem;
+        border-radius:8px;
+        box-shadow:10px 10px 0px rgba(0,0,0,.1);
+        box-sizing:border-box;
+        
+        .contact-option{
+
+            margin-bottom: 2rem;    
+            
+            h3{
+                
+                font-size: 1.5rem;
+
+                svg{
+                    width: 8%;
+                }
+            }
+        }
+    }
+}

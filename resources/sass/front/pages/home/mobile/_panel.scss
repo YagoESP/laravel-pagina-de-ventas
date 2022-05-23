@@ -1,0 +1,217 @@
+.admin{
+    background: #FF6347;
+    
+    .title{
+        text-align: center;
+        margin-bottom: 1rem;
+        h2{
+            padding-top: 0.5rem;
+        }
+    }
+
+    .registers{
+        width: 80%;
+        margin: auto;
+        margin-bottom: 1rem;
+        padding: 0.5rem auto 0.5rem auto;
+        background: white;
+        border-top: hsl(0, 4%, 85%) 5px solid;
+        border-bottom: hsl(0, 4%, 85%) 5px solid;
+        .registers-dates{
+           
+            label{
+                padding: 0.5rem;
+                font-size: 0.8rem;
+                color: black;
+            }
+        }
+
+        .registers-icons{
+            text-align: end;
+            span{
+                svg{
+                    width: 25%;
+                   
+                }
+            }
+        }
+
+        
+    }
+
+    .register-data{
+        width: 75%;
+        margin: auto;
+        margin-bottom: 1rem;
+
+        div{
+            display: flex;
+            
+            p{
+                padding-left: 1rem;
+                
+                color: black;
+            }
+        }
+        
+        ul{
+            display: flex;
+            li{
+                padding-left: 1rem;
+                color: whitesmoke;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .register-navegator{
+        display: flex;
+        position: absolute;
+        top: 80vh;
+
+        p{
+            padding-left: 1rem;
+            color: white;
+        }
+    }
+
+    .admin-panel{
+        background: white;
+
+        #color-panel{
+            background: hsl(0, 4%, 85%);
+            
+        }
+
+        .gestion{ 
+            
+            .contents{
+                display: flex;
+                justify-content: center;
+                
+                
+                button{
+                    border-style: none;
+                    padding: 2.59rem;
+                    cursor: pointer;
+                    background: hsl(0, 4%, 85%);
+                }
+
+                :first-child{
+                    background: darkcyan ;
+                    color: white;
+                }
+            } 
+        }
+
+        .options{
+            text-align: center;
+            .element{
+                width: 40%;
+                margin: auto;
+                margin-top: 0.5rem;
+                
+                span{
+                    
+                    svg{
+                        cursor: pointer;
+                        width: 40%;
+                        
+                    }
+                }  
+            }
+        }
+
+        
+
+
+        .category{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+
+            .catalogue{
+                margin: auto;
+                width: 40%;
+                margin-left: 2rem;
+                label{
+                    color: black;
+                    font-weight: 600;
+                    padding: 0.3rem 5%;
+                }
+
+                select{
+                    color: black;
+                    padding: 0.3rem ;
+                    transition: all .4s;
+                    border-radius: 0.5rem; 
+                    box-shadow:5px 5px 0px rgba(0,0,0,.1);
+                    border: white 3px solid;
+                    width: 100%;
+                }
+            }
+
+           .name{
+                margin: auto;
+                width: 50%;
+                label{
+                    color: black;
+                    font-weight: 600;
+                    padding: 0.3rem 5%;
+                }
+
+                input{
+                    padding: 0.3rem 5%;
+                    transition: all .4s;
+                    border-radius: 0.5rem; 
+                    box-shadow:5px 5px 0px rgba(0,0,0,.1);
+                    border: white 3px solid;
+                    width: 70%;
+                }
+           }
+        }
+
+        .language{
+            width: 80%;
+            margin: auto;
+            background: hsl(0, 4%, 85%);
+
+            button{
+                border: none;
+                background: darkcyan ;
+                padding: 1.4rem;
+                color: white;
+                cursor: pointer;
+            }
+        }
+
+        .description{
+            width: 75%;
+            margin: 1rem auto 1rem ;
+            text-align: center;
+            label{
+                color: black;
+                font-weight: 600;
+            }
+
+            input{
+                border-style: none;
+                border-bottom: 2px hsl(0, 4%, 85%) solid;
+                width: 100%;                  
+            }
+        }
+
+        .text-editor{
+            width: 75%;
+            margin: auto;
+            padding-bottom: 5rem;
+
+
+            textarea{
+                width: 50%;
+            }
+        }
+    }
+}

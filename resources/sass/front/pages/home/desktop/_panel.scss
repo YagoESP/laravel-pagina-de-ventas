@@ -1,0 +1,200 @@
+.admin-panel{
+    width: 100%;
+    margin: auto;
+    .registers{
+        background: white;
+        .registers-dates{
+           div{
+               padding: 0.5rem;
+
+                label{
+                    color: black;
+                }
+           }
+        }
+
+        .registers-icons{
+            span{
+                
+                svg{
+                    width: 2rem;
+                }
+            }
+        }
+        
+        .register-data{
+            
+            position: absolute;
+            top: 80vh;
+            
+            div{
+                display: flex;
+                p{
+                    padding-left: 1rem;
+                    color: black;
+                }
+            }
+            
+            ul{
+                display: flex;
+                li{
+                    padding-left: 1rem;
+                    color: whitesmoke;
+                    cursor: pointer;
+                }
+            }
+        }
+        
+        .register-navegator{
+            display: flex;
+            position: absolute;
+            top: 80vh;
+        
+            p{
+                padding-left: 1rem;
+                color: white;
+            }
+        }
+        
+    }
+    
+    
+    .panel{
+        
+        background: white;
+        #color-panel{
+            background: hsl(0, 4%, 85%);
+        }
+
+        .gestion{
+            .contents{
+                button{
+                    border: none;
+                    background: darkcyan ;
+                    padding: 0.7rem;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .options{
+            .element{
+                .save{
+                    svg{
+                        width: 2rem;
+                        cursor: pointer;
+                    }
+                }
+                .clean{
+                    svg{
+                        width: 2rem;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    
+        .category{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            margin-bottom: 1rem; 
+    
+            .catalogue{ 
+                label{
+                    color: black;
+                    font-weight: 600;
+                }
+    
+                select{     
+                    border: none;
+                    border-bottom: 2px hsl(0, 4%, 85%) solid;
+                    padding: 0.1rem 4rem 0.1rem 4rem;
+                }
+            }
+    
+            .name{
+                label{
+                    color: black;
+                    font-weight: 600;
+                }
+    
+                input{
+                    border: none;
+                    border-bottom: 2px hsl(0, 4%, 85%) solid;
+                        
+                }
+            }
+        }
+    
+        .language{
+            width: 80%;
+            margin: auto;
+            background: hsl(0, 4%, 85%);
+    
+            button{
+                border: none;
+                background: darkcyan ;
+                padding: 0.7rem;
+                color: white;
+                cursor: pointer;
+            }
+        }
+    
+        .description{
+            width: 75%;
+            margin: 1rem auto 1rem ;
+    
+            label{
+                color: black;
+                font-weight: 600;
+
+            }
+    
+            input{
+                    
+                border-style: none;
+                border-bottom: 2px hsl(0, 4%, 85%) solid;
+                width: max-content;                  
+            }
+        }
+    
+        .text-editor{
+            width: 75%;
+            margin: auto;
+            padding-bottom: 5rem;
+    
+    
+            textarea{
+                width: 50%;
+            }
+        }
+            
+    
+        .registers{
+            padding: 0.5rem;
+            background: white;
+            border-top: hsl(0, 4%, 85%) 5px solid;
+            border-bottom: hsl(0, 4%, 85%) 5px solid;
+            .registers-dates{
+            
+                label{
+                    font-size: 0.8rem;
+                    color: black;
+                }
+            }
+    
+            .registers-icons{
+                text-align: end;
+                span{
+                    svg{
+                        width: 25%;
+                    
+                    }
+                }
+            } 
+        }
+    }
+    
+}

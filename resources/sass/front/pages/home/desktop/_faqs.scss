@@ -1,0 +1,85 @@
+.faqs{
+    margin-bottom: 4rem;
+    .faqs-title{
+        color: #444;
+        text-align: center;
+        margin: 3rem auto 3rem auto;
+    }
+
+    .faq{
+        width: 65%;
+        margin: auto;
+        transition: 0.2s ease-out;
+        margin-bottom: 10rem;
+        background: #3F51B5;
+        border-radius: 0.5rem;
+
+        .question{
+            
+            padding: 1.5em 1.5em;
+            
+            color: white;
+            cursor: pointer;
+            font-size: .7em;
+            letter-spacing: .1em;
+            transition: all .3s;
+            text-transform: uppercase;
+
+            &.active{
+                transition: all 3s;
+                
+            }
+            .title{
+                display: flex;
+                h3{
+                    background: #3F51B5;
+                    font-size: 1.9rem;
+                    margin-bottom: 1rem;
+                }
+                .item{
+                    
+                    width: 10px;
+                    height: 15px;
+                    transition: -webkit-transform 0.8s;
+                    transition: transform 0.8s;
+                    transition: transform 0.8s, -webkit-transform 0.8s;
+                    -webkit-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    border-top: 2px solid  white;
+                    border-right: 2px solid white;
+                    
+                    position: relative;
+                   
+             
+                    -webkit-transform: rotate(45deg);
+                            transform: rotate(45deg);
+
+                    &.active{
+                        transition: -webkit-transform 0.8s;
+                        transition: transform 0.8s;
+                        transition: transform 0.8s, -webkit-transform 0.8s;
+                        -webkit-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                        -webkit-transform: rotate(135deg);
+                                transform: rotate(135deg);
+                    }
+                }
+            }
+
+               
+            .content{
+               
+                display: none;
+                
+                    
+                &.active{
+
+                    display: block;
+                    transition: all 3s;
+                    
+                    
+                }
+                   
+            }
+                
+        }
+    }
+}

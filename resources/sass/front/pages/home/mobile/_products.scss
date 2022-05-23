@@ -1,0 +1,186 @@
+.shop{
+    
+    background: #63B47A;
+
+    .shop-categories{
+        width: 100%;
+        margin: auto;
+        text-align: center;
+
+        .shop-articles-information-select{
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+
+            select{
+                
+                cursor: pointer;
+                background: #2A70D5;
+                border-radius: 4px;
+                box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+                color: white;
+                padding: 0.7rem 4rem 0.7rem 4rem;
+                box-shadow:10px 10px 0px rgba(0,0,0,.1);
+                transition: all .4s;
+                
+                &:hover{
+                    transform: translateY(-3px);
+                    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+                }
+
+                option{
+                    background: white;
+                    border-radius: 4px;
+                    box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+                    color: #909dc2;
+                    cursor: pointer;
+                    
+                    
+                }
+            }
+        }
+        
+
+        .shop-categories-title{
+            padding-top: 1rem;
+            
+
+            h2{
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: black;
+            }
+        }
+
+        .shop-categories-element{
+            margin-bottom: 1.5rem;
+            font-size: 1.7rem;
+        }
+    }
+
+
+    .shop-articles{
+
+        width: 85%;
+        margin: auto;
+        text-align: center;
+       
+        
+        .shop-articles-information{
+            
+            margin-bottom: 2.5rem;
+
+            .shop-articles-information-counter{
+                text-align: start;
+                width: 90%;
+                margin: auto;
+                p{
+                    margin-bottom: 1rem;
+                    font-weight: 600;
+                    font-size: 1.5rem;
+                    color: #3e3caa;
+                }
+            }
+
+            .shop-articles-information-select{
+
+                select{
+                    
+                    cursor: pointer;
+                    background: #2A70D5;
+                    border-radius: 4px;
+                    box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+                    color: white;
+                    padding: 0.7rem 4rem 0.7rem 4rem;
+                    box-shadow:10px 10px 0px rgba(0,0,0,.1);
+                    transition: all .4s;
+                    
+                    &:hover{
+                        transform: translateY(-3px);
+                        box-shadow: 0 2px 5px rgba(0,0,0,.1);
+                    }
+
+                    option{
+                        background: white;
+                        border-radius: 4px;
+                        box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+                        color: #909dc2;
+                        cursor: pointer;
+                        
+                        
+                    }
+                }
+            }
+        }
+
+            
+        .shop-articles-sections-cards{
+            padding-bottom: 2rem;
+                
+            .shop-articles-sections-cards-content{
+                text-align: center;
+                margin-top: 2rem;
+                transition: all .4s;
+                border-radius: 0.5rem; 
+                box-shadow:15px 15px 0px rgba(0,0,0,.1);
+                border: white 3px solid;
+              
+                background: white;
+                
+                &:hover{
+                    transform: translateY(-25px);
+                    box-shadow: 0 6px 20px rgba(0,0,0,.1);
+                }
+
+                .shop-articles-sections-cards-content-image{
+                    
+                    img{
+                        height: 16rem;
+                        border-radius: 0.5rem; 
+                    }
+                }
+
+                .shop-articles-sections-cards-content-price{
+                             
+                    position: relative;
+                        
+                    span{
+                        position: absolute;                   
+                        font-weight: 700;                   
+                        transform: translate(-50%, 0);
+                    }
+                }
+                .shop-articles-sections-cards-content-title{
+
+                    background: white;
+                    padding: 1rem;
+                    border-radius: 0.5rem; 
+
+                    h3{
+                        color:black;
+                        
+                    }
+                }
+
+                .shop-articles-sections-cards-content-button{
+                    
+                    margin-bottom: 1.5rem;
+
+                    button{
+                        position:relative;
+                        width:80%;
+                        padding:1rem;
+                        border-radius:6px;
+                        border:0;
+                        background:#f26964;
+                        cursor: pointer;
+                        font-size:1.2em;
+                        color:#fff;
+                        text-shadow:1px 1px 0px rgba(0,0,0,.1);
+                        box-shadow:0px 3px 0px #c1524e;
+                    }
+                }
+            }
+        }
+        
+    }
+}

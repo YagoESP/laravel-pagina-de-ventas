@@ -1,0 +1,101 @@
+.home{
+    
+    .slider{
+        text-align: center;
+
+        .slider-image{
+            width: 100%;
+            
+        }
+        .slider-title{
+            margin-top: 1.5rem;
+            h2{
+               
+            }
+        }
+
+        .slider-button{
+            margin-top: 1rem;
+            @include featuredButton(1rem);
+            
+        }
+        
+    }
+
+    .home-cards{
+        text-align: center;
+        margin-top: 2rem;
+
+        .home-cards-title{
+            h2{
+                color: #80D99D;
+            }
+        }
+
+        .home-cards-element{
+            background: white;
+            width: 80%;
+            margin: 2rem auto 2rem auto;
+            transition: all .4s;
+            border-radius: 0.5rem; 
+
+            &:hover{
+                transform: translateY(-5px);
+                box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4)
+            }
+
+            .home-cards-element-image{
+                img{
+                    border-radius: 0.5rem;
+                }
+            }
+
+            .home-cards-element-title{
+
+                margin-top: 0.5rem;
+                
+                h3{
+                    color: orange;
+                }
+            }
+
+            .home-cards-element-description{
+                margin-top: 0.5rem;
+                padding: 1rem;
+                
+                p{
+                    padding-bottom: 1rem;
+                    color: black;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    .home-slider{
+        margin-top: 4rem;
+        text-align: center;
+        .home-slider-image{
+            width: 130%;
+            img{
+               
+            }
+        }
+
+        .home-slider-text{
+            margin-right: 2rem;
+            .home-slider-text-title{
+                text-align: end;
+                h3{
+                    font-size: 1.5rem;
+                    color: #FF6347;
+                }
+            }
+            
+            .home-slider-text-description{
+                display: none;
+            }
+        } 
+    }
+}
+

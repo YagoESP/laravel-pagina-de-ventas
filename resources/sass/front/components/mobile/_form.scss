@@ -1,0 +1,47 @@
+form{
+
+    .form-element{
+
+        margin-bottom: 1.5rem;
+    
+        .form-element-label{
+    
+            margin-bottom: 0.5rem;
+    
+            label{
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+    
+        }
+    
+        .form-element-input{
+    
+            input{                       
+                padding: 0.3rem 5%;
+                transition: all .4s;
+                border-radius: 0.5rem; 
+                box-shadow:10px 10px 0px rgba(0,0,0,.1);
+                border: white 3px solid;
+                width: 90%;
+            } 
+    
+            textarea{
+                height: 20vh;
+                width: 90%;
+                padding: 5%;
+                border-radius: 0.5rem; 
+                box-shadow:10px 10px 0px rgba(0,0,0,.1);
+                border: white 3px solid;
+            }
+        }  
+    }
+    
+    .form-send-button{
+        margin-top: 3rem;
+        width: max-content;
+        margin-left: auto;
+
+        @include featuredButton(1.2rem);
+    }
+}

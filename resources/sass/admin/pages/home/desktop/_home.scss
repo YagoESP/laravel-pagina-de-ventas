@@ -1,0 +1,113 @@
+.home{
+    
+    background: hsl(0, 0%, 0%);
+
+    .slider{
+        
+        .slider-image {
+            position: relative;
+            display: inline-block;
+            @include respond-to(wsga);
+        }    
+
+        .slider-title {
+            position: absolute;
+            top: 35%;
+            left: 10%;
+            width: 40%;
+
+            h2{
+                font-size: 3rem;
+                font-weight: 900;
+            }
+        }
+    
+        .slider-button{
+            position: absolute;
+            top: 50%;
+            left: 10%;
+
+            @include featuredButton(2rem);
+        }
+        
+    }
+    
+
+    .home-cards{
+        margin: auto 2.5rem auto 2.5rem;
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+        border-top: #FF6347 1rem solid ;
+
+        .home-cards-title{
+            
+            margin-bottom: 3rem;
+            
+            h2{
+                color: #80D99D;
+                text-align: center;
+                font-weight: 600;
+            }
+        }
+
+        .home-cards-element {
+            background: white;
+            text-align: center;
+            padding-bottom: 2rem;
+            transition: all .4s;
+            border-radius: 0.5rem; 
+            max-height: 100%;
+            
+
+            
+            
+
+            .home-cards-element-image{
+                padding-bottom: 2rem;
+               img{
+                border-radius: 0.3rem;
+               }
+            }
+
+            .home-cards-element-title{
+        
+                h3{
+                    color: orange;
+                }        
+            }
+
+            .home-cards-element-description p{
+                color: black;
+                padding-top: 2rem;
+                width: 70%;
+                margin: auto;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .home-slider{
+        width: 100%;
+        margin: 1rem auto;
+        margin-top: 3rem;
+
+        .home-slider-text {
+            margin-top: 6rem;
+            width: 80%;    
+            .home-slider-text-title {
+                padding-bottom: 1rem;
+                h3{
+                    font-size: 2rem;
+                    color: #00AEE6;
+                }
+            }
+            .home-slider-text-description{
+                p{
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
