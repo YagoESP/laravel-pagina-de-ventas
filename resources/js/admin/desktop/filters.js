@@ -1,7 +1,7 @@
 export let renderFilters = () => {
 
     let filter = document.querySelector(".icon");
-    let faqs = document.querySelector("faqs");
+    let faqs = document.querySelector(".faqs");
     
     if(filter){
         filter.addEventListener("click",()=> {

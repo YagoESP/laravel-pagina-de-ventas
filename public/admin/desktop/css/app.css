@@ -649,7 +649,7 @@ form .form-send-button button:hover {
   padding: 0.5rem;
 }
 .filters .faqs .form-group .form-label label {
-  color: black;
+  color: white;
   font-weight: 600;
 }
 .filters .faqs .form-group .form-input {
@@ -663,7 +663,9 @@ form .form-send-button button:hover {
   width: max-content;
 }
 .filters .faqs.active {
-  display: block;
+  display: flex;
+  width: 35%;
+  margin: auto;
 }
 
 .notification {

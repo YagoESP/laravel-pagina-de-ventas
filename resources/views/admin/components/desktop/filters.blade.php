@@ -8,6 +8,15 @@
     <div class="faqs">
         <div class="form-group">
             <div class="form-label">
+                <label for="category">Categoria</label>
+            </div>
+            <div class="form-input">
+                <input type="category">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-label">
                 <label for="search">Buscar</label>
             </div>
             <div class="form-input">
@@ -15,4 +24,5 @@
             </div>
         </div>
     </div>
+    
 </div>

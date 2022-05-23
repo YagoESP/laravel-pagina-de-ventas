@@ -202,7 +202,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var renderFilters = function renderFilters() {
   var filter = document.querySelector(".icon");
-  var faqs = document.querySelector("faqs");
+  var faqs = document.querySelector(".faqs");
 
   if (filter) {
     filter.addEventListener("click", function () {

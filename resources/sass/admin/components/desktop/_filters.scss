@@ -11,15 +11,16 @@
 
     .faqs{
         display: none;
-
+        
         .form-group{
             text-align: center;
-
+            
            .form-label{
                padding: 0.5rem;
                label{
-                   color: black;
+                   color: white;
                    font-weight: 600;
+                   
                }
            }
 
@@ -34,7 +35,10 @@
        }
 
         &.active{
-            display: block;
+            display: flex;
+            width: 35%;
+            margin: auto;
+            
         }
     }
 }

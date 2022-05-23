@@ -4,7 +4,7 @@
 
     <div class="admin-panel">
         @include("admin.components.desktop.filters")
-        @include('front.components.desktop.title' , ['title' => "PANEL DE ADMINISTRACION"])
+        @include('admin.components.desktop.title' , ['title' => "PANEL DE ADMINISTRACION"])
         <div class="desktop-two-columns-aside">
             <div class="column-aside">
                 <div class="table">
