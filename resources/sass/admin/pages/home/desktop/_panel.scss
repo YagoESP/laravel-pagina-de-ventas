@@ -13,25 +13,30 @@
         border-top: hsl(0, 4%, 85%) 5px solid;
         border-bottom: hsl(0, 4%, 85%) 5px solid;
 
-        .registers-dates{
+        .registers-item{
+            .register{
            
-            label{
-                font-size: 0.8rem;
-                color: black;
-            }
-        }
-
-        .registers-icons{
-            text-align: end;
-
-            span{
-
-                svg{
-                    width: 25%;
-                    cursor: pointer;
+                div{
+                    label{
+                        font-size: 0.8rem;
+                            color: black;
+                            
+                    }
                 }
             }
-        } 
+    
+            .registers-icons{
+                text-align: end;
+    
+                span{
+    
+                    svg{
+                        width: 25%;
+                        cursor: pointer;
+                    }
+                }
+            } 
+        }
     }
 
     .register-data{
@@ -60,7 +65,7 @@
 
    
 
-    .panel{
+    .admin-form{
         width: 90%;
         margin: auto;
         background: white;

@@ -1344,14 +1344,14 @@ form .form-send-button button:hover {
   border-top: hsl(0deg, 4%, 85%) 5px solid;
   border-bottom: hsl(0deg, 4%, 85%) 5px solid;
 }
-.admin-panel .registers .registers-dates label {
+.admin-panel .registers .registers-item .register div label {
   font-size: 0.8rem;
   color: black;
 }
-.admin-panel .registers .registers-icons {
+.admin-panel .registers .registers-item .registers-icons {
   text-align: end;
 }
-.admin-panel .registers .registers-icons span svg {
+.admin-panel .registers .registers-item .registers-icons span svg {
   width: 25%;
   cursor: pointer;
 }
@@ -1374,52 +1374,52 @@ form .form-send-button button:hover {
   color: whitesmoke;
   cursor: pointer;
 }
-.admin-panel .panel {
+.admin-panel .admin-form {
   width: 90%;
   margin: auto;
   background: white;
 }
-.admin-panel .panel #color-panel {
+.admin-panel .admin-form #color-panel {
   background: hsl(0deg, 4%, 85%);
 }
-.admin-panel .panel .gestion .contents button {
+.admin-panel .admin-form .gestion .contents button {
   border-style: none;
   padding: 1rem;
   padding-bottom: 1.5rem;
   cursor: pointer;
   background: hsl(0deg, 4%, 85%);
 }
-.admin-panel .panel .gestion .contents :first-child {
+.admin-panel .admin-form .gestion .contents :first-child {
   background: darkcyan;
   color: white;
 }
-.admin-panel .panel .options .element {
+.admin-panel .admin-form .options .element {
   display: flex;
   width: 80%;
   margin-left: auto;
 }
-.admin-panel .panel .options .element span svg {
+.admin-panel .admin-form .options .element span svg {
   cursor: pointer;
   width: 45%;
 }
-.admin-panel .panel .options .element .switch {
+.admin-panel .admin-form .options .element .switch {
   margin-right: 0.3rem;
   margin-top: 0.3rem;
 }
-.admin-panel .panel .options .element .switch input {
+.admin-panel .admin-form .options .element .switch input {
   display: none;
 }
-.admin-panel .panel .options .element .switch input:checked + label {
+.admin-panel .admin-form .options .element .switch input:checked + label {
   background-color: darkcyan;
   border: 1px solid black;
 }
-.admin-panel .panel .options .element .switch input:checked + label:before {
+.admin-panel .admin-form .options .element .switch input:checked + label:before {
   transform: translateX(40px);
   box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.1);
   -webkit-animation: moveRight 0.3s ease-in-out;
           animation: moveRight 0.3s ease-in-out;
 }
-.admin-panel .panel .options .element .switch label {
+.admin-panel .admin-form .options .element .switch label {
   border: 1px solid black;
   position: relative;
   display: inline-block;
@@ -1432,7 +1432,7 @@ form .form-send-button button:hover {
   box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.1);
   -webkit-tap-highlight-color: transparent;
 }
-.admin-panel .panel .options .element .switch label:before {
+.admin-panel .admin-form .options .element .switch label:before {
   content: "";
   position: absolute;
   top: 3px;
@@ -1499,78 +1499,78 @@ form .form-send-button button:hover {
     transform: translateX(0);
   }
 }
-.admin-panel .panel .category {
+.admin-panel .admin-form .category {
   display: flex;
   justify-content: space-around;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.admin-panel .panel .category .form-group {
+.admin-panel .admin-form .category .form-group {
   text-align: center;
 }
-.admin-panel .panel .category .form-group .form-label {
+.admin-panel .admin-form .category .form-group .form-label {
   padding: 0.5rem;
 }
-.admin-panel .panel .category .form-group .form-label label {
+.admin-panel .admin-form .category .form-group .form-label label {
   color: black;
   font-weight: 600;
 }
-.admin-panel .panel .category .form-group .form-select {
+.admin-panel .admin-form .category .form-group .form-select {
   padding: 0.5rem;
 }
-.admin-panel .panel .category .form-group .form-select select {
+.admin-panel .admin-form .category .form-group .form-select select {
   border: none;
   border-bottom: 2px hsl(0deg, 4%, 85%) solid;
   padding: 0.1rem 4rem 0.1rem 4rem;
 }
-.admin-panel .panel .category .form-group .form-input {
+.admin-panel .admin-form .category .form-group .form-input {
   padding: 0.5rem;
 }
-.admin-panel .panel .category .form-group .form-input input {
+.admin-panel .admin-form .category .form-group .form-input input {
   border-style: none;
   border-bottom: 2px hsl(0deg, 4%, 85%) solid;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }
-.admin-panel .panel .language {
+.admin-panel .admin-form .language {
   width: 45%;
   margin: auto;
 }
-.admin-panel .panel .language .form-button button {
+.admin-panel .admin-form .language .form-button button {
   border: none;
   background: darkcyan;
   padding: 1.4rem 2rem;
   color: white;
   cursor: pointer;
 }
-.admin-panel .panel .description {
+.admin-panel .admin-form .description {
   width: 75%;
   margin: 1rem auto 1rem;
   text-align: center;
 }
-.admin-panel .panel .description .form-group {
+.admin-panel .admin-form .description .form-group {
   padding: 0.5rem;
 }
-.admin-panel .panel .description .form-group .form-label label {
+.admin-panel .admin-form .description .form-group .form-label label {
   color: black;
   font-weight: 600;
 }
-.admin-panel .panel .description .form-group .form-input {
+.admin-panel .admin-form .description .form-group .form-input {
   padding: 0.5rem;
 }
-.admin-panel .panel .description .form-group .form-input input {
+.admin-panel .admin-form .description .form-group .form-input input {
   text-align: center;
   border-style: none;
   border-bottom: 2px hsl(0deg, 4%, 85%) solid;
   width: 100%;
 }
-.admin-panel .panel .text-editor {
+.admin-panel .admin-form .text-editor {
   width: 75%;
   margin: auto;
   padding-bottom: 5rem;
 }
-.admin-panel .panel .text-editor textarea {
+.admin-panel .admin-form .text-editor textarea {
   width: 100%;
 }
 

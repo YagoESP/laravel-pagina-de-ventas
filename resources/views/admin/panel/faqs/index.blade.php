@@ -3,18 +3,27 @@
 @section('table')
 
     <div class="registers">
-        <div class="desktop-two-columns">
-            <div class="column">
-                <div class="registers-dates">
-                    <div><label for="">Nombre:<span>Paco</span></label></div>
-                    <div><label for="">Categoria:<span>General</span></label></div>
-                    <div><label for="">Creado el:<span>20-04-22</span></label></div>
+            @if(isset($faqs))
+            
+                <div class="registers-item">
+                    <div class="desktop-two-columns">
+                        <div class="column">
+                            @foreach($faqs as $faqs_element)
+                                <div class="register">
+                                    <div><label for="">Id:<span>{{$faqs_element->id}}</span></label></div>
+                                    <div><label for="">Name:<span>{{$faqs_element->name}}</span></label></div>
+                                    <div><label for="">Email:<span>{{$faqs_element->title}}</span></label></div>
+                                </div>
+                            @endforeach
+                        </div>
+                        
+                        <div class="column">
+                            @include('admin.components.desktop.register-icons')
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                @include('admin.components.desktop.register-icons')
-            </div>
-        </div>
+            
+            @endif
 
         <div class="register-data">
             <div>
@@ -33,7 +42,7 @@
 @endsection
 
 @section('form')
-    <div class="panel">
+    <form class="admin-form">
         <div class="desktop-two-columns" id="color-panel">
             <div class="column">
                 <div class="gestion">
@@ -96,5 +105,5 @@
             </div>
             <textarea class="editor" id="ckeditor"></textarea>
         </div>
-    </div>
+    </form>
 @endsection
