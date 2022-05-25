@@ -1343,6 +1343,8 @@ form .form-send-button button:hover {
   background: white;
   border-top: hsl(0deg, 4%, 85%) 5px solid;
   border-bottom: hsl(0deg, 4%, 85%) 5px solid;
+  border: 1px solid black;
+  margin-bottom: 1rem;
 }
 .admin-panel .registers .registers-item .register div label {
   font-size: 0.8rem;
@@ -1499,79 +1501,34 @@ form .form-send-button button:hover {
     transform: translateX(0);
   }
 }
-.admin-panel .admin-form .category {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.admin-panel .admin-form .category .form-group {
+.admin-panel .admin-form .form-group {
   text-align: center;
 }
-.admin-panel .admin-form .category .form-group .form-label {
+.admin-panel .admin-form .form-group .form-label {
   padding: 0.5rem;
 }
-.admin-panel .admin-form .category .form-group .form-label label {
+.admin-panel .admin-form .form-group .form-label label {
   color: black;
   font-weight: 600;
 }
-.admin-panel .admin-form .category .form-group .form-select {
+.admin-panel .admin-form .form-group .form-input {
   padding: 0.5rem;
 }
-.admin-panel .admin-form .category .form-group .form-select select {
-  border: none;
-  border-bottom: 2px hsl(0deg, 4%, 85%) solid;
-  padding: 0.1rem 4rem 0.1rem 4rem;
-}
-.admin-panel .admin-form .category .form-group .form-input {
-  padding: 0.5rem;
-}
-.admin-panel .admin-form .category .form-group .form-input input {
+.admin-panel .admin-form .form-group .form-input input {
   border-style: none;
   border-bottom: 2px hsl(0deg, 4%, 85%) solid;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }
-.admin-panel .admin-form .language {
-  width: 45%;
-  margin: auto;
-}
-.admin-panel .admin-form .language .form-button button {
-  border: none;
-  background: darkcyan;
-  padding: 1.4rem 2rem;
-  color: white;
-  cursor: pointer;
-}
-.admin-panel .admin-form .description {
-  width: 75%;
-  margin: 1rem auto 1rem;
-  text-align: center;
-}
-.admin-panel .admin-form .description .form-group {
-  padding: 0.5rem;
-}
-.admin-panel .admin-form .description .form-group .form-label label {
-  color: black;
-  font-weight: 600;
-}
-.admin-panel .admin-form .description .form-group .form-input {
-  padding: 0.5rem;
-}
-.admin-panel .admin-form .description .form-group .form-input input {
-  text-align: center;
-  border-style: none;
-  border-bottom: 2px hsl(0deg, 4%, 85%) solid;
-  width: 100%;
-}
-.admin-panel .admin-form .text-editor {
+.admin-panel .admin-form .form-group .form-input .text-editor {
   width: 75%;
   margin: auto;
   padding-bottom: 5rem;
 }
-.admin-panel .admin-form .text-editor textarea {
-  width: 100%;
+.admin-panel .admin-form .form-group .form-input .text-editor .ckeditor {
+  padding-bottom: 3rem;
+  color: black;
 }
 
 .faqs {

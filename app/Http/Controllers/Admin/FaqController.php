@@ -125,7 +125,7 @@ class FaqController extends Controller
     {            
         
 
-        $user = $this->user->updateOrCreate([
+        $faq = $this->faq->updateOrCreate([
                 'id' => request('id')],[
                 'name' => request('name'),
                 'title' => request('title'),
@@ -134,7 +134,7 @@ class FaqController extends Controller
                 'active' => 1,
         ]);
             
-        $view = View::make('admin.faqs.index')
+        $view = View::make('admin.panel.faqs.index')
         ->with('faqs', $this->faq->where('active', 1)->get())
         ->with('faq', $faq)
         ->renderSections();        

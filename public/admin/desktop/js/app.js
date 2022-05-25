@@ -76,6 +76,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _clean_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./clean.js */ "./resources/js/admin/desktop/clean.js");
 /* harmony import */ var _accordion_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./accordion.js */ "./resources/js/admin/desktop/accordion.js");
 /* harmony import */ var _filters_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./filters.js */ "./resources/js/admin/desktop/filters.js");
+/* harmony import */ var _table_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./table.js */ "./resources/js/admin/desktop/table.js");
 
 
 
@@ -87,6 +88,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+(0,_table_js__WEBPACK_IMPORTED_MODULE_11__.renderTable)();
 (0,_filters_js__WEBPACK_IMPORTED_MODULE_10__.renderFilters)();
 (0,_accordion_js__WEBPACK_IMPORTED_MODULE_9__.renderAccordion)();
 (0,_clean_js__WEBPACK_IMPORTED_MODULE_8__.renderClean)();
@@ -116,12 +119,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
 
 var renderCkeditor = function renderCkeditor() {
-  var editors = document.querySelectorAll(".editor");
-  editors.forEach(function (editor) {
-    _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(editor).then(function (editor) {
-      window.editor = editor;
+  document.addEventListener("renderFormModules", function (event) {
+    renderCkeditor();
+  });
+  window.ckeditors = [];
+  document.querySelectorAll('.ckeditor').forEach(function (ckeditor) {
+    _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(ckeditor, {
+      toolbar: {
+        items: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', 'undo', 'redo']
+      }
+    }).then(function (classicEditor) {
+      ckeditors[ckeditor.name] = classicEditor;
     })["catch"](function (error) {
-      console.error('There was a problem initializing the editor.', error);
+      console.error(error);
     });
   });
 };
@@ -241,13 +251,15 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
 
@@ -342,10 +354,25 @@ var renderForm = function renderForm() {
         */
         var data = new FormData(form);
         var url = form.action;
-        /*	
-            En el siguiente valor estamos capturando los datos del ckeditor y se los añadimos a los datos
-            del formData. 
-        */
+
+        var _iterator = _createForOfIteratorHelper(data.entries()),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var pair = _step.value;
+            console.log(pair[0] + ', ' + pair[1]);
+          }
+          /*	
+              En el siguiente valor estamos capturando los datos del ckeditor y se los añadimos a los datos
+              del formData. 
+          */
+
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
 
         if (ckeditors != 'null') {
           Object.entries(ckeditors).forEach(function (_ref2) {
@@ -519,6 +546,105 @@ var renderProduct = function renderProduct() {
           type: 'success'
         }
       }));
+    });
+  }
+};
+
+/***/ }),
+
+/***/ "./resources/js/admin/desktop/table.js":
+/*!*********************************************!*\
+  !*** ./resources/js/admin/desktop/table.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderTable": () => (/* binding */ renderTable)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var renderTable = function renderTable() {
+  var tableContainer = document.querySelector(".table-container");
+  var editButtons = document.querySelectorAll(".edit-button");
+  var deleteButtons = document.querySelectorAll(".delete-button");
+  document.addEventListener("loadTable", function (event) {
+    tableContainer.innerHTML = event.detail.table;
+  });
+  document.addEventListener("renderTableModules", function (event) {
+    renderTable();
+  }, {
+    once: true
+  });
+
+  if (editButtons) {
+    editButtons.forEach(function (editButton) {
+      editButton.addEventListener("click", function () {
+        var url = editButton.dataset.url;
+
+        var sendEditRequest = /*#__PURE__*/function () {
+          var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+            var response;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    document.dispatchEvent(new CustomEvent('startWait'));
+                    _context.next = 3;
+                    return fetch(url, {
+                      headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                      },
+                      method: 'GET'
+                    }).then(function (response) {
+                      if (!response.ok) throw response;
+                      return response.json();
+                    }).then(function (json) {
+                      document.dispatchEvent(new CustomEvent('loadForm', {
+                        detail: {
+                          form: json.form
+                        }
+                      }));
+                      document.dispatchEvent(new CustomEvent('renderFormModules'));
+                    })["catch"](function (error) {
+                      if (error.status == '500') {
+                        console.log(error);
+                      }
+
+                      ;
+                    });
+
+                  case 3:
+                    response = _context.sent;
+
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee);
+          }));
+
+          return function sendEditRequest() {
+            return _ref.apply(this, arguments);
+          };
+        }();
+
+        sendEditRequest();
+      });
+    });
+  }
+
+  if (deleteButtons) {
+    deleteButtons.forEach(function (deleteButton) {
+      deleteButton.addEventListener("click", function () {});
     });
   }
 };

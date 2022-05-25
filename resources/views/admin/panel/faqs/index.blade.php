@@ -42,7 +42,9 @@
 @endsection
 
 @section('form')
-    <form class="admin-form">
+    
+<form class="admin-form" action="{{route("faqs_store")}}">
+    <input type="hidden" name="id">
         <div class="desktop-two-columns" id="color-panel">
             <div class="column">
                 <div class="gestion">
@@ -58,52 +60,35 @@
                 @include('admin.components.desktop.items-options')
             </div>
         </div>
-
-        <div class="category">
-            <div class="form-group">
-                <div class="form-label">
-                    <label for="">Catalogo</label>
-                </div>
-                <div class="form-select">
-                    <select name="categoria" id="">
-                        <option value="cosa">Seleccionar</option>
-                    </select>
-                </div>
-            </div>
+        <div class="desktop-one-column">
             <div class="form-group">
                 <div class="form-label">
                     <label for="">Nombre</label>
                 </div>
                 <div class="form-input">
-                    <input type="text">
+                    <input type="text" name="name">
                 </div>
             </div>
         </div>
-
-        <div class="language">
-            <div class="form-button">
-                <button>Español</button>
-                <button>Ingles</button>
-                <button>Frances</button>
-            </div>
-        </div>
-
-        <div class="description">   
+        <div class="desktop-one-column">
             <div class="form-group">
                 <div class="form-label">
                     <label for="">Titulo</label>
                 </div>
                 <div class="form-input">
-                    <input type="text">
+                    <input type="text" name="title">
                 </div>
             </div>
         </div>
-
-        <div class="text-editor">
-            <div>
-                <label for="">Nombre</label>
+        <div class="desktop-one-column">
+            <div class="form-group">
+                <div class="form-label">
+                    <label for="">Descripción</label>
+                </div>
+                <div class="form-input">
+                    <textarea class="ckeditor" name="description"></textarea>
+                </div>
             </div>
-            <textarea class="editor" id="ckeditor"></textarea>
         </div>
     </form>
 @endsection

@@ -7,7 +7,7 @@
         @include('admin.components.desktop.title' , ['title' => "PANEL DE ADMINISTRACION"])
         <div class="desktop-two-columns-aside">
             <div class="column-aside">
-                <div class="table">
+                <div class="table-container">
                     @yield('table')
                 </div>
             </div>
