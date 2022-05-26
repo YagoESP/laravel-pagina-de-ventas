@@ -121,6 +121,8 @@ __webpack_require__.r(__webpack_exports__);
 var renderCkeditor = function renderCkeditor() {
   document.addEventListener("renderFormModules", function (event) {
     renderCkeditor();
+  }, {
+    once: true
   });
   window.ckeditors = [];
   document.querySelectorAll('.ckeditor').forEach(function (ckeditor) {
@@ -272,6 +274,14 @@ var renderForm = function renderForm() {
   var storeButton = document.querySelector('.store-button');
   var createButton = document.querySelector('.create-button');
   var forms = document.querySelectorAll('.admin-form');
+  document.addEventListener("loadForm", function (event) {
+    formContainer.innerHTML = event.detail.form;
+  });
+  document.addEventListener("renderFormModules", function (event) {
+    renderForm();
+  }, {
+    once: true
+  });
 
   if (createButton) {
     createButton.addEventListener("click", function () {
@@ -577,6 +587,8 @@ var renderTable = function renderTable() {
   var deleteButtons = document.querySelectorAll(".delete-button");
   document.addEventListener("loadTable", function (event) {
     tableContainer.innerHTML = event.detail.table;
+  }, {
+    once: true
   });
   document.addEventListener("renderTableModules", function (event) {
     renderTable();
@@ -643,8 +655,11 @@ var renderTable = function renderTable() {
   }
 
   if (deleteButtons) {
+    var window = document.querySelector(".window-container");
     deleteButtons.forEach(function (deleteButton) {
-      deleteButton.addEventListener("click", function () {});
+      deleteButton.addEventListener("click", function () {
+        window.classList.add("active");
+      });
     });
   }
 };

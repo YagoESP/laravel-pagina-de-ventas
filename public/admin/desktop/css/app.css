@@ -629,6 +629,31 @@ form .form-send-button button:hover {
   transition: 0.2s all;
 }
 
+.window-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: none;
+}
+.window-container .container {
+  display: flex;
+  width: 50%;
+  margin: auto;
+}
+.window-container .container .accept button:hover {
+  background-color: #00a65a;
+}
+.window-container .container .refuse button:hover {
+  background-color: #dd4b39;
+}
+.window-container.active {
+  display: block;
+}
+
 .filters {
   background: #2A70D5;
 }
@@ -1350,12 +1375,9 @@ form .form-send-button button:hover {
   font-size: 0.8rem;
   color: black;
 }
-.admin-panel .registers .registers-item .registers-icons {
-  text-align: end;
-}
-.admin-panel .registers .registers-item .registers-icons span svg {
-  width: 25%;
+.admin-panel .registers .registers-item .register-icons span svg {
   cursor: pointer;
+  width: 25%;
 }
 .admin-panel .register-data {
   position: absolute;

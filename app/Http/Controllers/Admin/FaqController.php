@@ -151,6 +151,7 @@ class FaqController extends Controller
         $view = View::make('admin.panel.faqs.index')
         ->with('faq', $faq)
         ->with('faqs', $this->faq->where('active', 1)->get());   
+        Debugbar::info($faq);
         
         if(request()->ajax()) {
 

@@ -5,8 +5,8 @@ export let renderTable = () => {
     let deleteButtons = document.querySelectorAll(".delete-button");
     
     document.addEventListener("loadTable",( event =>{
-                tableContainer.innerHTML = event.detail.table;
-    }));
+        tableContainer.innerHTML = event.detail.table;
+    }), {once: true});
 
     document.addEventListener("renderTableModules",( event =>{
         renderTable();
@@ -60,12 +60,13 @@ export let renderTable = () => {
     }
 
     if(deleteButtons){
+        let window = document.querySelector(".window-container");
 
         deleteButtons.forEach(deleteButton => {
 
             deleteButton.addEventListener("click", () => {
-
                 
+                window.classList.add("active");
             });
         });
     }
