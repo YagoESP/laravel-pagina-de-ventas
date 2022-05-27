@@ -378,7 +378,7 @@ ol, ul {
 }
 
 h1, h2, h3, h4, h5, h6, a, p, label {
-  color: hsl(0deg, 0%, 100%);
+  color: hsl(0deg, 0%, 0%);
 }
 
 h1, h2, h3, h4 {

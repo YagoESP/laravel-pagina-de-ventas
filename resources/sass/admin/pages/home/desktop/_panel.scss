@@ -1,5 +1,5 @@
 .admin-panel{
-
+    
     .page-title{
         text-align: center;
         margin: 1rem;
@@ -28,8 +28,9 @@
             }
     
             .register-icons{
+                text-align: center;
+                margin-top: 1rem;
                 
-    
                 span{
     
                     svg{
@@ -210,17 +211,13 @@
                     border-bottom: 2px hsl(0, 4%, 85%) solid;
                     width: max-content;  
                 }
-
-                .text-editor{
+                    
+                textarea{
                     width: 75%;
                     margin: auto;
-                    padding-bottom: 5rem;
-                    
-                    .ckeditor{
-                        padding-bottom: 3rem;
-                        color: black;
-                    }
+
                 }
+                
             }
         }
     }

@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin'], function () {
     */
 
     Route::resource('faqs', 'App\Http\Controllers\Admin\FaqController', [
-        'parameters' => [
+            'parameters' => [
             'faqs' => 'faq', 
         ],
         'names' => [
@@ -52,35 +52,52 @@ Route::group(['prefix' => 'admin'], function () {
             'store' => 'faqs_store',
             'destroy' => 'faqs_destroy',
             'show' => 'faqs_show',
-        ]
+            ]
     ]);
-});
 
-Route::get('/', function () {
-    return view('front.pages.casa.index');
-});
 
-Route::get('/caja', function () {
-    return view('front.pages.caja.index');
-});
+    Route::resource('products', 'App\Http\Controllers\Admin\ProductController', [
+            'parameters' => [
+            'products' => 'product', 
+        ],
+        'names' => [
+            'index' => 'products',
+            'create' => 'products_create',
+            'edit' => 'products_edit',
+            'store' => 'products_store',
+            'destroy' => 'products_destroy',
+            'show' => 'products_show',
+            ]
+    ]);
 
-Route::get('/carrito', function () {
-    return view('front.pages.carrito.index');
 });
+    
 
-Route::get('/contacto', function () {
-    return view('front.pages.contacto.index');
-});
+    Route::get('/', function () {
+        return view('front.pages.casa.index');
+    });
 
-Route::get('/faqs', function () {
-    return view('front.pages.faqs.index');
-});
+    Route::get('/caja', function () {
+        return view('front.pages.caja.index');
+    });
 
-Route::get('/producto', function () {
-    return view('front.pages.producto.index');
-});
+    Route::get('/carrito', function () {
+        return view('front.pages.carrito.index');
+    });
 
-Route::get('/tienda', function () {
-    return view('front.pages.tienda.index');
-});
+    Route::get('/contacto', function () {
+        return view('front.pages.contacto.index');
+    });
+
+    Route::get('/faqs', function () {
+        return view('front.pages.faqs.index');
+    });
+
+    Route::get('/producto', function () {
+        return view('front.pages.producto.index');
+    });
+
+    Route::get('/tienda', function () {
+        return view('front.pages.tienda.index');
+    });
 

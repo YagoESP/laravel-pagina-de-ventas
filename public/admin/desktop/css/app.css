@@ -378,7 +378,7 @@ video {
 }
 
 h1, h2, h3, h4, h5, h6, a, p, label {
-  color: hsl(0deg, 0%, 100%);
+  color: hsl(0deg, 0%, 0%);
 }
 
 h1, h2, h3, h4 {
@@ -1375,6 +1375,10 @@ form .form-send-button button:hover {
   font-size: 0.8rem;
   color: black;
 }
+.admin-panel .registers .registers-item .register-icons {
+  text-align: center;
+  margin-top: 1rem;
+}
 .admin-panel .registers .registers-item .register-icons span svg {
   cursor: pointer;
   width: 25%;
@@ -1543,14 +1547,9 @@ form .form-send-button button:hover {
   width: -moz-max-content;
   width: max-content;
 }
-.admin-panel .admin-form .form-group .form-input .text-editor {
+.admin-panel .admin-form .form-group .form-input textarea {
   width: 75%;
   margin: auto;
-  padding-bottom: 5rem;
-}
-.admin-panel .admin-form .form-group .form-input .text-editor .ckeditor {
-  padding-bottom: 3rem;
-  color: black;
 }
 
 .faqs {
