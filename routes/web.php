@@ -55,6 +55,34 @@ Route::group(['prefix' => 'admin'], function () {
             ]
     ]);
 
+    Route::resource('users', 'App\Http\Controllers\Admin\UserController', [
+        'parameters' => [
+        'users' => 'user', 
+    ],
+    'names' => [
+        'index' => 'users',
+        'create' => 'users_create',
+        'edit' => 'users_edit',
+        'store' => 'users_store',
+        'destroy' => 'users_destroy',
+        'show' => 'users_show', 
+        ]
+    ]);
+
+    Route::resource('products/categories', 'App\Http\Controllers\Admin\ProductCategoryController', [
+        'parameters' => [
+        'categories' => 'product_category', 
+        ],
+    'names' => [
+        'index' => 'products_categories',
+        'create' => 'products_categories_create',
+        'edit' => 'products_categories_edit',
+        'store' => 'products_categories_store',
+        'destroy' => 'products_categories_destroy',
+        'show' => 'products_categories_show',
+        ]
+    ]);
+
 
     Route::resource('products', 'App\Http\Controllers\Admin\ProductController', [
             'parameters' => [
@@ -69,6 +97,20 @@ Route::group(['prefix' => 'admin'], function () {
             'show' => 'products_show',
             ]
     ]);
+
+    Route::resource('contact_forms', 'App\Http\Controllers\Admin\ProductController', [
+        'parameters' => [
+        'contact' => 'contact_form', 
+    ],
+    'names' => [
+        'index' => 'contact_forms',
+        'create' => 'contact_forms_create',
+        'edit' => 'contact_forms_edit',
+        'store' => 'contact_forms_store',
+        'destroy' => 'contact_forms_destroy',
+        'show' => 'contact_forms_show',
+        ]
+]);
 
 });
     
@@ -100,4 +142,3 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/tienda', function () {
         return view('front.pages.tienda.index');
     });
-
