@@ -18,12 +18,12 @@
                             <div class="column">
                                 <div class="register-icons">
                                     <span>
-                                        <svg viewBox="0 0 24 24" class="edit-button" data-url="{{route('products_categories_edit',['productcategory'=>$productscategories_element->id])}}">
+                                        <svg viewBox="0 0 24 24" class="edit-button" data-url="{{route('products_categories_edit',['product_category'=>$productscategories_element->id])}}">
                                             <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
                                         </svg>
                                     </span>
                                     <span>
-                                        <svg viewBox="0 0 24 24" class="delete-button" data-url="{{route('products_categories_destroy',['productcategory'=>$productscategories_element->id])}}">
+                                        <svg viewBox="0 0 24 24" class="delete-button" data-url="{{route('products_categories_destroy',['product_category'=>$productscategories_element->id])}}">
                                             <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
                                         </svg>
                                     </span>
@@ -86,6 +86,21 @@
                         </div>
                         <div class="form-input">
                             <input type="text" name="title" value="{{isset($productcategory->title) ? $productcategory->title : ''}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="desktop-one-column">
+                    <div class="form-group">
+                        <div class="form-label">
+                            <label for="">Categoria</label>
+                        </div>
+                        <div class="form-input">
+                            <select name="categoria" id="categoria_id" name="title" value="{{isset($productcategory->categoria) ? $productcategory->categoria : ''}}">
+                                <option value="0">Seleccionar</option>
+                                <option value="0">America</option>
+                                <option value="0">Europa</option>
+                                <option value="0">Asia</option>
+                            </select>
                         </div>
                     </div>
                 </div>

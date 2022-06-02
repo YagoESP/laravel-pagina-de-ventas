@@ -98,7 +98,7 @@ Route::group(['prefix' => 'admin'], function () {
             ]
     ]);
 
-    Route::resource('contact_forms', 'App\Http\Controllers\Admin\ProductController', [
+    Route::resource('contact_forms', 'App\Http\Controllers\Front\ContactFormController', [
         'parameters' => [
         'contact' => 'contact_form', 
     ],
@@ -110,7 +110,21 @@ Route::group(['prefix' => 'admin'], function () {
         'destroy' => 'contact_forms_destroy',
         'show' => 'contact_forms_show',
         ]
-]);
+    ]);
+
+    Route::resource('checkouts', 'App\Http\Controllers\Admin\CheckoutController', [
+        'parameters' => [
+        'checkouts' => 'checkout', 
+    ],
+    'names' => [
+        'index' => 'checkouts',
+        'create' => 'checkouts_create',
+        'edit' => 'checkouts_edit',
+        'store' => 'checkouts_store',
+        'destroy' => 'checkouts_destroy',
+        'show' => 'checkouts_show',
+        ]
+    ]);
 
 });
     

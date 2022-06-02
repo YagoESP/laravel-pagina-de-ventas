@@ -19,7 +19,7 @@ class ContactFormController extends Controller
 
     public function __construct(ContactForm $contactform)
     {
-        $this->user = $contactform; 
+        $this->contactform = $contactform; 
     }
     
     public function index()
@@ -48,7 +48,7 @@ class ContactFormController extends Controller
 
 
        $view = View::make('front.panel.contactform.index')
-        ->with('contactforms', $this->faq)
+        ->with('contactforms', $this->contactform)
         ->renderSections();
 
 
@@ -68,6 +68,7 @@ class ContactFormController extends Controller
                 'name' => request('name'),
                 'title' => request('title'),
                 'password' => request('password'),
+                'telephone' => request('telephone'),
                 'visible' => 1,
                 'active' => 1,
         ]);
@@ -80,7 +81,7 @@ class ContactFormController extends Controller
         return response()->json([
             'table' => $view['table'],
             'form' => $view['form'],
-            'id' => $user->id,
+            'id' => $contactform->id,
         ]);
     }
 
@@ -112,8 +113,8 @@ class ContactFormController extends Controller
         $contactform->save();
 
         $view = View::make('front.panel.contactform.index')
-            ->with('contactform', $this->user)
-            ->with('contactforms', $this->user->where('active', 1)->get())
+            ->with('contactform', $this->contactform)
+            ->with('contactforms', $this->contactform->where('active', 1)->get())
             ->renderSections();
         
         return response()->json([
