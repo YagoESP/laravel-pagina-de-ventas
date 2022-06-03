@@ -7,11 +7,12 @@ import {renderCkeditor} from "./ckeditor.js";
 import {renderDelete} from "./delete";
 import {renderEdit} from "./edit";
 import {renderClean} from './clean.js';
-import {renderAccordion } from './accordion.js';
+import {renderAccordion} from './accordion.js';
+import {renderMessage} from './message.js';
 
 
 
-
+renderMessage();
 renderAccordion();
 renderClean();
 renderDelete();

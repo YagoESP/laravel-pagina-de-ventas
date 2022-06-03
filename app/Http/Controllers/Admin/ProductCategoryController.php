@@ -18,12 +18,14 @@ class ProductCategoryController extends Controller
     }
     
     public function index()
-    {
+    {   
+        
+
 
         $view = View::make('admin.panel.productcategory.index')
                 ->with('productcategory', $this->productcategory)
-                ->with('productcategory', $this->productcategory->where('category_id')->get());
                 ->with('productscategories', $this->productcategory->where('active',1)->get());
+
 
         if(request()->ajax()) {
             

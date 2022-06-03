@@ -100,7 +100,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('contact_forms', 'App\Http\Controllers\Front\ContactFormController', [
         'parameters' => [
-        'contact' => 'contact_form', 
+        'contact_forms' => 'contact_form', 
     ],
     'names' => [
         'index' => 'contact_forms',
@@ -126,33 +126,54 @@ Route::group(['prefix' => 'admin'], function () {
         ]
     ]);
 
+    Route::resource('checkouts', 'App\Http\Controllers\Admin\CheckoutController', [
+        'parameters' => [
+        'checkouts' => 'checkout', 
+    ],
+    'names' => [
+        'index' => 'checkouts',
+        'create' => 'checkouts_create',
+        'edit' => 'checkouts_edit',
+        'store' => 'checkouts_store',
+        'destroy' => 'checkouts_destroy',
+        'show' => 'checkouts_show',
+        ]
+    ]);
+
+    Route::resource('contacts', 'App\Http\Controllers\Front\ContactController', [
+        'parameters' => [
+        'contacts' => 'contact', 
+    ],
+    'names' => [
+        'index' => 'contacts',
+        'create' => 'contacts_create',
+        'edit' => 'contacts_edit',
+        'store' => 'contacts_store',
+        'destroy' => 'contacts_destroy',
+        'show' => 'contacts_show',
+        ]
+    ]);
+
 });
+
     
+    Route::get('contacto','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+    Route::post('contacto','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
-    Route::get('/', function () {
-        return view('front.pages.casa.index');
-    });
+    Route::get('faqs','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+    Route::post('faqs','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
-    Route::get('/caja', function () {
-        return view('front.pages.caja.index');
-    });
+    Route::get('producto','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+    Route::post('producto','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
-    Route::get('/carrito', function () {
-        return view('front.pages.carrito.index');
-    });
+    Route::get('tienda','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+    Route::post('tienda','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
-    Route::get('/contacto', function () {
-        return view('front.pages.contacto.index');
-    });
+    Route::get('caja','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+    Route::post('caja','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
-    Route::get('/faqs', function () {
-        return view('front.pages.faqs.index');
-    });
+    Route::get('/','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+    Route::post('/','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
-    Route::get('/producto', function () {
-        return view('front.pages.producto.index');
-    });
-
-    Route::get('/tienda', function () {
-        return view('front.pages.tienda.index');
-    });
+    Route::get('carrito','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+    Route::post('carrito','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');

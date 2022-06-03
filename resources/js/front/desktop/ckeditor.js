@@ -2,18 +2,39 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export let renderCkeditor = () => {
 
-  let editors = document.querySelectorAll(".editor");
+    document.addEventListener("renderFormModules",( event =>{
+        renderCkeditor();
+    }), {once: true});
 
-  editors.forEach( editor => {
+    window.ckeditors = [];
 
-    ClassicEditor.create(editor)
+    document.querySelectorAll('.ckeditor').forEach(ckeditor => {
 
-    .then( editor => {
-    window.editor = editor;
-    })
-    .catch( error => {
-    console.error( 'There was a problem initializing the editor.', error );
+        ClassicEditor.create(ckeditor, {
+            
+            toolbar: {
+                items: [
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'blockQuote',
+                    'undo',
+                    'redo'
+                ]
+            }
+        })
+        .then( classicEditor => {
+            ckeditors[ckeditor.name] = classicEditor;
+        })
+        .catch( error => {
+            console.error(error);
+        } );
     });
-  })
-
 }
+

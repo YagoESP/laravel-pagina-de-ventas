@@ -45,7 +45,7 @@
             </div>
             <div class="column">
                 <div class="contact-form">
-                    <form>
+                    <form class="front-form" data-url="{{route('front_contact_form')}}">
                         <div class="desktop-two-columns">
                             <div class="column">
                                 <div class="form-element">
@@ -106,7 +106,7 @@
                         <div class="desktop-one-column">
                             <div class="column">
                                 <div class="form-send-button">
-                                    <button>ENVIAR</button>
+                                    <button class="store-button">ENVIAR</button>
                                 </div>
                             </div>
                         </div>

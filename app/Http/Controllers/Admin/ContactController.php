@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Front;
 
 
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-use App\Models\ContactForm;
-use App\Http\Requests\Admin\ContactFormRequest;
+use App\Models\Contact;
+use App\Http\Requests\Front\ContactRequest;
 use Debugbar;
 
-class ContactFormController extends Controller
+class ContactController extends Controller
 {
 
 
@@ -26,7 +26,7 @@ class ContactFormController extends Controller
     {
 
        
-        $view = View::make('front.panel.contactform.index')
+        $view = View::make('admin.panel.contactform.index')
                 ->with('contactform', $this->contactform)
                 ->with('contactforms', $this->contactform->where('active',1)->get());
 
@@ -47,7 +47,7 @@ class ContactFormController extends Controller
     {
 
 
-       $view = View::make('front.panel.contactform.index')
+       $view = View::make('admin.panel.contactform.index')
         ->with('contactforms', $this->contactform)
         ->renderSections();
 
@@ -73,7 +73,7 @@ class ContactFormController extends Controller
                 'active' => 1,
         ]);
             
-        $view = View::make('front.panel.contactform.index')
+        $view = View::make('admin.panel.contactform.index')
         ->with('contactforms', $this->$contactform->where('active', 1)->get())
         ->with('contactform', $contactform)
         ->renderSections();        
@@ -87,7 +87,7 @@ class ContactFormController extends Controller
 
     public function edit(ContactForm $contactform)
     {
-        $view = View::make('front.panel.contactform.index')
+        $view = View::make('admin.panel.contactform.index')
         ->with('contactform', $contactform)
         ->with('contactforms', $this->contactform->where('active', 1)->get());   
         
@@ -112,7 +112,7 @@ class ContactFormController extends Controller
         $contactform->active = 0;
         $contactform->save();
 
-        $view = View::make('front.panel.contactform.index')
+        $view = View::make('admin.panel.contactform.index')
             ->with('contactform', $this->contactform)
             ->with('contactforms', $this->contactform->where('active', 1)->get())
             ->renderSections();
