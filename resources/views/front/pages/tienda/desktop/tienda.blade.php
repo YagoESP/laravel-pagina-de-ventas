@@ -50,134 +50,25 @@
 
 
                 <div class="shop-articles-sections-cards">
-                    <div class="desktop-three-columns">
-                        <div class="column">
-                            <div class="shop-articles-sections-cards-content">
-                                <div class="shop-articles-sections-cards-content-image">
-                                    <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
-                                </div>
-                                <div class="shop-articles-sections-cards-content-price">
-                                    <span>15 euros</span>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-title">
-                                    <h3>PERRO</h3>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-button">
-                                    <button>COMPRAR</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="shop-articles-sections-cards-content">
-                                <div class="shop-articles-sections-cards-content-image">
-                                    <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
-                                </div>
-                                <div class="shop-articles-sections-cards-content-title">
-                                    <h3>PERRO</h3>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-button">
-                                    <button>COMPRAR</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="shop-articles-sections-cards-content">
-                                <div class="shop-articles-sections-cards-content-image">
-                                    <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
-                                </div>
-                                <div class="shop-articles-sections-cards-content-title">
-                                    <h3>PERRO</h3>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-button">
-                                    <button>COMPRAR</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="desktop-three-columns">
-                        <div class="column">
-                            <div class="shop-articles-sections-cards-content">
-                                <div class="shop-articles-sections-cards-content-image">
-                                    <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
-                                </div>
-                                <div class="shop-articles-sections-cards-content-title">
-                                    <h3>PERRO</h3>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-button">
-                                    <button>COMPRAR</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="shop-articles-sections-cards-content">
-                                <div class="shop-articles-sections-cards-content-image">
-                                    <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
-                                </div>
-                                <div class="shop-articles-sections-cards-content-title">
-                                    <h3>PERRO</h3>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-button">
-                                    <button>COMPRAR</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="shop-articles-sections-cards-content">
-                                <div class="shop-articles-sections-cards-content-image">
-                                    <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
-                                </div>
-                                <div class="shop-articles-sections-cards-content-title">
-                                    <h3>PERRO</h3>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-button">
-                                    <button>COMPRAR</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="desktop-three-columns">
-                        <div class="column">
-                            <div class="shop-articles-sections-cards-content">
-                                <div class="shop-articles-sections-cards-content-image">
-                                    <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
-                                </div>
-                                <div class="shop-articles-sections-cards-content-title">
-                                    <h3>PERRO</h3>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-button">
-                                    <button>COMPRAR</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="shop-articles-sections-cards-content">
-                                <div class="shop-articles-sections-cards-content-image">
-                                    <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
-                                </div>
-                                <div class="shop-articles-sections-cards-content-title">
-                                    <h3>PERRO</h3>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-button">
-                                    <button>COMPRAR</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="shop-articles-sections-cards-content">
-                                <div class="shop-articles-sections-cards-content-image">
-                                    <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
-                                </div>
-                                <div class="shop-articles-sections-cards-content-title">
-                                    <h3>PERRO</h3>
-                                </div>
-                                <div class="shop-articles-sections-cards-content-button">
-                                    <button>COMPRAR</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @if(isset($products))
+                            @foreach($products as $product)
+                                    <div class="shop-articles-sections-cards-content">
+                                        <div class="shop-articles-sections-cards-content-image">
+                                            <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
+                                        </div>
+                                        <div class="shop-articles-sections-cards-content-price" data-content="{{$product->price}}">
+                                            <span>{{$product->price}}</span>
+                                        </div>
+                                        <div class="shop-articles-sections-cards-content-title" data-content="{{$product->title}}">
+                                            <h3>{{$product->title}}</h3>
+                                        </div>
+                                        <div class="shop-articles-sections-cards-content-button">
+                                            <button>COMPRAR</button>
+                                        </div>
+                                    </div>
+                            @endforeach
+                        @endif
                 </div>
             </div>
         </div>

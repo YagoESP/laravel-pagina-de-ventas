@@ -8,7 +8,7 @@
 @section("content")
 
     @if($agent->isDesktop())
-        @include('front.components.desktop.title' , ['title' => "contacto"])
+        @include('front.components.desktop.title' , ['title' => "CONTACTO"])
         @include('front.pages.contacto.desktop.contacto')
     @endif
 

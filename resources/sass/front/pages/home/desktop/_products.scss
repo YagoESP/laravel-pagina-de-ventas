@@ -85,16 +85,21 @@
 
             
         .shop-articles-sections-cards{
-                
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: start;
+            gap: 5rem;
+            width: 75%;
+            margin: auto;
+            
             .shop-articles-sections-cards-content{
                 text-align: center;
-                margin-top: 2rem;
                 transition: all .4s;
                 border-radius: 0.5rem; 
                 box-shadow:15px 15px 0px rgba(0,0,0,.1);
                 border: white 3px solid;
-                padding: 0.1rem;
                 background: white;
+                padding: auto 1rem auto 1rem;
                 
                 &:hover{
                     transform: translateY(-25px);

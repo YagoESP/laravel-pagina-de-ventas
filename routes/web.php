@@ -156,24 +156,19 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-    
-    Route::get('contacto','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
-    Route::post('contacto','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
+Route::get('/','App\Http\Controllers\Front\HomeController@index')->name('front_home');
 
-    Route::get('faqs','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
-    Route::post('faqs','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
+Route::get('contacto','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+Route::post('contacto','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
-    Route::get('producto','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
-    Route::post('producto','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
+Route::get('faqs','App\Http\Controllers\Front\FaqController@index')->name('front_faqs');
 
-    Route::get('tienda','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
-    Route::post('tienda','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
-    Route::get('caja','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
-    Route::post('caja','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
+Route::get('tienda','App\Http\Controllers\Front\ProductController@index')->name('front_products');
+Route::get('producto','App\Http\Controllers\Front\ProductController@show')->name('front_product');
 
-    Route::get('/','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
-    Route::post('/','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
+Route::get('caja','App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
+Route::post('caja','App\Http\Controllers\Front\CheckoutController@store')->name('front_checkout');
 
-    Route::get('carrito','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
-    Route::post('carrito','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
+
+Route::get('carrito','App\Http\Controllers\Front\ShoppingcartController@index')->name('front_shoppingcart');

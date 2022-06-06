@@ -19,9 +19,6 @@ class ProductCategoryController extends Controller
     
     public function index()
     {   
-        
-
-
         $view = View::make('admin.panel.productcategory.index')
                 ->with('productcategory', $this->productcategory)
                 ->with('productscategories', $this->productcategory->where('active',1)->get());
