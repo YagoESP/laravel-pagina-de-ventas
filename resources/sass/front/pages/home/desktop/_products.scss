@@ -85,12 +85,10 @@
 
             
         .shop-articles-sections-cards{
-            flex-wrap: wrap;
             display: flex;
-            justify-content: start;
-            gap: 5rem;
-            width: 75%;
-            margin: auto;
+            gap: 4rem;
+            width: 100%;
+            flex-wrap: wrap;
             
             .shop-articles-sections-cards-content{
                 text-align: center;
@@ -99,7 +97,7 @@
                 box-shadow:15px 15px 0px rgba(0,0,0,.1);
                 border: white 3px solid;
                 background: white;
-                padding: auto 1rem auto 1rem;
+                padding: 2.5rem;
                 
                 &:hover{
                     transform: translateY(-25px);
@@ -142,7 +140,7 @@
 
                     button{
                         position:relative;
-                        width:80%;
+                        width:100%;
                         padding:1rem;
                         border-radius:6px;
                         border:0;

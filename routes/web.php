@@ -98,7 +98,7 @@ Route::group(['prefix' => 'admin'], function () {
             ]
     ]);
 
-    Route::resource('contact_forms', 'App\Http\Controllers\Front\ContactFormController', [
+    Route::resource('contact_forms', 'App\Http\Controllers\Front\ContactController', [
         'parameters' => [
         'contact_forms' => 'contact_form', 
     ],
@@ -161,11 +161,13 @@ Route::get('/','App\Http\Controllers\Front\HomeController@index')->name('front_h
 Route::get('contacto','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
 Route::post('contacto','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
-Route::get('faqs','App\Http\Controllers\Front\FaqController@index')->name('front_faqs');
+Route::get('faqs','App\Http\Controllers\Front\FaqController@show')->name('front_faqs');
+
 
 
 Route::get('tienda','App\Http\Controllers\Front\ProductController@index')->name('front_products');
-Route::get('producto','App\Http\Controllers\Front\ProductController@show')->name('front_product');
+Route::get('tienda/{product}','App\Http\Controllers\Front\ProductController@show')->name('front_product_show');
+
 
 Route::get('caja','App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
 Route::post('caja','App\Http\Controllers\Front\CheckoutController@store')->name('front_checkout');

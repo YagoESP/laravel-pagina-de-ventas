@@ -10,7 +10,9 @@ import {renderClean} from './clean.js';
 import {renderAccordion } from './accordion.js';
 import {renderFilters} from './filters.js';
 import {renderTable} from './table.js';
+import {renderProducts} from './products.js';
 
+renderProducts();
 renderTable();
 renderFilters();
 renderAccordion();

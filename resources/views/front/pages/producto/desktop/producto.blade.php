@@ -1,7 +1,7 @@
 <div class="notification desktop-only">
     <span id="notification-text desktop-only"></span>
 </div>
-<div class="product">
+<div class="product form-container">
     <div class="desktop-two-columns">
         <div class="column">
             <div class="product-carousel">
@@ -41,15 +41,12 @@
         </div>
 
         <div class="column">
-            <div class="product-information">
+            <div class="product-information product-container" >
                 <div class="product-title">
-                    <h2>Malamute de Alaska</h2>
+                    <h2>{{$product->title}}</h2>
                 </div>
                 <div class="product-price">
-                    <h3>1200/€</h3>
-                </div>
-                <div class="product-description">
-                    
+                    <h3>{{$product->price}}</h3>
                 </div>
 
                 @include('front.components.desktop.tabs')

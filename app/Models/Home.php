@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContactForm extends Model
+class Home extends Model
 {
     protected $guarded = [];
-    protected $table = 'productscategories';
 }

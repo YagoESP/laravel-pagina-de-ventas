@@ -324,6 +324,90 @@ var renderForm = function renderForm() {
 
 /***/ }),
 
+/***/ "./resources/js/front/desktop/menu.js":
+/*!********************************************!*\
+  !*** ./resources/js/front/desktop/menu.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderMenu": () => (/* binding */ renderMenu)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var renderMenu = function renderMenu() {
+  var viewMenu = document.querySelectorAll(".view-button-menu");
+  var mainContainer = document.querySelector("main");
+
+  if (viewMenu) {
+    viewMenu.forEach(function (viewMenu) {
+      viewMenu.addEventListener("click", function () {
+        var url = viewMenu.dataset.url;
+
+        var sendView = /*#__PURE__*/function () {
+          var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+            var response;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return fetch(url, {
+                      headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                      },
+                      method: 'GET'
+                    }).then(function (response) {
+                      if (!response.ok) throw response;
+                      return response.json();
+                    }).then(function (json) {
+                      mainContainer.innerHTML = json.content;
+                      document.dispatchEvent(new CustomEvent('renderMenuModules'));
+                    });
+
+                  case 2:
+                    response = _context.sent;
+
+                  case 3:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee);
+          }));
+
+          return function sendView() {
+            return _ref.apply(this, arguments);
+          };
+        }();
+
+        sendView();
+      });
+    });
+  }
+
+  if (addButton) {
+    addButton.addEventListener("click", function () {
+      document.dispatchEvent(new CustomEvent('message', {
+        detail: {
+          text: 'Enviado correctamente',
+          type: 'success'
+        }
+      }));
+    });
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/js/front/desktop/message.js":
 /*!***********************************************!*\
   !*** ./resources/js/front/desktop/message.js ***!
@@ -412,19 +496,78 @@ var renderPlusMinusButton = function renderPlusMinusButton() {
 
 /***/ }),
 
-/***/ "./resources/js/front/desktop/product.js":
-/*!***********************************************!*\
-  !*** ./resources/js/front/desktop/product.js ***!
-  \***********************************************/
+/***/ "./resources/js/front/desktop/products.js":
+/*!************************************************!*\
+  !*** ./resources/js/front/desktop/products.js ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "renderProduct": () => (/* binding */ renderProduct)
+/* harmony export */   "renderProducts": () => (/* binding */ renderProducts)
 /* harmony export */ });
-var renderProduct = function renderProduct() {
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var renderProducts = function renderProducts() {
+  var viewButtons = document.querySelectorAll(".view-button");
   var addButton = document.querySelector(".add-to-cart-button");
+  var mainContainer = document.querySelector("main");
+
+  if (viewButtons) {
+    viewButtons.forEach(function (viewButton) {
+      viewButton.addEventListener("click", function () {
+        var url = viewButton.dataset.url;
+
+        var sendProduct = /*#__PURE__*/function () {
+          var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+            var response;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return fetch(url, {
+                      headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                      },
+                      method: 'GET'
+                    }).then(function (response) {
+                      if (!response.ok) throw response;
+                      return response.json();
+                    }).then(function (json) {
+                      mainContainer.innerHTML = json.content;
+                      document.dispatchEvent(new CustomEvent('renderProductModules'));
+                      document.dispatchEvent(new CustomEvent('renderTabsModules'));
+                      document.dispatchEvent(new CustomEvent('renderPlusMinusButtonModules'));
+                    });
+
+                  case 2:
+                    response = _context.sent;
+
+                  case 3:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee);
+          }));
+
+          return function sendProduct() {
+            return _ref.apply(this, arguments);
+          };
+        }();
+
+        sendProduct();
+      });
+    });
+  }
 
   if (addButton) {
     addButton.addEventListener("click", function () {
@@ -1338,14 +1481,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tabs_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs.js */ "./resources/js/front/desktop/tabs.js");
 /* harmony import */ var _plus_minus_button_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./plus-minus-button.js */ "./resources/js/front/desktop/plus-minus-button.js");
 /* harmony import */ var _form_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./form.js */ "./resources/js/front/desktop/form.js");
-/* harmony import */ var _product_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product.js */ "./resources/js/front/desktop/product.js");
-/* harmony import */ var _notifications_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./notifications.js */ "./resources/js/front/desktop/notifications.js");
-/* harmony import */ var _ckeditor_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ckeditor.js */ "./resources/js/front/desktop/ckeditor.js");
-/* harmony import */ var _delete__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./delete */ "./resources/js/front/desktop/delete.js");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./edit */ "./resources/js/front/desktop/edit.js");
-/* harmony import */ var _clean_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./clean.js */ "./resources/js/front/desktop/clean.js");
-/* harmony import */ var _accordion_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./accordion.js */ "./resources/js/front/desktop/accordion.js");
-/* harmony import */ var _message_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./message.js */ "./resources/js/front/desktop/message.js");
+/* harmony import */ var _notifications_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notifications.js */ "./resources/js/front/desktop/notifications.js");
+/* harmony import */ var _ckeditor_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ckeditor.js */ "./resources/js/front/desktop/ckeditor.js");
+/* harmony import */ var _delete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./delete */ "./resources/js/front/desktop/delete.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./edit */ "./resources/js/front/desktop/edit.js");
+/* harmony import */ var _clean_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./clean.js */ "./resources/js/front/desktop/clean.js");
+/* harmony import */ var _accordion_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./accordion.js */ "./resources/js/front/desktop/accordion.js");
+/* harmony import */ var _message_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./message.js */ "./resources/js/front/desktop/message.js");
+/* harmony import */ var _products_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./products.js */ "./resources/js/front/desktop/products.js");
+/* harmony import */ var _menu_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./menu.js */ "./resources/js/front/desktop/menu.js");
 
 
 
@@ -1357,14 +1501,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_message_js__WEBPACK_IMPORTED_MODULE_10__.renderMessage)();
-(0,_accordion_js__WEBPACK_IMPORTED_MODULE_9__.renderAccordion)();
-(0,_clean_js__WEBPACK_IMPORTED_MODULE_8__.renderClean)();
-(0,_delete__WEBPACK_IMPORTED_MODULE_6__.renderDelete)();
-(0,_edit__WEBPACK_IMPORTED_MODULE_7__.renderEdit)();
-(0,_ckeditor_js__WEBPACK_IMPORTED_MODULE_5__.renderCkeditor)();
-(0,_notifications_js__WEBPACK_IMPORTED_MODULE_4__.renderNotifications)();
-(0,_product_js__WEBPACK_IMPORTED_MODULE_3__.renderProduct)();
+
+(0,_menu_js__WEBPACK_IMPORTED_MODULE_11__.renderMenu)();
+(0,_message_js__WEBPACK_IMPORTED_MODULE_9__.renderMessage)();
+(0,_accordion_js__WEBPACK_IMPORTED_MODULE_8__.renderAccordion)();
+(0,_clean_js__WEBPACK_IMPORTED_MODULE_7__.renderClean)();
+(0,_delete__WEBPACK_IMPORTED_MODULE_5__.renderDelete)();
+(0,_edit__WEBPACK_IMPORTED_MODULE_6__.renderEdit)();
+(0,_ckeditor_js__WEBPACK_IMPORTED_MODULE_4__.renderCkeditor)();
+(0,_notifications_js__WEBPACK_IMPORTED_MODULE_3__.renderNotifications)();
+(0,_products_js__WEBPACK_IMPORTED_MODULE_10__.renderProducts)();
 (0,_tabs_js__WEBPACK_IMPORTED_MODULE_0__.renderTabs)();
 (0,_plus_minus_button_js__WEBPACK_IMPORTED_MODULE_1__.renderPlusMinusButton)();
 (0,_form_js__WEBPACK_IMPORTED_MODULE_2__.renderForm)();

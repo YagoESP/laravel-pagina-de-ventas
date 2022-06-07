@@ -9,12 +9,11 @@
         width: 100%;
         margin-left: 4rem;
         padding: 0.5rem;
-        background: white;
-        border-top: hsl(0, 4%, 85%) 5px solid;
-        border-bottom: hsl(0, 4%, 85%) 5px solid;
-        border: 1px solid black;
         margin-bottom: 1rem;
         .registers-item{
+            margin: 1rem;
+            border: 1px solid black;
+            background: white;
             .register{
                 
                 div{

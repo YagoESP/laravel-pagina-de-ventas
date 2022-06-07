@@ -13,22 +13,22 @@ class ContactController extends Controller
 {
 
 
-    protected $contactform;
+    protected $contact;
 
    
 
-    public function __construct(ContactForm $contactform)
+    public function __construct(Contact $contact)
     {
-        $this->contactform = $contactform; 
+        $this->contact = $contact; 
     }
     
     public function index()
     {
 
        
-        $view = View::make('admin.panel.contactform.index')
-                ->with('contactform', $this->contactform)
-                ->with('contactforms', $this->contactform->where('active',1)->get());
+        $view = View::make('admin.panel.contact.index')
+                ->with('contact', $this->contact)
+                ->with('contacts', $this->contact->where('active',1)->get());
 
         if(request()->ajax()) {
             
@@ -47,8 +47,8 @@ class ContactController extends Controller
     {
 
 
-       $view = View::make('admin.panel.contactform.index')
-        ->with('contactforms', $this->contactform)
+       $view = View::make('admin.panel.contact.index')
+        ->with('contacts', $this->contact)
         ->renderSections();
 
 
@@ -59,7 +59,7 @@ class ContactController extends Controller
         ]);
     }
 
-    public function store(ContactFormRequest $request)
+    public function store(ContactRequest $request)
     {            
         
 
@@ -73,23 +73,23 @@ class ContactController extends Controller
                 'active' => 1,
         ]);
             
-        $view = View::make('admin.panel.contactform.index')
-        ->with('contactforms', $this->$contactform->where('active', 1)->get())
-        ->with('contactform', $contactform)
+        $view = View::make('admin.panel.contact.index')
+        ->with('contacts', $this->$contact->where('active', 1)->get())
+        ->with('contact', $contact)
         ->renderSections();        
 
         return response()->json([
             'table' => $view['table'],
             'form' => $view['form'],
-            'id' => $contactform->id,
+            'id' => $contact->id,
         ]);
     }
 
-    public function edit(ContactForm $contactform)
+    public function edit(Contact $contact)
     {
-        $view = View::make('admin.panel.contactform.index')
-        ->with('contactform', $contactform)
-        ->with('contactforms', $this->contactform->where('active', 1)->get());   
+        $view = View::make('admin.panel.contact.index')
+        ->with('contact', $contact)
+        ->with('contacts', $this->contact->where('active', 1)->get());   
         
         if(request()->ajax()) {
 
@@ -103,18 +103,18 @@ class ContactController extends Controller
         return $view;
     }
 
-    public function show(ContactForm $contactform){
+    public function show(Contact $contact){
 
     }
 
-    public function destroy(ContactForm $contactform)
+    public function destroy(Contact $contact)
     {
-        $contactform->active = 0;
-        $contactform->save();
+        $contact->active = 0;
+        $contact->save();
 
-        $view = View::make('admin.panel.contactform.index')
-            ->with('contactform', $this->contactform)
-            ->with('contactforms', $this->contactform->where('active', 1)->get())
+        $view = View::make('admin.panel.contact.index')
+            ->with('contact', $this->contact)
+            ->with('contacts', $this->contact->where('active', 1)->get())
             ->renderSections();
         
         return response()->json([

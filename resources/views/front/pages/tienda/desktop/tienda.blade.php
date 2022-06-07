@@ -53,7 +53,7 @@
 
                         @if(isset($products))
                             @foreach($products as $product)
-                                    <div class="shop-articles-sections-cards-content">
+                                    <div class="shop-articles-sections-cards-content form-container">
                                         <div class="shop-articles-sections-cards-content-image">
                                             <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
                                         </div>
@@ -64,7 +64,7 @@
                                             <h3>{{$product->title}}</h3>
                                         </div>
                                         <div class="shop-articles-sections-cards-content-button">
-                                            <button>COMPRAR</button>
+                                            <button class="view-button" data-url="{{route('front_product_show',['product'=>$product->id])}}">COMPRAR</button>
                                         </div>
                                     </div>
                             @endforeach

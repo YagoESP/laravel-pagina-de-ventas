@@ -23,5 +23,23 @@ class FaqController extends Controller
         
         return $view;
     }
+
+    public function show(Faq $faq)
+    {
+        $view = View::make('front.pages.faqs.index')
+        ->with('faq', $home);
+
+        if(request()->ajax()) {
+            
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'content' => $sections['content'],
+            ]); 
+        }
+
+        return $view;
+    
+    }
 }                        
                                

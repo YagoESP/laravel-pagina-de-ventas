@@ -57,14 +57,6 @@ export let renderForm = () => {
                 .then(json => {
 
                     formContainer.innerHTML = json.form;
-
-                    /*
-                        Cuando hacemos un innerHTML se pierden todos los eventos de javascript, por lo que tenemos que
-                        volver a asignar los eventos a los elementos que hemos creado. Para ello vamos a hacer un evento 
-                        personalizado, que será el evento que cargará todo el javascript que tenga el formulario. 
-                        En la siguiente línea estamos declarando un evento personalizado que se llamará 'renderFormModules' que 
-                        podrá ser escuchado por el resto de archivos. 
-                    */
                     document.dispatchEvent(new CustomEvent('renderFormModules'));
                 })
                 .catch(error =>  {
