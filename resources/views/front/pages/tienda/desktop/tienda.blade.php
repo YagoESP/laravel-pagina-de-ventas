@@ -38,10 +38,11 @@
                             <div class="shop-articles-information-select">
                                 <select name="perros">
                                     <option value="perros">Seleccionar</option>
-                                    <option value="perros">Guardianes</option>
-                                    <option value="perros">Juguetones</option>
-                                    <option value="perros">Cazadores</option>
-                                    <option value="perros">Sociable</option>
+                                    @if(isset($product_categories))
+                                        @foreach($product_categories as $category)
+                                            <option value="{{$category->id}}">{{$category->category}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>

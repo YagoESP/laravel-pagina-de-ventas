@@ -17,7 +17,6 @@ use Debugbar;
 // heredando todas las propiedades (variables) y métodos del objeto "Controller"
 class ProductController extends Controller
 {
-
     protected $product;
 
     public function __construct(Product $product)
@@ -28,20 +27,20 @@ class ProductController extends Controller
     public function index()
     {
 
-
         $view = View::make('admin.panel.product.index')
                 ->with('product', $this->product)
                 ->with('products', $this->product->where('active',1)->get());
+                
 
-        if(request()->ajax()) {
-            
-            $sections = $view->renderSections(); 
-    
-            return response()->json([
-                'table' => $sections['table'],
-                'form' => $sections['form'],
-            ]); 
-        }
+            if(request()->ajax()) {
+                
+                $sections = $view->renderSections(); 
+        
+                return response()->json([
+                    'table' => $sections['table'],
+                    'form' => $sections['form'],
+                ]); 
+            }
 
         return $view;
     }
@@ -50,7 +49,7 @@ class ProductController extends Controller
     {
 
        $view = View::make('admin.panel.product.index')
-        ->with('product', $this->faq)
+        ->with('product', $this->product)
         ->renderSections();
 
 
@@ -79,7 +78,8 @@ class ProductController extends Controller
         $view = View::make('admin.panel.product.index')
         ->with('products', $this->product->where('active', 1)->get())
         ->with('product', $product)
-        ->renderSections();        
+
+        ->renderSections();       
 
         return response()->json([
             'table' => $view['table'],
@@ -93,7 +93,8 @@ class ProductController extends Controller
         
         $view = View::make('admin.panel.product.index')
         ->with('product', $product)
-        ->with('products', $this->product->where('active', 1)->get());   
+        ->with('products', $this->product->where('active', 1)->get());
+
         
         if(request()->ajax()) {
 
@@ -119,6 +120,7 @@ class ProductController extends Controller
         $view = View::make('admin.panel.product.index')
             ->with('product', $this->product)
             ->with('products', $this->product->where('active', 1)->get())
+
             ->renderSections();
         
         return response()->json([

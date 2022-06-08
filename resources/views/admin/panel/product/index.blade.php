@@ -34,18 +34,7 @@
                 @endforeach
             @endif
 
-        <div class="register-data">
-            <div>
-                <p>1 Registro</p>
-                <p>Mostrando la Pagina 1 de 1</p>
-            </div>
-            <ul>
-                <li>Primera</li>
-                <li>Anterior</li>
-                <li>Siguiente</li>
-                <li>Ultima</li>
-            </ul>   
-        </div>
+        
     </div>
 
 @endsection
@@ -107,9 +96,12 @@
                         <div class="form-input">
                             <select id="category_id" name="category" value="{{isset($product->category) ? $product->category : ''}}">
                                 <option value="0">Seleccionar</option>
-                                <option value="america">America</option>
-                                <option value="europa">Europa</option>
-                                <option value="asia">Asia</option>
+
+                                @if(isset($product_categories))
+                                    @foreach($product_categories as $category)
+                                        <option value="{{$category->id}}">{{$category->category}}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>

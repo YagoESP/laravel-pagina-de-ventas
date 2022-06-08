@@ -95,12 +95,7 @@
                             <label for="">Categoria</label>
                         </div>
                         <div class="form-input">
-                            <select name="categoria" id="categoria_id" name="title" value="{{isset($productcategory->categoria) ? $productcategory->categoria : ''}}">
-                                <option value="0">Seleccionar</option>
-                                <option value="0">America</option>
-                                <option value="0">Europa</option>
-                                <option value="0">Asia</option>
-                            </select>
+                            <input type="text" name="category" value="{{isset($productcategory->category) ? $productcategory->category : ''}}">
                         </div>
                     </div>
                 </div>
