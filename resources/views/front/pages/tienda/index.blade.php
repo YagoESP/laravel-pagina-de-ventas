@@ -7,11 +7,11 @@
 @section("content")
 
     @if($agent->isDesktop())
-        @include('front.pages.tienda.desktop.tienda')
+        @include('front.pages.tienda.desktop.tienda ' , ['products' => $products, 'product_categories' => $product_categories])
     @endif
 
     @if($agent->isMobile())
-        @include('front.pages.tienda.mobile.tienda')
+        @include('front.pages.tienda.mobile.tienda', ['products' => $products, 'product_categories' => $product_categories])
     @endif
     
 @endsection    

@@ -158,8 +158,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/','App\Http\Controllers\Front\HomeController@index')->name('front_home');
 
-Route::get('contacto','App\Http\Controllers\Front\ContactController@index')->name('front_contact');
 Route::post('contacto','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
+Route::post('contacto/[contact]','App\Http\Controllers\Front\ContactController@show')->name('front_contact_show');
+
 
 Route::get('faqs','App\Http\Controllers\Front\FaqController@show')->name('front_faqs');
 
@@ -167,6 +168,7 @@ Route::get('faqs','App\Http\Controllers\Front\FaqController@show')->name('front_
 
 Route::get('tienda','App\Http\Controllers\Front\ProductController@index')->name('front_products');
 Route::get('tienda/{product}','App\Http\Controllers\Front\ProductController@show')->name('front_product_show');
+Route::get('tienda/{product_category}','App\Http\Controllers\Front\ProductCategoryController@category')->name('front_product_category');
 
 
 Route::get('caja','App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCategory extends Model
 {
     protected $guarded = [];
-    protected $table = 'productscategories';
+    protected $table = 'products_categories';
     protected $with = ['products'];
     
 

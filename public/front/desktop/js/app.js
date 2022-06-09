@@ -346,6 +346,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var renderMenu = function renderMenu() {
   var viewMenu = document.querySelectorAll(".view-button-menu");
   var mainContainer = document.querySelector("main");
+  var addButton = document.querySelector(".add-to-cart-button");
 
   if (viewMenu) {
     viewMenu.forEach(function (viewMenu) {
@@ -519,6 +520,8 @@ var renderProducts = function renderProducts() {
   var viewButtons = document.querySelectorAll(".view-button");
   var addButton = document.querySelector(".add-to-cart-button");
   var mainContainer = document.querySelector("main");
+  var productCategories = document.querySelectorAll(".category");
+  var productContainer = document.querySelector(".shop-articles-sections-cards-content");
 
   if (viewButtons) {
     viewButtons.forEach(function (viewButton) {
@@ -544,8 +547,6 @@ var renderProducts = function renderProducts() {
                     }).then(function (json) {
                       mainContainer.innerHTML = json.content;
                       document.dispatchEvent(new CustomEvent('renderProductModules'));
-                      document.dispatchEvent(new CustomEvent('renderTabsModules'));
-                      document.dispatchEvent(new CustomEvent('renderPlusMinusButtonModules'));
                     });
 
                   case 2:
@@ -565,6 +566,53 @@ var renderProducts = function renderProducts() {
         }();
 
         sendProduct();
+      });
+    });
+  }
+
+  if (productCategories) {
+    productCategories.forEach(function (productCategory) {
+      productCategory.addEventListener("click", function () {
+        var url = productCategory.dataset.url;
+
+        var sendCategory = /*#__PURE__*/function () {
+          var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+            var response;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return fetch(url, {
+                      headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                      },
+                      method: 'GET'
+                    }).then(function (response) {
+                      if (!response.ok) throw response;
+                      return response.json();
+                    }).then(function (json) {
+                      productContainer.innerHTML = json.form - container;
+                      document.dispatchEvent(new CustomEvent('renderProductModules'));
+                    });
+
+                  case 2:
+                    response = _context2.sent;
+
+                  case 3:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2);
+          }));
+
+          return function sendCategory() {
+            return _ref2.apply(this, arguments);
+          };
+        }();
+
+        sendCategory();
       });
     });
   }

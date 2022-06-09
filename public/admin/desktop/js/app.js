@@ -716,10 +716,13 @@ var renderTable = function renderTable() {
   }
 
   if (deleteButtons) {
-    var window = document.querySelector(".window-container");
     deleteButtons.forEach(function (deleteButton) {
-      deleteButton.addEventListener("click", function () {
-        window.classList.add("active");
+      deleteButton.addEventListener('click', function () {
+        document.dispatchEvent(new CustomEvent('openModalDelete', {
+          detail: {
+            url: deleteButton.dataset.url
+          }
+        }));
       });
     });
   }

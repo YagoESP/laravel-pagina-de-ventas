@@ -94,7 +94,7 @@ class ProductCategoryController extends Controller
     }
 
     public function show(ProductCategory $productcategory){
-
+        
     }
 
     public function destroy(ProductCategory $productcategory)
@@ -105,6 +105,7 @@ class ProductCategoryController extends Controller
         $view = View::make('admin.panel.productcategory.index')
             ->with('productcategory', $this->productcategory)
             ->with('productscategories', $this->productcategory->where('active', 1)->get())
+            
             ->renderSections();
         
         return response()->json([

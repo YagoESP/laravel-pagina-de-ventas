@@ -2,6 +2,7 @@ export let renderMenu = () => {
 
     let viewMenu = document.querySelectorAll(".view-button-menu");
     let mainContainer = document.querySelector("main");
+    let addButton = document.querySelector(".add-to-cart-button");
 
     if(viewMenu) {
 

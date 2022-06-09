@@ -3,7 +3,9 @@ export let renderProducts = () => {
     let viewButtons = document.querySelectorAll(".view-button");
     let addButton = document.querySelector(".add-to-cart-button");
     let mainContainer = document.querySelector("main");
-  
+    let productCategories = document.querySelectorAll(".category");
+    let productContainer = document.querySelector(".shop-articles-sections-cards-content");
+
     if(viewButtons){
 
         viewButtons.forEach(viewButton => {
@@ -34,8 +36,7 @@ export let renderProducts = () => {
                         mainContainer.innerHTML = json.content;
 
                         document.dispatchEvent(new CustomEvent('renderProductModules'));
-                        document.dispatchEvent(new CustomEvent('renderTabsModules'));
-                        document.dispatchEvent(new CustomEvent('renderPlusMinusButtonModules'));
+                        
 
                         
                     })
@@ -43,6 +44,49 @@ export let renderProducts = () => {
                 }
             
                 sendProduct();
+                
+            });
+        });
+    }
+
+    if(productCategories){
+
+        productCategories.forEach(productCategory => {
+            
+            productCategory.addEventListener("click", () => {
+
+                let url = productCategory.dataset.url;
+                
+                let sendCategory = async () => {
+                
+                    let response = await fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                        },
+                        method: 'GET' 
+                    })
+                    
+                    .then(response => {
+
+                        if (!response.ok) throw response;
+
+                        return response.json();
+
+                    })
+
+                    .then(json => {
+
+                        productContainer.innerHTML = json.form-container;
+
+                        document.dispatchEvent(new CustomEvent('renderProductModules'));
+                        
+
+                        
+                    })
+                   
+                }
+            
+                sendCategory();
                 
             });
         });
@@ -61,5 +105,5 @@ export let renderProducts = () => {
             
         })    
     }
-  
-}
+
+}    

@@ -5,22 +5,13 @@
                 <div class="shop-categories-title">
                     <h2>Categorias</h2>
                 </div>
+                
                 <div class="shop-categories-elements">
-                    <div class="shop-categories-element">
-                        <h3>America</h3>
-                    </div>
-                    <div class="shop-categories-element">
-                        <h3>Europa</h3>
-                    </div>
-                    <div class="shop-categories-element">
-                        <h3>Africa</h3>
-                    </div>
-                    <div class="shop-categories-element">
-                        <h3>Asiá</h3>
-                    </div>
-                    <div class="shop-categories-element">
-                        <h3>Oceania</h3>
-                    </div>
+                    @if(isset($product_categories))
+                        @foreach($product_categories as $category)
+                            <h3 class="category" data-url="{{route('front_product_category',['product_category'=>$category->id])}}">{{$category->category}}</h3>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -38,11 +29,6 @@
                             <div class="shop-articles-information-select">
                                 <select name="perros">
                                     <option value="perros">Seleccionar</option>
-                                    @if(isset($product_categories))
-                                        @foreach($product_categories as $category)
-                                            <option value="{{$category->id}}">{{$category->category}}</option>
-                                        @endforeach
-                                    @endif
                                 </select>
                             </div>
                         </div>

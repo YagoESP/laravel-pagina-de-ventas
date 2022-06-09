@@ -44,4 +44,22 @@ class ContactController extends Controller
             'content' => $view['content'],
         ]);
     }
+
+    public function show(Contact $contact)
+    {
+        $view = View::make('front.pages.contacto.index')
+        ->with('contact', $contact);
+
+        if(request()->ajax()) {
+            
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'content' => $sections['content'],
+            ]); 
+        }
+
+        return $view;
+    
+    }
 }

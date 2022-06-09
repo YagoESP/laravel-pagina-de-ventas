@@ -29,10 +29,13 @@ class ViewComposerServiceProvider extends ServiceProvider
         // En la segunda linea digo que archivo va a hacer el que haga la
         // consulta
         
+        // En la tercera linea digo que archivo va a hacer el que haga la
+        // consulta
+
         view()->composer(['admin.panel.product.index'], 
         'App\Http\ViewComposers\Admin\ProductCategories');
         
-        view()->composer(['admin.pages.tienda.index'], 
+        view()->composer(['front.pages.tienda.index'], 
         'App\Http\ViewComposers\Front\ProductCategories');
     }
 }

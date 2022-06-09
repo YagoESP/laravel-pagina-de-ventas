@@ -27,7 +27,7 @@ class FaqController extends Controller
     public function show(Faq $faq)
     {
         $view = View::make('front.pages.faqs.index')
-        ->with('faq', $home);
+        ->with('faq', $faq);
 
         if(request()->ajax()) {
             

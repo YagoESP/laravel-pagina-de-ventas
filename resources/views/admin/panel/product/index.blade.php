@@ -94,7 +94,7 @@
                             <label for="">Categoria</label>
                         </div>
                         <div class="form-input">
-                            <select id="category_id" name="category" value="{{isset($product->category) ? $product->category : ''}}">
+                            <select id="category_id" name="category_id" value="{{isset($product->category) ? $product->category : ''}}">
                                 <option value="0">Seleccionar</option>
 
                                 @if(isset($product_categories))

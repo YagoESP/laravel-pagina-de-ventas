@@ -650,9 +650,6 @@ form .form-send-button button:hover {
 .window-container .container .refuse button:hover {
   background-color: #dd4b39;
 }
-.window-container.active {
-  display: block;
-}
 
 .filters {
   background: #2A70D5;

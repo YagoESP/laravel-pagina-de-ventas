@@ -59,7 +59,7 @@
                         <button class="view-button-menu" data-url="{{route('front_faqs')}}">MASCOTAS</button>
                     </div>
                     <div class="header-main-menu-element-active">
-                        <button class="view-button-menu" data-url="{{route('front_contact')}}">CONTÁCTANOS</button>
+                        <button class="view-button-menu" data-url="{{route('front_contact_show')}}">CONTÁCTANOS</button>
                     </div>   
                 </div>
             </div>   
