@@ -3,38 +3,36 @@
 @section('table')
     @include('admin.components.desktop.model-delay')
     <div class="registers">
-            @if(isset($products))
-                @foreach($products as $products_element)     
-                    <div class="registers-item">
-                        <div class="desktop-two-columns">
-                            <div class="column">
-                                <div class="register">
-                                    <div><label for="">Id:<span>{{$products_element->id}}</span></label></div>
-                                    <div><label for="">Name:<span>{{$products_element->name}}</span></label></div>
-                                    <div><label for="">Creado:<span>{{$products_element->created_at}}</span></label></div>
-                                </div>
+        @if(isset($products))
+            @foreach($products as $products_element)     
+                <div class="registers-item">
+                    <div class="desktop-two-columns">
+                        <div class="column">
+                            <div class="register">
+                                <div><label for="">Id:<span>{{$products_element->id}}</span></label></div>
+                                <div><label for="">Name:<span>{{$products_element->name}}</span></label></div>
+                                <div><label for="">Creado:<span>{{$products_element->created_at}}</span></label></div>
                             </div>
-                                
-                            <div class="column">
-                                <div class="register-icons">
-                                    <span>
-                                        <svg viewBox="0 0 24 24" class="edit-button" data-url="{{route('products_edit',['product'=>$products_element->id])}}">
-                                            <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                                        </svg>
-                                    </span>
-                                    <span>
-                                        <svg viewBox="0 0 24 24" class="delete-button" data-url="{{route('products_destroy',['product'=>$products_element->id])}}">
-                                            <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                                        </svg>
-                                    </span>
-                                </div>
+                        </div>
+                            
+                        <div class="column">
+                            <div class="register-icons">
+                                <span>
+                                    <svg viewBox="0 0 24 24" class="edit-button" data-url="{{route('products_edit',['product'=>$products_element->id])}}">
+                                        <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                                    </svg>
+                                </span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" class="delete-button" data-url="{{route('products_destroy',['product'=>$products_element->id])}}">
+                                        <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                                    </svg>
+                                </span>
                             </div>
                         </div>
                     </div>
-                @endforeach
-            @endif
-
-        
+                </div>
+            @endforeach
+        @endif
     </div>
 
 @endsection
@@ -94,12 +92,12 @@
                             <label for="">Categoria</label>
                         </div>
                         <div class="form-input">
-                            <select id="category_id" name="category_id" value="{{isset($product->category) ? $product->category : ''}}">
+                            <select id="category_id" name="category_id">
                                 <option value="0">Seleccionar</option>
 
                                 @if(isset($product_categories))
                                     @foreach($product_categories as $category)
-                                        <option value="{{$category->id}}">{{$category->category}}</option>
+                                        <option value="{{$category->id}}">{{$category->title}}</option>
                                     @endforeach
                                 @endif
                             </select>

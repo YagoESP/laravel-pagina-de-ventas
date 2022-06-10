@@ -2,9 +2,12 @@ export let renderProducts = () => {
 
     let viewButtons = document.querySelectorAll(".view-button");
     let addButton = document.querySelector(".add-to-cart-button");
-    let mainContainer = document.querySelector("main");
     let productCategories = document.querySelectorAll(".category");
-    let productContainer = document.querySelector(".shop-articles-sections-cards-content");
+    let mainContainer = document.querySelector("main");
+
+    document.addEventListener("renderProductModules", (event => {
+        renderProducts();
+    }), { once: true });
 
     if(viewButtons){
 
@@ -36,9 +39,7 @@ export let renderProducts = () => {
                         mainContainer.innerHTML = json.content;
 
                         document.dispatchEvent(new CustomEvent('renderProductModules'));
-                        
-
-                        
+                              
                     })
                    
                 }
@@ -48,50 +49,6 @@ export let renderProducts = () => {
             });
         });
     }
-
-    if(productCategories){
-
-        productCategories.forEach(productCategory => {
-            
-            productCategory.addEventListener("click", () => {
-
-                let url = productCategory.dataset.url;
-                
-                let sendCategory = async () => {
-                
-                    let response = await fetch(url, {
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                        },
-                        method: 'GET' 
-                    })
-                    
-                    .then(response => {
-
-                        if (!response.ok) throw response;
-
-                        return response.json();
-
-                    })
-
-                    .then(json => {
-
-                        productContainer.innerHTML = json.form-container;
-
-                        document.dispatchEvent(new CustomEvent('renderProductModules'));
-                        
-
-                        
-                    })
-                   
-                }
-            
-                sendCategory();
-                
-            });
-        });
-    }
-
 
     if(addButton){
         addButton.addEventListener("click", () =>{
@@ -105,5 +62,51 @@ export let renderProducts = () => {
             
         })    
     }
+
+
+    if(productCategories){
+
+        productCategories.forEach(productCategory => {
+
+            productCategory.addEventListener("click", () => {
+
+                let url = productCategory.dataset.url;
+
+                let sendCreateRequest = async () => {
+
+                    document.dispatchEvent(new CustomEvent('startWait'));
+
+                    let response = await fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                        },
+                        method: 'GET', 
+                    })
+                    .then(response => {
+                                    
+                        if (!response.ok) throw response;
+                                    
+                        return response.json();
+                    })
+                    .then(json => {
+                                    
+                        mainContainer.innerHTML = json.content;
+
+                        document.dispatchEvent(new CustomEvent('renderProductModules'));
+                    })
+                    .catch(error =>  {
+                                    
+                        if(error.status == '500'){
+                            console.log(error);
+                        };
+                    });
+                      
+                };
+
+                sendCreateRequest();
+                
+            });
+        });
+    };
 
 }    

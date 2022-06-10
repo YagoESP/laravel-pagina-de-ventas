@@ -2,6 +2,10 @@ export let renderPlusMinusButton = () => {
 
     let adds = document.querySelectorAll(".add");
     let substracts = document.querySelectorAll(".subtract");
+
+    document.addEventListener("renderProductModules", (event => {
+        renderPlusMinusButton();
+    }), { once: true });
     
     adds.forEach(add => {
         add.addEventListener("click", () => {

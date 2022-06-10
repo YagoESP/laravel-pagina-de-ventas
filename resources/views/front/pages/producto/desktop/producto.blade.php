@@ -45,6 +45,9 @@
                 <div class="product-title">
                     <h2>{{$product->title}}</h2>
                 </div>
+                <div class="product-title">
+                    <h3>{{$product->productCategory->title}}</h3>
+                </div>
                 <div class="product-price">
                     <h3>{{$product->price}}</h3>
                 </div>

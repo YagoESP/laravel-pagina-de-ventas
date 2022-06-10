@@ -6,10 +6,10 @@
                     <h2>Categorias</h2>
                 </div>
                 
-                <div class="shop-categories-elements">
+                <div class="shop-categories-elements" data-url="{{route('front_products')}}">
                     @if(isset($product_categories))
-                        @foreach($product_categories as $category)
-                            <h3 class="category" data-url="{{route('front_product_category',['product_category'=>$category->id])}}">{{$category->category}}</h3>
+                        @foreach($product_categories as $category_element)
+                            <h3 class="category {{isset($category) && $category->id == $category_element->id ? 'active' : ''}}" data-url="{{route('front_product_category',['product_category'=>$category_element->id])}}">{{$category_element->title}}</h3>
                         @endforeach
                     @endif
                 </div>

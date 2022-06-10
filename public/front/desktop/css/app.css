@@ -770,9 +770,14 @@ form .form-send-button button:hover {
   font-weight: 700;
   color: black;
 }
-.shop .shop-categories .shop-categories-element {
-  margin-bottom: 1.5rem;
+.shop .shop-categories .category {
+  cursor: pointer;
+  margin-bottom: 1rem;
   font-size: 1.7rem;
+}
+.shop .shop-categories .category:hover,
+.shop .shop-categories .category.active {
+  color: #f26964;
 }
 .shop .shop-articles {
   width: 85%;

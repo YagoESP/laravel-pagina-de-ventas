@@ -7,24 +7,24 @@ use App\Models\ProductCategory;
 
 class ProductCategories
 {
-    static $compose;
+    static $composed;
 
-    public function __construct(ProductCategory $productcategory)
+    public function __construct(ProductCategory $product_category)
     {
-        $this->productcategory = $productcategory;
+        $this->product_category = $product_category;
     }
 
     public function compose(View $view)
     {
 
-        if(static::$compose)
+        if(static::$composed)
         {
-            return $view->with('product_categories', static::$compose);
+            return $view->with('product_categories', static::$composed);
         }
 
-        static::$compose = $this->productcategory->where('active', 1)->orderBy('category', 'asc')->get();
+        static::$composed = $this->product_category->where('active', 1)->orderBy('title', 'asc')->get();
 
-        $view->with('product_categories', static::$compose);
+        $view->with('product_categories', static::$composed);
 
     }
-}
+ }
