@@ -43,15 +43,9 @@ class ProductController extends Controller
     
     }
 
-    public function filter(Product $filter){
+    public function filter($filter){
         $view = View::make('front.pages.tienda.index')
-        ->with('products', $filter);
-
-        if('price_desc'){
-            $view->with('price_desc', $filter->products->where('visible', 1)->orderBy('price', 'desc'));
-        }elseif('price_asc'){
-            $view->with('price_asc', $filter->products->where('visible', 1)->orderBy('price', 'asc'));
-        }
+        ->with('products', $this->products->where('active', 1)->orderBy('price', $filter)->get());
         
         if(request()->ajax()) {
             
@@ -64,5 +58,4 @@ class ProductController extends Controller
 
         return $view;
     }
-}                        
-                               
+}                                                      

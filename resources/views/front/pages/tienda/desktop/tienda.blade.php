@@ -29,12 +29,12 @@
                         </div>
                         <div class="column">
                             <div class="shop-articles-information-select" >
-                                <select id="filter" name="filter" value="{{isset($filter)}}" >
-                                    <option value="0">Seleccionar</option>
-                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'price_asc'])}}">
+                                <select id="filter" name="filter">
+                                    <option selected value="{{route('front_products')}}">Seleccionar</option>
+                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'asc'])}}">
                                         Mayor a menor
                                     </option>
-                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'price_desc'])}}">
+                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'desc'])}}">
                                         Menor a mayor
                                     </option>
                                 </select>
