@@ -13,6 +13,8 @@
                         @endforeach
                     @endif
                 </div>
+
+                
             </div>
         </div>
 
@@ -26,9 +28,15 @@
                             </div>
                         </div>
                         <div class="column">
-                            <div class="shop-articles-information-select">
-                                <select name="perros">
-                                    <option value="perros">Seleccionar</option>
+                            <div class="shop-articles-information-select" >
+                                <select id="filter" name="filter" value="{{isset($filter)}}" >
+                                    <option value="0">Seleccionar</option>
+                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'price_asc'])}}">
+                                        Mayor a menor
+                                    </option>
+                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'price_desc'])}}">
+                                        Menor a mayor
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -42,7 +50,6 @@
                             @foreach($products as $product)
                                     <div class="shop-articles-sections-cards-content form-container">
                                         <div class="shop-articles-sections-cards-content-image">
-                                            <img src="images/orange-gd5b3a6325_1280.jpg" alt="">
                                         </div>
                                         <div class="shop-articles-sections-cards-content-price" data-content="{{$product->price}}">
                                             <span>{{$product->price}}</span>

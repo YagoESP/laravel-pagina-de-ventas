@@ -169,6 +169,7 @@ Route::get('faqs','App\Http\Controllers\Front\FaqController@show')->name('front_
 Route::get('tienda','App\Http\Controllers\Front\ProductController@index')->name('front_products');
 Route::get('tienda/{product}','App\Http\Controllers\Front\ProductController@show')->name('front_product_show');
 Route::get('tienda/categoria/{product_category}','App\Http\Controllers\Front\ProductCategoryController@show')->name('front_product_category');
+Route::get('tienda/filtro/{filter}','App\Http\Controllers\Front\ProductController@filter')->name('front_product_filter');
 
 
 Route::get('caja','App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');

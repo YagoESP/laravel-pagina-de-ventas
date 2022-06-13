@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function index()
     {
         $view = View::make('front.pages.casa.index')
-        ->with('home', $this->home->where('active', 1)->where('visible',1)->get())
+        ->with('home', $this->home->where('active', 1)->where('visible',1)->get());
         
         return $view;
     }
