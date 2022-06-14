@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('productscategories', function (Blueprint $table) {
+        Schema::create('taxes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('title');
+            $table->string('type',4,10,21);
+            $table->string('multiplicator',1.04,1.10,1.21);
+            $table->string('product_id');
             $table->boolean('visible');
             $table->boolean('active');
             $table->timestamps();
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('productscategories');
+        Schema::dropIfExists('taxes');
     }
 };

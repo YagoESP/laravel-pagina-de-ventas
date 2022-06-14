@@ -17,10 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('title');
-            $table->string('category');
-            $table->decimal('price');
-            $table->text('description');
-            $table->mediumtext('features');
+            $table->string('category_id');
             $table->boolean('visible');
             $table->boolean('active');
             $table->timestamps();
