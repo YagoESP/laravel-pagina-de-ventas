@@ -9,11 +9,14 @@ class Customer extends Model
     protected $guarded = [];
     protected $table = 'customers';
 
-    public function customer_type()
+    public function sells()
     {
-        return $this->belongsTo(CustomerType::class,'customer_type_id');
+        return $this->hasMany(Sell::class);
     }
 
-
+    public function fingerprints()
+    {
+        return $this->hasOne(Fingerprint::class);
+    }
 
 }

@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('sells', function (Blueprint $table) {
             $table->id();
-            $table->string('ticket_number');
-            $table->string('date_emision');
-            $table->string('time_emision');
-            $table->string('payment_method_id');
-            $table->string('total_base_price');
-            $table->string('total_tax_price');
-            $table->string('total_price');
-            $table->string('customer_id');
+            $table->integer('ticket_number');
+            $table->date('date_emision');
+            $table->time('time_emision');
+            $table->integer('payment_method_id');
+            $table->decimal('total_base_price');
+            $table->decimal('total_tax_price');
+            $table->decimal('total_price');
+            $table->integer('customer_id');
             $table->boolean('active');
             $table->boolean('visible');
             $table->timestamps();

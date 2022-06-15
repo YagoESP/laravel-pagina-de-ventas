@@ -9,8 +9,8 @@ class FingerPrint extends Model
     protected $guarded = [];
     protected $table = 'finger_prints';
 
-    public function FingerPrint()
+    public function customers()
     {
-        return $this->hasMany(FingerPrint::class,'finger_print_id');
+        return $this->belongsTo(Customer::class);
     }
 }

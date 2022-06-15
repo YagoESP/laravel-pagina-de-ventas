@@ -58,7 +58,6 @@ class ProductCategoryController extends Controller
                 'id' => request('id')],[
                 'name' => request('name'),
                 'title' => request('title'),
-                'category' => request('category'),
                 'visible' => 1,
                 'active' => 1,
         ]);

@@ -1,16 +1,23 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Price extends Model
 {
-    protected $guarded = [];
-    protected $table = 'prices';
+    use HasFactory;
 
-    public function price()
+    protected $guarded = [];
+
+
+    public function tax()
     {
-        return $this->hasMany(Price::class,'price_id');
+        return $this->belongsTo(Tax::class)->where('valid',1);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class)->where('active',1);
     }
 }

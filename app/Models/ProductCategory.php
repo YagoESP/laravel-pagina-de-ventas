@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCategory extends Model
 {
     protected $guarded = [];
-    protected $table = 'products_categories';
+    protected $table = 'productscategories';
     protected $with = ['products'];
     
 
     public function products()
     {
-        return $this->hasMany(Product::class,'category')->where('active',1);
+        return $this->hasMany(Product::class,'category_id')->where('active',1);
     }
 }

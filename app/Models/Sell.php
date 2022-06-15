@@ -9,9 +9,19 @@ class Sell extends Model
     protected $guarded = [];
     protected $table = 'sells';
 
-    public function sell()
+    public function paymentmethods()
     {
-        return $this->belongsTo(Sell::class,'sell_id');
+        return $this->belongsTo(PaymentMethod::class,'')->where('active',1);
+    }
+
+    public function customers()
+    {
+        return $this->belongsTo(Customer::class)->where('active',1);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class)->where('active',1);
     }
 
 }

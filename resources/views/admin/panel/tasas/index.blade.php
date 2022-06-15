@@ -79,6 +79,16 @@
                 <div class="desktop-one-column">
                     <div class="form-group">
                         <div class="form-label">
+                            <label for="">Precio</label>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="price" value="{{isset($product->price) ? $product->price : ''}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="desktop-one-column">
+                    <div class="form-group">
+                        <div class="form-label">
                             <label for="">Categoria</label>
                         </div>
                         <div class="form-input">
@@ -88,35 +98,6 @@
                                 @if(isset($product_categories))
                                     @foreach($product_categories as $category)
                                         <option value="{{$category->id}}">{{$category->title}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="desktop-one-column">
-                    <div class="form-group">
-                        <div class="form-label">
-                            <label for="">Precio</label>
-                        </div>
-                        <div class="form-input">
-                            <input type="text" name="price" value="{{isset($product->prices->first()->base_price) ? $product->prices->first()->base_price : ''}}">
-                        </div>
-                    </div>
-                </div>
-                <div class="desktop-one-column">
-                    <div class="form-group">
-                        <div class="form-label">
-                            <label for="">IVA</label>
-                        </div>
-                        <div class="form-input">
-                            <select name="tax_id" selected>
-                                <option value="0" disabled>Selecciona el IVA</option>
-                                @if(isset($taxes))
-                                    @foreach($taxes as $tax)
-                                        <option value="{{$tax->id}}" {{ isset($product->prices->first()->tax_id) && $product->prices->first()->tax_id == $tax->id ? 'selected' : ''}}>
-                                            {{$tax->type}}
-                                        </option>
                                     @endforeach
                                 @endif
                             </select>

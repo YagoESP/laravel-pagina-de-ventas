@@ -3,25 +3,27 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-use App\Models\Cart;
+use App\Models\Product;
 use App\Http\Requests\Front\ProductRequest;
 use DebugBar;
 
 class ProductController extends Controller
 {
-    protected $cart;
+    protected $product;
     
-    public function __construct(Cart $cart)
+    public function __construct(Product $product)
     {
-        $this->cart = $cart;
+        $this->product = $product;
     }
 
     public function index()
     {
         $view = View::make('front.pages.tienda.index')
-        ->with('products', $this->cart->where('active', 1)->where('visible',1)->get())
+        ->with('products', $this->product->where('active', 1)->where('visible',1)->get())
         ->with('title', 'Tienda');
         
         return $view;
     }
+
+    
 }                                                      

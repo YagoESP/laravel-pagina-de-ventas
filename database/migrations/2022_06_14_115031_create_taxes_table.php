@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('taxes', function (Blueprint $table) {
             $table->id();
-            $table->string('type',4,10,21);
-            $table->string('multiplicator',1.04,1.10,1.21);
-            $table->string('product_id');
-            $table->boolean('visible');
+            $table->integer('type');
+            $table->decimal('multiplicator');
+            $table->integer('product_id');
+            $table->boolean('valid');
             $table->boolean('active');
             $table->timestamps();
         });

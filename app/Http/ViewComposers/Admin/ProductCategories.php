@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers\Admin;
 
 use Illuminate\View\View;
 use App\Models\ProductCategory;
+use App\Providers\ViewComposerServiceProvider;
 
 class ProductCategories
 {
@@ -22,7 +23,7 @@ class ProductCategories
             return $view->with('product_categories', static::$composed);
         }
 
-        static::$composed = $this->product_category->where('active', 1)->orderBy('title', 'asc')->get();
+        static::$composed = $this->product_category->where('active', 1)->orderBy('title')->get();
 
         $view->with('product_categories', static::$composed);
 
