@@ -1,30 +1,25 @@
 <div class="cart">
-    <div class="resume">
-        <table>
-            <tr>
-                <th></th>
-                <th>Producto</th>
-                <th>Precio€</th>
-                <th>Cantidad</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td><img src="images/alaskan-malamute-product.jpg" alt=""></td>
-                <td>ALASKAN MALAMUTE</td>
-                <td>1200</td>
-                <td>
-                    @include('front.components.desktop.buttons')
-                </td>
-            </tr>
-            <tr>
-                <td><img src="images/alaskan-malamute-product.jpg" alt=""></td>
-                <td>ALASKAN MALAMUTE</td>
-                <td>1200</td>
-                <td>
-                    @include('front.components.desktop.buttons')
-                </td>
-            </tr>
-        </table>
+    <div class="resume" data-url="{{route('front_cart_store')}}">
+        @for($i = 0; $i < count($cart); $i++)
+            <table>
+                <input type="hidden" id="price_id">
+                <tr>
+                    <th></th>
+                    <th>Producto</th>
+                    <th>Precio€</th>
+                    <th>Cantidad</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><img src="images/alaskan-malamute-product.jpg" alt=""></td>
+                    <td>ALASKAN MALAMUTE</td>
+                    <td>{{$product->prices->base_price}}</td>
+                    <td>
+                        @include('front.components.desktop.buttons')
+                    </td>
+                </tr>
+            </table>
+        @endfor
     </div>
 
     <div class="payment">

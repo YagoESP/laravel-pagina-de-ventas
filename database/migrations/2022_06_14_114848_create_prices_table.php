@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('tax_id');
             $table->integer('product_id');
             $table->boolean('valid');
-            $table->boolean('visible');
             $table->boolean('active');
             $table->timestamps();
         });

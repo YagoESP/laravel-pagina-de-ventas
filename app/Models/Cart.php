@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     protected $guarded = [];
-    protected $table = 'carts';
-    protected $table = 'customers';
-    protected $table = 'products';
 
     public function prices()
     {

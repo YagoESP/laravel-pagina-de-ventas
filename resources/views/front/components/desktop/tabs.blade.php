@@ -1,5 +1,5 @@
 
-<div class="tabs desktop-only">
+<div class="tabs">
     <div class="tab active" data-target="1">
         <p>Descripción</p>
     </div>
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="contents desktop-only">
+<div class="contents">
     <div class="content active" data-value="1">
         <p>descripcionLorem ipsum dolor sit amet consectetur
             , adipisicing elit. Velit, eum deserunt

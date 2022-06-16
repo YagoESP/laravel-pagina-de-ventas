@@ -19,8 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         $view = View::make('front.pages.tienda.index')
-        ->with('products', $this->product->where('active', 1)->where('visible',1)->get())
-        ->with('title', 'Tienda');
+        ->with('products', $this->product->where('active', 1)->where('visible',1)->get());
         
         return $view;
     }

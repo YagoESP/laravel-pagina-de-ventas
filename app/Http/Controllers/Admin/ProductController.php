@@ -71,7 +71,6 @@ class ProductController extends Controller
                 'name' => request('name'),
                 'title' => request('title'),
                 'category_id' => request('category_id'),
-                'price' => request('price'),
                 'description' => request('description'),
                 'features' => request('features'),
                 'visible' => 1,
@@ -123,16 +122,13 @@ class ProductController extends Controller
         return $view;
     }
 
-    public function show(Product $product){
-
-    }
-
     public function destroy(Product $product)
     {
         $product->active = 0;
         $product->save();
 
         $view = View::make('admin.panel.product.index')
+
             ->with('product', $this->product)
             ->with('products', $this->product->where('active', 1)->get())
 

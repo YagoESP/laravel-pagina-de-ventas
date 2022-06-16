@@ -161,19 +161,15 @@ Route::get('/','App\Http\Controllers\Front\HomeController@index')->name('front_h
 Route::post('contacto','App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 Route::post('contacto/[contact]','App\Http\Controllers\Front\ContactController@show')->name('front_contact_show');
 
-
 Route::get('faqs','App\Http\Controllers\Front\FaqController@show')->name('front_faqs');
-
-
 
 Route::get('tienda','App\Http\Controllers\Front\ProductController@index')->name('front_products');
 Route::get('tienda/{product}','App\Http\Controllers\Front\ProductController@show')->name('front_product_show');
 Route::get('tienda/categoria/{product_category}','App\Http\Controllers\Front\ProductCategoryController@show')->name('front_product_category');
 Route::get('tienda/filtro/{filter}','App\Http\Controllers\Front\ProductController@filter')->name('front_product_filter');
 
-
 Route::get('caja','App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
 Route::post('caja','App\Http\Controllers\Front\CheckoutController@store')->name('front_checkout');
 
-
-Route::get('carrito','App\Http\Controllers\Front\ShoppingcartController@index')->name('front_shoppingcart');
+Route::post('carrito','App\Http\Controllers\Front\CartController@index')->name('front_cart');
+Route::post('carrito/[cart]','App\Http\Controllers\Front\CartController@store')->name('front_cart_store');

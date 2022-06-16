@@ -100,7 +100,7 @@
                             <label for="">Precio</label>
                         </div>
                         <div class="form-input">
-                            <input type="text" name="price" value="{{isset($product->prices->first()->base_price) ? $product->prices->first()->base_price : ''}}">
+                            <input type="text" name="base_price" value="{{isset($product->prices->first()->base_price) ? $product->prices->first()->base_price : ''}}">
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                         </div>
                         <div class="form-input">
                             <select name="tax_id" selected>
-                                <option value="0" disabled>Selecciona el IVA</option>
+                                <option >Selecciona el IVA</option>
                                 @if(isset($taxes))
                                     @foreach($taxes as $tax)
                                         <option value="{{$tax->id}}" {{ isset($product->prices->first()->tax_id) && $product->prices->first()->tax_id == $tax->id ? 'selected' : ''}}>

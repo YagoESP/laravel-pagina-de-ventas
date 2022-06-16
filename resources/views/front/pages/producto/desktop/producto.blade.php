@@ -46,10 +46,10 @@
                     <h2>{{$product->title}}</h2>
                 </div>
                 <div class="product-title">
-                    <h3>{{$product->productCategory->title}}</h3>
+                    <h3>{{$product->category->title}}</h3>
                 </div>
                 <div class="product-price">
-                    <h3>{{$product->price}}</h3>
+                    <h3>{{$product->prices->first()->base_price}}</h3>
                 </div>
 
                 @include('front.components.desktop.tabs')
@@ -58,9 +58,8 @@
 
                 
                 <div class="buy">
-                    
                     <div class="add-to-cart-button" >
-                        <button>COMPRAR</button>
+                        <button class="buy-button" data-url="{{route('front_cart')}}">COMPRAR</button>
                     </div>
                 </div>
             </div>

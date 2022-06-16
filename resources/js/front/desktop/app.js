@@ -9,8 +9,10 @@ import {renderClean} from './clean.js';
 import {renderAccordion} from './accordion.js';
 import {renderMessage} from './message.js';
 import {renderProducts} from './products.js';
-import { renderMenu } from './menu.js';
+import {renderMenu} from './menu.js';
+import {renderCart} from './cart.js';
 
+renderCart();
 renderMenu();
 renderMessage();
 renderAccordion();

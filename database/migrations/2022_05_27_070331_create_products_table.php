@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('title');
             $table->integer('category_id');
-            $table->decimal('price');
             $table->decimal('tax');
             $table->text('description');
             $table->text('features');
