@@ -76,21 +76,44 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 var renderCart = function renderCart() {
   var mainContainer = document.querySelector("main");
-  var buyButtons = document.querySelectorAll(".buy-button");
-  document.addEventListener("renderCartModules", function (event) {
+  var buyButton = document.querySelector('.buy-button');
+  var forms = document.querySelectorAll('.front-form-product');
+  document.addEventListener("renderProductModules", function (event) {
     renderCart();
   }, {
     once: true
   });
 
-  if (buyButtons) {
-    buyButtons.forEach(function (buyButton) {
-      buyButton.addEventListener("click", function () {
-        var url = buyButton.dataset.url;
+  if (buyButton) {
+    buyButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      forms.forEach(function (form) {
+        var data = new FormData(form);
+        var url = form.action;
 
-        var sendCart = /*#__PURE__*/function () {
+        var _iterator = _createForOfIteratorHelper(data.entries()),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var pair = _step.value;
+            console.log(pair[0] + ', ' + pair[1]);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+
+        var sendPostRequest = /*#__PURE__*/function () {
           var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
             var response;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -100,15 +123,23 @@ var renderCart = function renderCart() {
                     _context.next = 2;
                     return fetch(url, {
                       headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
                       },
-                      method: 'POST'
+                      method: 'POST',
+                      body: data
                     }).then(function (response) {
                       if (!response.ok) throw response;
                       return response.json();
                     }).then(function (json) {
                       mainContainer.innerHTML = json.content;
-                      document.dispatchEvent(new CustomEvent('renderCartModules'));
+                      document.dispatchEvent(new CustomEvent('renderProductModules'));
+                    })["catch"](function (error) {
+                      if (error.status == '500') {
+                        console.log(error);
+                      }
+
+                      ;
                     });
 
                   case 2:
@@ -122,12 +153,12 @@ var renderCart = function renderCart() {
             }, _callee);
           }));
 
-          return function sendCart() {
+          return function sendPostRequest() {
             return _ref.apply(this, arguments);
           };
         }();
 
-        sendCart();
+        sendPostRequest();
       });
     });
   }
@@ -510,6 +541,34 @@ var renderMessage = function renderMessage() {
 
 /***/ }),
 
+/***/ "./resources/js/front/desktop/notification.js":
+/*!****************************************************!*\
+  !*** ./resources/js/front/desktop/notification.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderNotification": () => (/* binding */ renderNotification)
+/* harmony export */ });
+var renderNotification = function renderNotification() {
+  var addButton = document.querySelector(".add-to-cart-button");
+
+  if (addButton) {
+    addButton.addEventListener("click", function () {
+      document.dispatchEvent(new CustomEvent('message', {
+        detail: {
+          text: 'Enviado correctamente',
+          type: 'success'
+        }
+      }));
+    });
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/js/front/desktop/notifications.js":
 /*!*****************************************************!*\
   !*** ./resources/js/front/desktop/notifications.js ***!
@@ -555,13 +614,15 @@ var renderPlusMinusButton = function renderPlusMinusButton() {
     once: true
   });
   adds.forEach(function (add) {
-    add.addEventListener("click", function () {
+    add.addEventListener("click", function (event) {
+      event.preventDefault();
       var show = add.closest('.amount').querySelector('.show');
       show.value = parseInt(show.value) + 1;
     });
   });
   substracts.forEach(function (substract) {
-    substract.addEventListener("click", function () {
+    substract.addEventListener("click", function (event) {
+      event.preventDefault();
       var show = substract.closest('.amount').querySelector('.show');
 
       if (show.value > 1) {
@@ -594,11 +655,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var renderProducts = function renderProducts() {
   var viewButtons = document.querySelectorAll(".view-button");
-  var addButton = document.querySelector(".add-to-cart-button");
   var productCategories = document.querySelectorAll(".category");
   var productFilters = document.querySelectorAll(".filter");
   var mainContainer = document.querySelector("main");
-  var buyButtons = document.querySelectorAll(".buy-button");
   document.addEventListener("renderProductModules", function (event) {
     renderProducts();
   }, {
@@ -649,17 +708,6 @@ var renderProducts = function renderProducts() {
 
         sendProduct();
       });
-    });
-  }
-
-  if (addButton) {
-    addButton.addEventListener("click", function () {
-      document.dispatchEvent(new CustomEvent('message', {
-        detail: {
-          text: 'Enviado correctamente',
-          type: 'success'
-        }
-      }));
     });
   }
 
@@ -774,53 +822,6 @@ var renderProducts = function renderProducts() {
   }
 
   ;
-
-  if (buyButtons) {
-    buyButtons.forEach(function (buyButton) {
-      buyButton.addEventListener("click", function () {
-        var url = buyButton.dataset.url;
-
-        var sendCart = /*#__PURE__*/function () {
-          var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-            var response;
-            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    _context4.next = 2;
-                    return fetch(url, {
-                      headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                      },
-                      method: 'GET'
-                    }).then(function (response) {
-                      if (!response.ok) throw response;
-                      return response.json();
-                    }).then(function (json) {
-                      mainContainer.innerHTML = json.content;
-                      document.dispatchEvent(new CustomEvent('renderProductModules'));
-                    });
-
-                  case 2:
-                    response = _context4.sent;
-
-                  case 3:
-                  case "end":
-                    return _context4.stop();
-                }
-              }
-            }, _callee4);
-          }));
-
-          return function sendCart() {
-            return _ref4.apply(this, arguments);
-          };
-        }();
-
-        sendCart();
-      });
-    });
-  }
 };
 
 /***/ }),
@@ -1738,6 +1739,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _products_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./products.js */ "./resources/js/front/desktop/products.js");
 /* harmony import */ var _menu_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./menu.js */ "./resources/js/front/desktop/menu.js");
 /* harmony import */ var _cart_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./cart.js */ "./resources/js/front/desktop/cart.js");
+/* harmony import */ var _notification_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./notification.js */ "./resources/js/front/desktop/notification.js");
 
 
 
@@ -1751,6 +1753,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+(0,_notification_js__WEBPACK_IMPORTED_MODULE_13__.renderNotification)();
 (0,_cart_js__WEBPACK_IMPORTED_MODULE_12__.renderCart)();
 (0,_menu_js__WEBPACK_IMPORTED_MODULE_11__.renderMenu)();
 (0,_message_js__WEBPACK_IMPORTED_MODULE_9__.renderMessage)();

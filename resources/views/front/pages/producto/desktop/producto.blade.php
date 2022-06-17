@@ -6,36 +6,26 @@
         <div class="column">
             <div class="product-carousel">
                 <div class="carousel-image " id="image-1">
-                    <img src="images/perro1.jpg" alt="">
                 </div>
                 <div class="carousel-image" id="image-2">
-                    <img src="images/perro2.jpg" alt="">
                 </div>
                 <div class="carousel-image" id="image-3">
-                    <img src="images/perro3.jpg" alt="">
                 </div>
                 <div class="carousel-image" id="image-4">
-                    <img src="images/perro4.jpg" alt="">
                 </div>
                 <div class="carousel-image" id="image-5">
-                    <img src="images/perro5.jpg" alt="">
                 </div>
             </div>
             <div class="carousel-buttons">
                 <a href="#image-1">
-                    <img src="images/perro1.jpg" alt="">
                 </a>
                 <a href="#image-2">
-                    <img src="images/perro2.jpg" alt="">
                 </a>
                 <a href="#image-3">
-                    <img src="images/perro3.jpg" alt="">
                 </a>
                 <a href="#image-4">
-                    <img src="images/perro4.jpg" alt="">
                 </a>
                 <a href="#image-5">
-                    <img src="images/perro5.jpg" alt="">
                 </a>
             </div>
         </div>
@@ -54,12 +44,29 @@
 
                 @include('front.components.desktop.tabs')
 
-                @include('front.components.desktop.buttons')
+                <form class="front-form-product" action="{{route('front_cart_store')}}">
+                    
+                    <div class="product-amount" >
+                        <div class="amount">
+                            <input type="hidden" name="price_id" value="{{$product->prices->first()->id}}">
+
+                            <div class="less">
+                                <button class="subtract">-</button>
+                            </div>
+                            <div class="number">
+                                <input type="number" class="show" value="1"  name="quantity">
+                            </div>
+                            <div class="more">
+                                <button class="add">+</button>
+                            </div>  
+                        </div>
+                    </div>
+                </form>
 
                 
                 <div class="buy">
                     <div class="add-to-cart-button" >
-                        <button class="buy-button" data-url="{{route('front_cart')}}">COMPRAR</button>
+                        <button class="buy-button">COMPRAR</button>
                     </div>
                 </div>
             </div>

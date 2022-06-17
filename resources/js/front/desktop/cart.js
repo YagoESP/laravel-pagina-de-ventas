@@ -1,52 +1,62 @@
 export let renderCart = () => {
 
     let mainContainer = document.querySelector("main");
-    let buyButtons = document.querySelectorAll(".buy-button");
+    let buyButton = document.querySelector('.buy-button');
+    let forms = document.querySelectorAll('.front-form-product');
 
-    document.addEventListener("renderCartModules", (event => {
+
+    document.addEventListener("renderProductModules",( event =>{
         renderCart();
-    }), { once: true });
+    }), {once: true});
+    
+    if(buyButton){
 
-    if(buyButtons){
+        buyButton.addEventListener("click", (event) => {
 
-        buyButtons.forEach(buyButton => {
-            
-            
-            buyButton.addEventListener("click", () => {
+            event.preventDefault();
 
-                let url = buyButton.dataset.url;
-                
-                let sendCart = async () => {
-                
+            forms.forEach(form => { 
+
+                let data = new FormData(form);
+                let url = form.action;
+
+                for (var pair of data.entries()) {
+                    console.log(pair[0]+ ', ' + pair[1]); 
+                }
+    
+                let sendPostRequest = async () => {
+    
+                    
                     let response = await fetch(url, {
                         headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
                         },
-                        method: 'POST' 
+                        method: 'POST',
+                        body: data
                     })
-                    
                     .then(response => {
-
+                    
                         if (!response.ok) throw response;
 
                         return response.json();
-
                     })
-
                     .then(json => {
 
                         mainContainer.innerHTML = json.content;
 
-                        document.dispatchEvent(new CustomEvent('renderCartModules'));
-                              
+                        document.dispatchEvent(new CustomEvent('renderProductModules'));
                     })
-                   
-                }
-            
-                sendCart();
-                
+                    .catch ( error =>  {
+    
+                        if(error.status == '500'){
+                            console.log(error);
+                        };
+                    });
+                };
+        
+                sendPostRequest();
             });
         });
     }
-
-}    
+}

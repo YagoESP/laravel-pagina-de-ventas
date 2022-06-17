@@ -1,8 +1,8 @@
 <div class="cart">
-    <div class="resume" data-url="{{route('front_cart_store')}}">
-        @for($i = 0; $i < count($cart); $i++)
+    <div class="resume">
+        @if(isset($carts))
+            @foreach($carts as $cart)
             <table>
-                <input type="hidden" id="price_id">
                 <tr>
                     <th></th>
                     <th>Producto</th>
@@ -11,15 +11,26 @@
                     <th></th>
                 </tr>
                 <tr>
-                    <td><img src="images/alaskan-malamute-product.jpg" alt=""></td>
+                    <td></td>
                     <td>ALASKAN MALAMUTE</td>
-                    <td>{{$product->prices->base_price}}</td>
+                    <td></td>
                     <td>
-                        @include('front.components.desktop.buttons')
+                        <div class="product-amount">
+                            <div class="amount">
+                                <div class="less">
+                                    <button class="subtract">-</button>
+                                </div>
+                                <div class="number"><input type="number" class="show" value="1" name="quantity"></div>
+                                <div class="more">
+                                    <button class="add">+</button>
+                                </div>  
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </table>
-        @endfor
+            @endforeach
+        @endif
     </div>
 
     <div class="payment">

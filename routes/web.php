@@ -171,5 +171,5 @@ Route::get('tienda/filtro/{filter}','App\Http\Controllers\Front\ProductControlle
 Route::get('caja','App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
 Route::post('caja','App\Http\Controllers\Front\CheckoutController@store')->name('front_checkout');
 
-Route::post('carrito','App\Http\Controllers\Front\CartController@index')->name('front_cart');
-Route::post('carrito/[cart]','App\Http\Controllers\Front\CartController@store')->name('front_cart_store');
+Route::get('carrito','App\Http\Controllers\Front\CartController@show')->name('front_cart_show');
+Route::post('carrito','App\Http\Controllers\Front\CartController@store')->name('front_cart_store');

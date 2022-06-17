@@ -8,7 +8,9 @@ export let renderPlusMinusButton = () => {
     }), { once: true });
     
     adds.forEach(add => {
-        add.addEventListener("click", () => {
+        add.addEventListener("click", (event) => {
+
+            event.preventDefault();
 
             let show = add.closest('.amount').querySelector('.show');
 
@@ -18,7 +20,9 @@ export let renderPlusMinusButton = () => {
     
     substracts.forEach(substract => {
 
-        substract.addEventListener("click", () => {
+        substract.addEventListener("click", (event) => {
+
+            event.preventDefault();
         
             let show = substract.closest('.amount').querySelector('.show');
 

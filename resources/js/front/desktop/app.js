@@ -11,7 +11,9 @@ import {renderMessage} from './message.js';
 import {renderProducts} from './products.js';
 import {renderMenu} from './menu.js';
 import {renderCart} from './cart.js';
+import {renderNotification} from './notification.js';
 
+renderNotification();
 renderCart();
 renderMenu();
 renderMessage();
