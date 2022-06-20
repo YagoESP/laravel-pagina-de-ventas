@@ -45,30 +45,75 @@ class CartController extends Controller
     public function store(Request $request)
     {
 
-        
         for($i = 0; $i < request('quantity'); $i++){
 
             $cart = $this->cart->create([
                 'price_id' => request('price_id'),
                 'fingerprint' => '1',
-                'active' => 1
+                'active' => 1,
             ]);
         }
         
         $carts = $this->cart->select(DB::raw('count(price_id) as quantity'),'price_id')
         ->groupByRaw('price_id')
-        ->where('fingerprint', 1)
+        ->where('fingerprint', $cart->fingerprint)
         ->get();
 
-        foreach($carts as $cart) {
-            $cart->cart = $this->cart->where('price_id', $cart->price_id)->where('fingerprint', 1)->get();
-            Debugbar::info($cart->cart);
+        $view = View::make('front.pages.carrito.index')
+        ->with('carts', $carts)
+        ->with('fingerprint', $cart->fingerprint)
+        ->renderSections();    
+        
+        return response()->json([
+            'content' => $view['content'],
+        ]);
+
+
+    }
+
+    
+    public function plus(Request $request)
+    {
+
+        if( $cart < 0 ){
+
+            $cart= $this->cart->update([
+                'quantity' => $cart->quantity + 1,
+            ]);
         }
 
-        $view = View::make('front.pages.carrito.index')->renderSections();        
+        $view = View::make('front.pages.carrito.index')
+        ->with('carts', $carts)
+        ->with('fingerprint', $cart->fingerprint)
+        ->renderSections(); 
+
+        return response()->json([
+            'content' => $view['conten,t'],
+        ]);
+
+    }
+
+    
+    public function minus(Request $request)
+    {
+
+        if( $cart > 0 ){
+
+            $cart= $this->cart->first()->update([
+                'quantity' => $cart->quantity - 1,
+            ]);
+        }
+
+        $cart = $this->cart->find($request->id);
+
+        $view = View::make('front.pages.carrito.index')
+        ->with('carts', $carts)
+        ->with('fingerprint', $cart->fingerprint)
+        ->renderSections(); 
 
         return response()->json([
             'content' => $view['content'],
         ]);
+
     }
 }                                                      

@@ -39,7 +39,7 @@
                     <h3>{{$product->category->title}}</h3>
                 </div>
                 <div class="product-price">
-                    <h3>{{$product->prices->first()->base_price}}</h3>
+                    <h3></h3>
                 </div>
 
                 @include('front.components.desktop.tabs')

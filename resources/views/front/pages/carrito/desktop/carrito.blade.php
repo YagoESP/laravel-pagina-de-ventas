@@ -1,36 +1,45 @@
 <div class="cart">
     <div class="resume">
-        @if(isset($carts))
-            @foreach($carts as $cart)
+ 
             <table>
+                
                 <tr>
                     <th></th>
                     <th>Producto</th>
                     <th>Precio€</th>
-                    <th>Cantidad</th>
                     <th></th>
+                    <th>Cantidad</th>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>ALASKAN MALAMUTE</td>
-                    <td></td>
-                    <td>
-                        <div class="product-amount">
-                            <div class="amount">
-                                <div class="less">
-                                    <button class="subtract">-</button>
+
+                @if(isset($carts))
+                    @foreach($carts as $cart)
+                        <tr>
+                            <td></td>
+                            <td>{{$cart->price->product->title}}</td>
+                            <td>{{$cart->price->base_price}}</td>
+                            <td>
+                                <div class="product-amount">
+                                    <div class="amount">
+                                        <div class="less">
+                                            <button class="subtract" data-url="{{route('front_cart_minus',['price_id'=> $cart->price_id, 'fingerprint' => $fingerprint])}}">-</button>
+                                        </div>
+                                        
+                                        <div class="number">
+                                            <input type="number" class="show" value="{{$cart->quantity}}"  name="quantity">
+                                        </div>
+                                        
+                                        <div class="more">
+                                            <button class="add" data-url="{{route('front_cart_plus', ['price_id'=> $cart->price_id ,'fingerprint' => $fingerprint])}}">+</button>
+                                        </div>  
+                                    </div>
                                 </div>
-                                <div class="number"><input type="number" class="show" value="1" name="quantity"></div>
-                                <div class="more">
-                                    <button class="add">+</button>
-                                </div>  
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                            </td>
+                            <td></td>
+                        </tr>
+                    @endforeach
+                @endif
             </table>
-            @endforeach
-        @endif
+  
     </div>
 
     <div class="payment">

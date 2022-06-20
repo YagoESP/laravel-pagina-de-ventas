@@ -172,4 +172,6 @@ Route::get('caja','App\Http\Controllers\Front\CheckoutController@index')->name('
 Route::post('caja','App\Http\Controllers\Front\CheckoutController@store')->name('front_checkout');
 
 Route::get('carrito','App\Http\Controllers\Front\CartController@show')->name('front_cart_show');
+Route::get('carrito/minus','App\Http\Controllers\Front\CartController@minus')->name('front_cart_minus');
+Route::get('carrito/plus','App\Http\Controllers\Front\CartController@plus')->name('front_cart_plus');
 Route::post('carrito','App\Http\Controllers\Front\CartController@store')->name('front_cart_store');

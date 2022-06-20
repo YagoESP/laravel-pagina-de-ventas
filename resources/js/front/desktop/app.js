@@ -12,7 +12,11 @@ import {renderProducts} from './products.js';
 import {renderMenu} from './menu.js';
 import {renderCart} from './cart.js';
 import {renderNotification} from './notification.js';
+import {renderMinusCart} from './minuscart.js';
+import {renderPlusCart} from './pluscart.js';
 
+renderPlusCart();
+renderMinusCart();
 renderNotification();
 renderCart();
 renderMenu();

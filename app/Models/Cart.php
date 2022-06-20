@@ -8,9 +8,9 @@ class Cart extends Model
 {
     protected $guarded = [];
 
-    public function prices()
+    public function price()
     {
-        return $this->belongsTo(Price::class,'cart_id');
+        return $this->belongsTo(Price::class)-> where('active',1)-> where('valid',1);
     }
 
     public function customers()
