@@ -11,7 +11,7 @@ class Sell extends Model
 
     public function paymentmethods()
     {
-        return $this->belongsTo(PaymentMethod::class,'')->where('active',1);
+        return $this->belongsTo(PaymentMethod::class)->where('active',1);
     }
 
     public function customers()

@@ -42,6 +42,7 @@ class CartController extends Controller
     
     }
 
+
     public function store(Request $request)
     {
 
@@ -53,11 +54,39 @@ class CartController extends Controller
                 'active' => 1,
             ]);
         }
+
         
         $carts = $this->cart->select(DB::raw('count(price_id) as quantity'),'price_id')
         ->groupByRaw('price_id')
         ->where('fingerprint', $cart->fingerprint)
         ->get();
+
+
+
+
+        $view = $this->cart->select(DB::raw('price_id'))
+        ->join('prices', 'prices.id', '=', 'carts.price_id')
+        ->join('taxes', 'taxes.id', '=', 'prices.tax_id')
+        ->where('taxes.type', '*', 'carts.quantity')
+        ->where('taxes.multiplicator', '/', 'taxes.type')
+        ->get();
+
+        $view = $this->cart->select(DB::raw('price_id'))
+        ->join('prices', 'prices.id', '=', 'carts.price_id')
+        ->where('prices.base_price', '*', 'carts.quantity')
+        ->get();
+
+        $view = $this->cart->select(DB::raw('price_id'))
+        ->join('prices', 'prices.id', '=', 'carts.price_id')
+        ->join('taxes', 'taxes.id', '=', 'prices.tax_id')
+        ->where('prices.base_price', '*', 'carts.quantity')
+        ->where('taxes.type', '*', 'carts.quantity')
+        ->where('taxes.multiplicator', '/', 'taxes.type')
+        ->get();
+       
+        Debugbar::info($view);
+        
+
 
         $view = View::make('front.pages.carrito.index')
         ->with('carts', $carts)
@@ -72,48 +101,61 @@ class CartController extends Controller
     }
 
     
-    public function plus(Request $request)
+    public function plus($fingerprint, $price_id)
     {
-
-        if( $cart < 0 ){
-
-            $cart= $this->cart->update([
-                'quantity' => $cart->quantity + 1,
-            ]);
-        }
-
-        $view = View::make('front.pages.carrito.index')
-        ->with('carts', $carts)
-        ->with('fingerprint', $cart->fingerprint)
-        ->renderSections(); 
-
-        return response()->json([
-            'content' => $view['conten,t'],
+        $cart = $this->cart->update([
+            'price_id' => $price_id,
+            'fingerprint' => $fingerprint,
+            'active' => 1,
         ]);
 
-    }
-
-    
-    public function minus(Request $request)
-    {
-
-        if( $cart > 0 ){
-
-            $cart= $this->cart->first()->update([
-                'quantity' => $cart->quantity - 1,
-            ]);
-        }
-
-        $cart = $this->cart->find($request->id);
+        $carts = $this->cart->select(DB::raw('count(price_id) as quantity'),'price_id')
+        ->groupByRaw('price_id')
+        ->where('active', 1)
+        ->where('fingerprint',  $fingerprint)
+        ->orderBy('price_id', 'desc')
+        ->get();
 
         $view = View::make('front.pages.carrito.index')
         ->with('carts', $carts)
         ->with('fingerprint', $cart->fingerprint)
-        ->renderSections(); 
+        ->renderSections();
 
         return response()->json([
             'content' => $view['content'],
         ]);
-
     }
+
+    
+    public function minus($fingerprint, $price_id)
+    {
+      
+        $carts = $this->cart
+        ->where('active', 1)
+        ->where('fingerprint', $fingerprint)
+        ->where('price_id', $price_id)
+        ->find();
+
+        $cart->active = 0;
+
+        $cart->save();
+
+
+
+        $carts = $this->cart->select(DB::raw('count(price_id) as quantity'),'price_id')
+        ->groupByRaw('price_id')
+        ->where('active', 1)
+        ->where('fingerprint',  $fingerprint)
+        ->get();
+
+        $view = View::make('front.pages.carrito.index')
+        ->with('carts', $carts)
+        ->with('fingerprint', $fingerprint)
+        ->renderSections();
+
+        return response()->json([
+            'content' => $view['content'],
+        ]);
+    }
+
 }                                                      

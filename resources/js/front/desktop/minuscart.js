@@ -1,21 +1,21 @@
 export let renderMinusCart = () => {
 
     let mainContainer = document.querySelector("main");
-    let MinusButtons = document.querySelectorAll('.subtract');
+    let minusButtons = document.querySelectorAll('.subtract');
 
     document.addEventListener("renderProductModules",( event =>{
         renderMinusCart();
     }), {once: true});
     
-    if(MinusButtons){
+    if(minusButtons){
 
-        MinusButtons.forEach(MinusButton => {
+        minusButtons.forEach(minusButton => {
             
-            MinusButton.addEventListener("click", (event) => {
+            minusButton.addEventListener("click", (event) => {
 
                 event.preventDefault();
 
-                let url = MinusButton.dataset.url;
+                let url = minusButton.dataset.url;
                 
                 let sendProduct = async () => {
                 

@@ -53,7 +53,7 @@
                         <div class="column">
                             <div class="form-element">
                                 <div class="form-element-label">
-                                    <label>Cudad</label>
+                                    <label>Ciudad</label>
                                 </div>
                                 <div class="form-element-input">
                                     <input type="text" name="city"></input>
@@ -115,25 +115,55 @@
                     </table>
                 </div>
 
-                <div class="pay-options">
-                    <div class="">
-                        <input type="radio">
-                    <label for="">Transferencia Bancaria</label>
-                    </div>
-                    <div>
-                        <input type="radio"> 
-                    <label for="">Paypal</label>
-                    </div>
-                    <div>
-                        <input type="radio"> 
-                    <label for="">Tarjeta de crédito</label>
-                    </div>
+                <div class="payment">
+                    @if(isset($carts))
+                        
+                    <table>
+                        @foreach($carts as $cart)
+                        <tr>
+                            <th></th>
+                            <th>Resumen de la compra</th>
+                            <th></th>
+                        </tr>
+                        <tr> 
+                            <td>IVA</td>
+                            <td></td>
+                            <td>{{$cart->price->base_price * $cart->quantity * $cart->price->tax->type / $cart->price->tax->multiplicator }}€</td>
+                        </tr>
+                        <tr> 
+                            <td>Precio Base</td>
+                            <td></td>
+                            <td>{{$cart->price->base_price * $cart->quantity}}€</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td></td>
+                            <td>{{$cart->price->base_price * $cart->quantity + $cart->price->base_price * $cart->quantity * $cart->price->tax->type / $cart->price->tax->multiplicator}}€</td>
+                        </tr>
+                        @endforeach
+                    </table>
+                    @endif
+                </div>
 
-                    <div class="pay-button">
-                        <button>PAGAR</button>
+                    <div class="pay-options">
+                        <div class="">
+                            <input type="radio">
+                        <label for="">Transferencia Bancaria</label>
+                        </div>
+                        <div>
+                            <input type="radio"> 
+                        <label for="">Paypal</label>
+                        </div>
+                        <div>
+                            <input type="radio"> 
+                        <label for="">Tarjeta de crédito</label>
+                        </div>
+
+                        <div class="pay-button">
+                            <button>PAGAR</button>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

@@ -20,7 +20,7 @@ class Cart extends Model
 
     public function sells()
     {
-        return $this->belongsTo(Sell::class,'sell_id');
+        return $this->belongsTo(Sell::class)-> where('active',1)-> where('valid',1);
     }
 
     public function fingerprints()

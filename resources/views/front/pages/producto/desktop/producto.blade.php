@@ -66,7 +66,7 @@
                 
                 <div class="buy">
                     <div class="add-to-cart-button" >
-                        <button class="buy-button">COMPRAR</button>
+                        <button class="buy-button" >COMPRAR</button>
                     </div>
                 </div>
             </div>
