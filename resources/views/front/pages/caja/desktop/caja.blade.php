@@ -3,7 +3,6 @@
         <div class="column">
             <div class="checkout-form">
                 <form class="front-form-checkout" data-url="{{route('front_checkout_form')}}">
-                    <input type="hidden" name="id" value="{{$fingerprint}}">
 
                     <div class="desktop-two-columns">
                         <div class="column">
