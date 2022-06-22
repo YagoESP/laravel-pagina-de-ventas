@@ -126,20 +126,6 @@ Route::group(['prefix' => 'admin'], function () {
         ]
     ]);
 
-    Route::resource('checkouts', 'App\Http\Controllers\Admin\CheckoutController', [
-        'parameters' => [
-        'checkouts' => 'checkout', 
-    ],
-    'names' => [
-        'index' => 'checkouts',
-        'create' => 'checkouts_create',
-        'edit' => 'checkouts_edit',
-        'store' => 'checkouts_store',
-        'destroy' => 'checkouts_destroy',
-        'show' => 'checkouts_show',
-        ]
-    ]);
-
     Route::resource('contacts', 'App\Http\Controllers\Front\ContactController', [
         'parameters' => [
         'contacts' => 'contact', 
@@ -151,6 +137,20 @@ Route::group(['prefix' => 'admin'], function () {
         'store' => 'contacts_store',
         'destroy' => 'contacts_destroy',
         'show' => 'contacts_show',
+        ]
+    ]);
+
+    Route::resource('sells', 'App\Http\Controllers\Admin\SellController', [
+        'parameters' => [
+        'sells' => 'sell', 
+    ],
+    'names' => [
+        'index' => 'sells',
+        'create' => 'sells_create',
+        'edit' => 'sells_edit',
+        'store' => 'sells_store',
+        'destroy' => 'sells_destroy',
+        'show' => 'sells_show',
         ]
     ]);
 
@@ -168,11 +168,17 @@ Route::get('tienda/{product}','App\Http\Controllers\Front\ProductController@show
 Route::get('tienda/categoria/{product_category}','App\Http\Controllers\Front\ProductCategoryController@show')->name('front_product_category');
 Route::get('tienda/filtro/{filter}','App\Http\Controllers\Front\ProductController@filter')->name('front_product_filter');
 
-Route::get('caja','App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
-Route::post('caja','App\Http\Controllers\Front\CheckoutController@store')->name('front_checkout');
-Route::get('caja','App\Http\Controllers\Front\CheckoutController@show')->name('front_cart_show');
+
+Route::get('caja','App\Http\Controllers\Front\CheckoutController@show')->name('front_checkout');
+Route::get('caja/{fingerprint}','App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
+Route::post('caja/[checkout]','App\Http\Controllers\Front\CheckoutController@store')->name('front_checkout_form');
+Route::post('caja','App\Http\Controllers\Front\CheckoutController@purchase')->name('front_checkout_form');
+
+Route::get('compra_realizada','App\Http\Controllers\Front\CheckoutController@purchase')->name('front_purchasedone');
 
 Route::get('carrito','App\Http\Controllers\Front\CartController@show')->name('front_cart_show');
 Route::post('carrito','App\Http\Controllers\Front\CartController@store')->name('front_cart_store');
-Route::get('carrito/minus','App\Http\Controllers\Front\CartController@minus')->name('front_cart_minus');
-Route::get('carrito/plus','App\Http\Controllers\Front\CartController@plus')->name('front_cart_plus');
+Route::get('carrito/minus/{price_id}/{fingerprint}','App\Http\Controllers\Front\CartController@minus')->name('front_cart_minus');
+Route::get('carrito/plus/{price_id}/{fingerprint}','App\Http\Controllers\Front\CartController@plus')->name('front_cart_plus');
+
+
