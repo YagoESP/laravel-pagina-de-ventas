@@ -14,8 +14,10 @@ import {renderCart} from './cart.js';
 import {renderNotification} from './notification.js';
 import {renderMinusCart} from './minuscart.js';
 import {renderPlusCart} from './pluscart.js';
-import { renderCartBuy } from './cartbuy.js';
+import {renderCartBuy} from './cartbuy.js';
+import {renderPurchaseButton} from './purchase-button.js';
 
+renderPurchaseButton();
 renderCartBuy();
 renderPlusCart();
 renderMinusCart();

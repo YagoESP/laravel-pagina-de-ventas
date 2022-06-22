@@ -53,17 +53,17 @@
             <tr> 
                 <td>IVA</td>
                 <td></td>
-                <td>{{$cart->price->base_price * $cart->quantity * $cart->price->tax->type / $cart->price->tax->multiplicator }}€</td>
+                <td>{{$tax_total}}€</td>
             </tr>
             <tr> 
                 <td>Precio Base</td>
                 <td></td>
-                <td>{{$cart->price->base_price * $cart->quantity}}€</td>
+                <td>{{$base_total}}€</td>
             </tr>
             <tr>
                 <td>Total</td>
                 <td></td>
-                <td>{{$cart->price->base_price * $cart->quantity + $cart->price->base_price * $cart->quantity * $cart->price->tax->type / $cart->price->tax->multiplicator}}€</td>
+                <td>{{$total}}€</td>
             </tr>
             @endforeach
         </table>
@@ -74,7 +74,7 @@
                 <button>Volver</button>
             </div>
             <div class="buy">
-                <button class="buy-button-cart" data-url="{{route('front_checkout')}}">Pagar</button>
+                <button class="buy-button-cart" data-url="{{route('front_checkout', ['fingerprint' => $fingerprint])}}">Pagar</button>
             </div>
         </div>
     </div>   

@@ -31,5 +31,6 @@ class ViewComposerServiceProvider extends ServiceProvider
 
         view()->composer(['admin.panel.product.index'], 
         'App\Http\ViewComposers\Admin\Taxes');
+
     }
 }

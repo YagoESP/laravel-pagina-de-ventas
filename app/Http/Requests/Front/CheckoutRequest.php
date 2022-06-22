@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Front;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,15 +13,11 @@ class CheckoutRequest extends FormRequest
 
     public function rules()
     {
-        return [
-  
-        ];
+       
     }
 
     public function messages()
     {
-        return [
-    
-        ];
+       
     }
 }    

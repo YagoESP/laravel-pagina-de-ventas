@@ -2,7 +2,7 @@
     <div class="desktop-two-columns">
         <div class="column">
             <div class="checkout-form">
-                <form>
+                <form class="front-form-checkout" data-url="{{route('front_checkout_form')}}">
                     <div class="desktop-two-columns">
                         <div class="column">
                             <div class="form-element">
@@ -91,6 +91,7 @@
         <div class="column border">
             <div class="pay">
                 <div class="payment">
+                  
                     <table>
                         <tr>
                             <th></th>
@@ -110,40 +111,13 @@
                         <tr class="total">
                             <td>Total</td>
                             <td></td>
-                            <td>2420€</td>
+                            <td>€</td>
                         </tr>
                     </table>
+                    
                 </div>
 
-                <div class="payment">
-                    @if(isset($carts))
-                        
-                    <table>
-                        @foreach($carts as $cart)
-                        <tr>
-                            <th></th>
-                            <th>Resumen de la compra</th>
-                            <th></th>
-                        </tr>
-                        <tr> 
-                            <td>IVA</td>
-                            <td></td>
-                            <td>{{$cart->price->base_price * $cart->quantity * $cart->price->tax->type / $cart->price->tax->multiplicator }}€</td>
-                        </tr>
-                        <tr> 
-                            <td>Precio Base</td>
-                            <td></td>
-                            <td>{{$cart->price->base_price * $cart->quantity}}€</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td></td>
-                            <td>{{$cart->price->base_price * $cart->quantity + $cart->price->base_price * $cart->quantity * $cart->price->tax->type / $cart->price->tax->multiplicator}}€</td>
-                        </tr>
-                        @endforeach
-                    </table>
-                    @endif
-                </div>
+                
 
                     <div class="pay-options">
                         <div class="">
@@ -160,7 +134,7 @@
                         </div>
 
                         <div class="pay-button">
-                            <button>PAGAR</button>
+                            <button class="purchase-button" data-url="{{route('front_purchasedone')}}">PAGAR</button>
                         </div>
                     </div>
                 </div>

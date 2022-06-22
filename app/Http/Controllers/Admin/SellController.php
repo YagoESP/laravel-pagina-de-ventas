@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
 use App\Models\Sell;
-use App\Http\Requests\Admin\ProductRequest;
 
 class SellController extends Controller
 {
@@ -21,7 +20,7 @@ class SellController extends Controller
 
         $view = View::make('admin.panel.sell.index')
                 ->with('sell', $this->sell)
-                ->with('products', $this->sell->where('active',1)->get());
+                ->with('sells', $this->sell->where('active',1)->get());
                 
 
             if(request()->ajax()) {
@@ -51,7 +50,7 @@ class SellController extends Controller
         ]);
     }
 
-    public function store(SellRequest $request)
+    public function store(Request $request)
     {            
         
 

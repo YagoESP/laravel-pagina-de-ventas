@@ -57,11 +57,11 @@ class CheckoutController extends Controller
                 'id' => request('id')],[
                 'name' => request('name'),
                 'surname' => request('surname'),
-                'cellphone' => request('cellphone'),
+                'telephone' => request('telephone'),
                 'email' => request('email'),
                 'city' => request('city'),
-                'postal_code' => request('postal_code'),
-                'direction' => request('direction'),
+                'cp' => request('cp'),
+                'adress' =>request('address'),
                 'visible' => 1,
                 'active' => 1,
         ]);
