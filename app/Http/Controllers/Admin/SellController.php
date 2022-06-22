@@ -53,18 +53,26 @@ class SellController extends Controller
     public function store(Request $request)
     {            
         
-
-        $sell = $this->sell->updateOrCreate([
-                'id' => request('id')],[
-                'name' => request('name'),
-                'title' => request('title'),
-                'price' => request('price'),
-                'category' => request('category'),
-                'description' => request('description'),
-                'features' => request('features'),
-                'visible' => 1,
-                'active' => 1,
+        $checkout = $this->checkout->create([
+            'name' => request('name'),
+            'surname' => request('surname'),
+            'telephone' => request('telephone'),
+            'email' => request('email'),
+            'city' => request('city'),
+            'cp' => request('cp'),
+            'adress' =>request('address'),
+            'active' => 1,
         ]);
+        
+        $sells = $this->cart
+        ->where('carts.fingerprint', $fingerprint)
+        ->where('carts.active', 1)
+        ->where('carts.sell_id', null)
+       ->join('carts', 'sell.id', '=' ,'sells.total_price')
+        ->join('prices', 'prices.id', '=', 'sells.total_base_price')
+        ->join('taxes', 'taxes.id', '=', 'sells.total_tax_price')
+        ->select(DB::raw('sum(prices.base_price) as base_total'), DB::raw('round(sum(prices.base_price * taxes.multiplicator),2) as total') )
+        ->first();
             
         $view = View::make('admin.panel.sell.index')
         ->with('products', $this->sell->where('active', 1)->get())

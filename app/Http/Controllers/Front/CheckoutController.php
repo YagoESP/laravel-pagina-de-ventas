@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Front\CheckoutRequest;
 use App\Models\Checkout;
 use App\Models\Cart;
 use App\Models\Customer;
@@ -80,10 +79,11 @@ class CheckoutController extends Controller
         return $view;
     }
 
-    public function store(CheckoutRequest $request)
+    public function store(Request $request)
     {            
         
         $checkout = $this->checkout->create([
+            'id' => request('id')
             'name' => request('name'),
             'surname' => request('surname'),
             'telephone' => request('telephone'),
@@ -93,6 +93,8 @@ class CheckoutController extends Controller
             'adress' =>request('address'),
             'active' => 1,
         ]);
+
+      
             
         $view = View::make('front.pages.caja.index')->renderSections();        
 
