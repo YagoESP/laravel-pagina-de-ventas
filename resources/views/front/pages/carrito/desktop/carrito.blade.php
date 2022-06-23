@@ -70,8 +70,8 @@
         @endif
 
         <div class="payment-buttons">
-            <div class="back">
-                <button>Volver</button>
+            <div class="back" >
+                <button class="back-button" >Volver</button>
             </div>
             <div class="buy">
                 <button class="buy-button-cart" data-url="{{route('front_checkout', ['fingerprint' => $fingerprint])}}">Pagar</button>

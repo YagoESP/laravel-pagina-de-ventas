@@ -16,7 +16,9 @@ import {renderMinusCart} from './minuscart.js';
 import {renderPlusCart} from './pluscart.js';
 import {renderCartBuy} from './cartbuy.js';
 import {renderPurchaseButton} from './purchase-button.js';
+import {renderBackButton} from './backbutton.js';
 
+renderBackButton();
 renderPurchaseButton();
 renderCartBuy();
 renderPlusCart();

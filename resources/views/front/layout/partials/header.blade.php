@@ -53,13 +53,13 @@
             <div class="column desktop-only">
                 <div class="header-main-menu">
                     <div class="header-main-menu-element ">
-                        <button class="view-button-menu" data-url="{{route('front_products')}}">ARTÍCULOS</button>
+                        <button class="view-button-menu" data-url="{{route('front_products')}}">TIENDA</button>
                     </div>
                     <div class="header-main-menu-element">
-                        <button class="view-button-menu" data-url="{{route('front_faqs')}}">MASCOTAS</button>
+                        <button class="view-button-menu" data-url="{{route('front_faqs')}}">FAQS</button>
                     </div>
                     <div class="header-main-menu-element-active">
-                        <button class="view-button-menu" data-url="{{route('front_contact_show')}}">CONTÁCTANOS</button>
+                        <button class="view-button-menu" data-url="{{route('front_contact')}}">CONTÁCTANOS</button>
                     </div>   
                 </div>
             </div>   

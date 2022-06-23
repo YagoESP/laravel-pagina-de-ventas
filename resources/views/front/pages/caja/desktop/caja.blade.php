@@ -3,6 +3,9 @@
         <div class="column">
             <div class="checkout-form">
                 <form class="front-form-checkout" data-url="{{route('front_checkout_form')}}">
+                    <input type="hidden" name="id" value="{{$sell->first()->id}}">
+                    <input type="hidden" name="id" value="{{$customer->first()->id}}">
+                    <input type="hidden" name="id" value="{{$checkout->first()->id}}">
 
                     <div class="desktop-two-columns">
                         <div class="column">
@@ -123,20 +126,20 @@
 
                     <div class="pay-options">
                         <div class="">
-                            <input type="radio">
+                            <input type="radio" name="payment_method_id" value="{{$sell->first()->id}}">
                         <label for="">Transferencia Bancaria</label>
                         </div>
                         <div>
-                            <input type="radio"> 
+                            <input type="radio" name="payment_method_id" value="{{$sell->first()->id}}"> 
                         <label for="">Paypal</label>
                         </div>
                         <div>
-                            <input type="radio"> 
+                            <input type="radio" name="payment_method_id" value="{{$sell->first()->id}}"> 
                         <label for="">Tarjeta de crédito</label>
                         </div>
 
                         <div class="pay-button">
-                            <button class="purchase-button" data-url="{{route('front_purchasedone')}}">PAGAR</button>
+                            <button class="purchase-button">PAGAR</button>
                         </div>
                     </div>
                 </div>

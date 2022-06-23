@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Product;
+
 use Illuminate\Support\Facades\DB;
 use Debugbar;
 
@@ -28,6 +30,24 @@ class CartController extends Controller
     {
         $view = View::make('front.pages.carrito.index')
         ->with('cart', $cart);
+
+        if(request()->ajax()) {
+            
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'content' => $sections['content'],
+            ]); 
+        }
+
+        return $view;
+    
+    }
+
+    public function back(Product $product)
+    {
+        $view = View::make('front.pages.producto.index')
+        ->with('product', $product);
 
         if(request()->ajax()) {
             

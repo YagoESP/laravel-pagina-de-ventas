@@ -19,10 +19,31 @@ class ProductController extends Controller
     public function index()
     {
         $view = View::make('front.pages.tienda.index')
-        ->with('products', $this->product->where('active', 1)->where('visible',1)->get());
+        ->with('products', $this->product->where('active', 1)
+        ->where('visible',1)->get());
         
         return $view;
     }
+
+    public function shop(Product $product)
+    {
+        $view = View::make('front.pages.tienda.index')
+        ->with('products', $this->product->where('active', 1)
+        ->where('visible',1)->get());
+
+        if(request()->ajax()) {
+            
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'content' => $sections['content'],
+            ]); 
+        }
+
+        return $view;
+    
+    }
+
 
     public function show(Product $product)
     {

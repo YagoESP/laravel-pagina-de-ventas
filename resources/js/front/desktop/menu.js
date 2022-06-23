@@ -1,18 +1,24 @@
 export let renderMenu = () => {
 
-    let viewMenu = document.querySelectorAll(".view-button-menu");
+    let viewButtons = document.querySelectorAll(".view-button-menu");
     let mainContainer = document.querySelector("main");
-    let addButton = document.querySelector(".add-to-cart-button");
 
-    if(viewMenu) {
+    document.addEventListener("renderProductModules", (event => {
+        renderMenu();
+    }
+    ), { once: true });
 
-        viewMenu.forEach(viewMenu => {
+    if(viewButtons) {
+
+        viewButtons.forEach(viewButton => {
             
-            viewMenu.addEventListener("click", () => {
+            viewButton.addEventListener("click", (event) => {
 
-                let url = viewMenu.dataset.url;
+                event.preventDefault();
+
+                let url = viewButton.dataset.url;
                 
-                let sendView = async () => {
+                let sendMenu = async () => {
                 
                     let response = await fetch(url, {
                         headers: {
@@ -33,31 +39,20 @@ export let renderMenu = () => {
 
                         mainContainer.innerHTML = json.content;
 
-                        document.dispatchEvent(new CustomEvent('renderMenuModules'));
+                        document.dispatchEvent(new CustomEvent('renderProductModules'));
 
                         
                     })
                    
                 }
             
-                sendView();
+                sendMenu();
                 
             });
         });
     }
 
 
-    if(addButton){
-        addButton.addEventListener("click", () =>{
-        
-            document.dispatchEvent(new CustomEvent('message', {
-                detail: {
-                    text: 'Enviado correctamente',
-                    type: 'success'
-                }
-            }));
-            
-        })    
-    }
+
   
 }

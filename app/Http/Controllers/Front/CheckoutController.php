@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Checkout;
 use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\Sell;
 use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
@@ -15,11 +16,14 @@ class CheckoutController extends Controller
     protected $checkout;
     protected $cart;
     protected $customer;
+    protected $sell;
 
-    public function __construct(Checkout $checkout, Cart $cart)
+    public function __construct(Checkout $checkout, Cart $cart , Sell $sell, Customer $customer)
     {
         $this->checkout = $checkout;
         $this->cart = $cart;
+        $this->customer = $customer;
+        $this->sell = $sell;
     }
     
     public function index($fingerprint)
@@ -38,6 +42,7 @@ class CheckoutController extends Controller
         ->with('base_total', $totals->base_total)
         ->with('tax_total', ($totals->total - $totals->base_total))
         ->with('total', $totals->total)
+        
         ->renderSections();
 
        
@@ -46,21 +51,6 @@ class CheckoutController extends Controller
         ]);
     }
 
-    public function purchase()
-    {
-        $view = View::make('front.pages.compra-realizada.index');
-              
-        if(request()->ajax()) {
-            
-            $sections = $view->renderSections(); 
-    
-            return response()->json([
-                'content' => $sections['content'],
-            ]); 
-        }
-
-        return $view;
-    }
 
     public function show(Checkout $checkout)
     {
@@ -79,11 +69,12 @@ class CheckoutController extends Controller
         return $view;
     }
 
-    public function store(Request $request)
+    public function store()
     {            
         
+
         $checkout = $this->checkout->create([
-            'id' => request('id')
+            'id' => request('id'),
             'name' => request('name'),
             'surname' => request('surname'),
             'telephone' => request('telephone'),
@@ -94,9 +85,40 @@ class CheckoutController extends Controller
             'active' => 1,
         ]);
 
-      
+        $sell = $this->sell->create([
+            'id' => request('id'),
+            'ticket_number' => request('ticket_number'),
+            'date_emision' => request('date_emision'),
+            'time_emision' => request('time_emision'),
+            'payment_method_id' => request('payment_method_id'),
+            'total_base_price' => $total_base_price,
+            'total_tax_price' => $total_tax_price,
+            'total_price' => $total_price,
+            'active' => 1,
             
-        $view = View::make('front.pages.caja.index')->renderSections();        
+        ]);
+
+        $customer = $this->customer->create([
+            'id' => request('id'),
+            'customer_id' => $customer_id,
+            'name' => request('name'),
+            'email' => request('email'),
+            'phone' => request('phone'),
+            'address' => request('address'),
+            'city' => request('city'),
+            'country' => request('country'),
+            'postal_code' => request('postal_code'),
+            'active' => 1,
+        ]);
+
+        
+            
+        $view = View::make('front.pages.compra-realizada.index')
+        ->with('checkout', $checkout)
+        ->with('sell', $sell)
+        ->with('customer', $customer)
+        ->select(DB::raw(''),DB::raw('') )
+        ->renderSections();        
 
         return response()->json([
             'content' => $view['content'],
