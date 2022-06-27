@@ -1,12 +1,13 @@
-<div class="desktop-one-column">  
+<div class="desktop-one-column faqs">  
     @if(isset($faqs))  
         @foreach($faqs as $faq)
             <div class="faq-item">
-                <div class="faq-item-title" data-content="{{$faq->title}}">
+                <div class="faq-item-title" >
                     <h3>{{ $faq->title }}</h3>
+                    <div class="item"></div>
                 </div>
-                <div class="faq-item-content" data-content="{{$faq->content}}">
-                    <p>{!! $faq->content !!}</p>
+                <div class="faq-item-content" >
+                    <p>{!! $faq->description !!}</p>
                 </div> 
             </div>
         @endforeach

@@ -45,14 +45,13 @@
 
 
                 <div class="shop-articles-sections-cards">
-
                         @if(isset($products))
                             @foreach($products as $product)
                                     <div class="shop-articles-sections-cards-content form-container">
                                         <div class="shop-articles-sections-cards-content-image">
                                         </div>
                                         <div class="shop-articles-sections-cards-content-price" data-content="{{$product->price}}">
-                                            <span>{{$product->price}}</span>
+                                            <span >{{$product->price->first()->base_price}}</span>
                                         </div>
                                         <div class="shop-articles-sections-cards-content-title" data-content="{{$product->title}}">
                                             <h3>{{$product->title}}</h3>

@@ -41,10 +41,8 @@
     </div>
 
     <div class="payment">
-        @if(isset($carts))
             
         <table>
-            @foreach($carts as $cart)
             <tr>
                 <th></th>
                 <th>Resumen de la compra</th>
@@ -65,9 +63,8 @@
                 <td></td>
                 <td>{{$total}}€</td>
             </tr>
-            @endforeach
         </table>
-        @endif
+    
 
         <div class="payment-buttons">
             <div class="back" >

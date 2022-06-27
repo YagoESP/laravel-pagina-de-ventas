@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('surname');
             $table->string('email');
             $table->string('phone');
             $table->string('address');
+            $table->string('email');
             $table->string('city');
-            $table->string('country');
             $table->string('postal_code');
             $table->boolean('visible');
             $table->boolean('active');

@@ -59,6 +59,8 @@ export let renderProducts = () => {
 
                 let url = productCategory.dataset.url;
 
+                console
+
                 let sendCreateRequest = async () => {
 
                     document.dispatchEvent(new CustomEvent('startWait'));

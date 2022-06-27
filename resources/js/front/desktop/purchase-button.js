@@ -4,7 +4,6 @@ export let renderPurchaseButton = () => {
     let purchaseButton = document.querySelector('.purchase-button');
     let forms = document.querySelectorAll('.front-form-checkout');
 
-
     document.addEventListener("renderProductModules",( event =>{
         renderPurchaseButton();
     }), {once: true});
@@ -20,6 +19,8 @@ export let renderPurchaseButton = () => {
                 let data = new FormData(form);
                 let url = form.action;
 
+                console.log(form);
+                
                 for (var pair of data.entries()) {
                     console.log(pair[0]+ ', ' + pair[1]); 
                 }
@@ -58,46 +59,5 @@ export let renderPurchaseButton = () => {
                 sendSellRequest();
             });
         });
-    }
-
-    if(purchaseButton){
-
-        purchaseButton.addEventListener("click", (event) => {
-
-            event.preventDefault();
-
-            let url = purchaseButton.dataset.url;
-
-            let sendCart = async () => {
-
-                let response = await fetch(url, {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        },
-                        method: 'GET' 
-                    })
-
-                    .then(response => {
-
-                        if (!response.ok) throw response;
-
-                        return response.json();
-
-                    })
-
-                    .then(json => {
-                                
-                        mainContainer.innerHTML = json.content;
-    
-                        document.dispatchEvent(new CustomEvent('renderProductModules'));
-    
-                        }
-                    )
-                }
-
-                sendCart();
-
-            }
-        )
     }
 }

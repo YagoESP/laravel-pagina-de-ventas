@@ -165,6 +165,8 @@ class CartController extends Controller
         $resume->active = 0;
         $resume->save();
 
+        
+
         $carts = $this->cart->select(DB::raw('count(price_id) as quantity'),'price_id')
         ->groupByRaw('price_id')
         ->where('active', 1)

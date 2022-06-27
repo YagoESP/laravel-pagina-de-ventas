@@ -1,12 +1,4 @@
-.faqs{
-    margin-bottom: 4rem;
-    .faqs-title{
-        color: #444;
-        text-align: center;
-        margin: 3rem auto 3rem auto;
-    }
-
-    .faq{
+    .faqs{
         width: 65%;
         margin: auto;
         transition: 0.2s ease-out;
@@ -14,7 +6,7 @@
         background: #3F51B5;
         border-radius: 0.5rem;
 
-        .question{
+        .faq-item{
             
             padding: 1.5em 1.5em;
             
@@ -29,8 +21,9 @@
                 transition: all 3s;
                 
             }
-            .title{
+            .faq-item-title{
                 display: flex;
+
                 h3{
                     background: #3F51B5;
                     font-size: 1.9rem;
@@ -65,7 +58,7 @@
             }
 
                
-            .content{
+            .faq-item-content{
                
                 display: none;
                 
@@ -82,4 +75,3 @@
                 
         }
     }
-}

@@ -39,7 +39,7 @@
                     <h3>{{$product->category->title}}</h3>
                 </div>
                 <div class="product-price">
-                    <h3></h3>
+                    <h3>{{$product->price->first()->base_price}}</h3>
                 </div>
 
                 @include('front.components.desktop.tabs')
@@ -48,7 +48,7 @@
                     
                     <div class="product-amount" >
                         <div class="amount">
-                            <input type="hidden" name="price_id" value="{{$product->prices->first()->id}}">
+                            <input type="hidden" name="price_id" value="{{$product->price->first()->id}}">
 
                             <div class="less">
                                 <button class="subtract">-</button>

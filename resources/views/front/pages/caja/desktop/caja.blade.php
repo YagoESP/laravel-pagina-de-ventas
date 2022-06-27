@@ -1,11 +1,13 @@
 <div class="check">
-    <div class="desktop-two-columns">
-        <div class="column">
-            <div class="checkout-form">
-                <form class="front-form-checkout" data-url="{{route('front_checkout_form')}}">
-                    <input type="hidden" name="id" value="{{$sell->first()->id}}">
-                    <input type="hidden" name="id" value="{{$customer->first()->id}}">
-                    <input type="hidden" name="id" value="{{$checkout->first()->id}}">
+    <form class="front-form-checkout" action="{{route('front_checkout_form')}}">
+
+        <div class="desktop-two-columns">
+            <div class="column">
+                <div class="checkout-form">
+                    <input type="hidden" name="tax_total_price" value="{{$tax_total}}">
+                    <input type="hidden" name="base_total_price" value="{{$base_total}}">
+                    <input type="hidden" name="total_price" value="{{$total}}">
+                    <input type="hidden" name="fingerprint" value="{{$fingerprint}}">
 
                     <div class="desktop-two-columns">
                         <div class="column">
@@ -37,7 +39,7 @@
                                     <label>Teléfono</label>
                                 </div>
                                 <div class="form-element-input">
-                                    <input type="tel" name="telephone">
+                                    <input type="tel" name="phone">
                                 </div>
                             </div>
                         </div>
@@ -70,7 +72,7 @@
                                     <label>Codigo Postal</label>
                                 </div>
                                 <div class="form-element-input">
-                                    <input type="number" name="cp">
+                                    <input type="number" name="postal_code">
                                 </div>
                             </div>
                         </div>
@@ -88,53 +90,52 @@
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
-        
-        <div class="column border">
-            <div class="pay">
-                <div class="payment">
-                  
-                    <table>
-                        <tr>
-                            <th></th>
-                            <th>Resumen de la compra</th>
-                            <th></th>
-                        </tr>
-                      
-                        <tr class="transport"> 
-                            <td>Base Imponible</td>
-                            <td></td>
-                            <td>{{$base_total}}</td>
-                        </tr>
-                        <tr class="Iva"> 
-                            <td>IVA</td>
-                            <td></td>
-                            <td>{{$tax_total}}</td>
-                        </tr>
-                        <tr class="total">
-                            <td>Total</td>
-                            <td></td>
-                            <td>{{$total}}</td>
-                        </tr>
-                    </table>
-                    
                 </div>
+            </div>
+            
+            <div class="column border">
+                <div class="pay">
+                    <div class="payment">
+                    
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>Resumen de la compra</th>
+                                <th></th>
+                            </tr>
+                        
+                            <tr class="transport"> 
+                                <td>Base Imponible</td>
+                                <td></td>
+                                <td>{{$base_total}}</td>
+                            </tr>
+                            <tr class="Iva"> 
+                                <td>IVA</td>
+                                <td></td>
+                                <td>{{$tax_total}}</td>
+                            </tr>
+                            <tr class="total">
+                                <td>Total</td>
+                                <td></td>
+                                <td>{{$total}}</td>
+                            </tr>
+                        </table>
+                        
+                    </div>
 
-                
+                    
 
                     <div class="pay-options">
                         <div class="">
-                            <input type="radio" name="payment_method_id" value="{{$sell->first()->id}}">
+                            <input type="radio" name="payment_method_id" value="1">
                         <label for="">Transferencia Bancaria</label>
                         </div>
                         <div>
-                            <input type="radio" name="payment_method_id" value="{{$sell->first()->id}}"> 
+                            <input type="radio" name="payment_method_id" value="2"> 
                         <label for="">Paypal</label>
                         </div>
                         <div>
-                            <input type="radio" name="payment_method_id" value="{{$sell->first()->id}}"> 
+                            <input type="radio" name="payment_method_id" value="3"> 
                         <label for="">Tarjeta de crédito</label>
                         </div>
 
@@ -143,6 +144,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
+    </form>
 </div>

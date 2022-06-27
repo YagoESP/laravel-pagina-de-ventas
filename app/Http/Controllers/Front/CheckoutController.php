@@ -18,9 +18,8 @@ class CheckoutController extends Controller
     protected $customer;
     protected $sell;
 
-    public function __construct(Checkout $checkout, Cart $cart , Sell $sell, Customer $customer)
+    public function __construct(Cart $cart , Sell $sell, Customer $customer)
     {
-        $this->checkout = $checkout;
         $this->cart = $cart;
         $this->customer = $customer;
         $this->sell = $sell;
@@ -69,55 +68,55 @@ class CheckoutController extends Controller
         return $view;
     }
 
-    public function store()
+    public function store(Request $request)
     {            
-        
 
-        $checkout = $this->checkout->create([
-            'id' => request('id'),
+        date_default_timezone_set('Europe/Madrid');
+
+        $totals = $this->cart
+        ->where('carts.fingerprint', request('fingerprint'))
+        ->where('carts.active', 1)
+        ->where('carts.sell_id', null)
+        ->join('prices', 'prices.id', '=', 'carts.price_id')
+        ->join('taxes', 'taxes.id', '=', 'prices.tax_id')
+        ->select(DB::raw('sum(prices.base_price) as base_total'), DB::raw('round(sum(prices.base_price * taxes.multiplicator),2) as total') )
+        ->first();
+
+        $customer = $this->customer->create([
             'name' => request('name'),
             'surname' => request('surname'),
-            'telephone' => request('telephone'),
+            'phone' => request('phone'),
             'email' => request('email'),
             'city' => request('city'),
-            'cp' => request('cp'),
-            'adress' =>request('address'),
+            'postal_code' => request('postal_code'),
+            'address' =>request('address'),
+            'visible' => 1,
             'active' => 1,
         ]);
 
         $sell = $this->sell->create([
-            'id' => request('id'),
-            'ticket_number' => request('ticket_number'),
-            'date_emision' => request('date_emision'),
-            'time_emision' => request('time_emision'),
+            'id' => 1,
+            'ticket_number' =>'1',
+            'date_emision' => date('Y-m-d'),
+            'time_emision' => date('H:i:s'),
             'payment_method_id' => request('payment_method_id'),
-            'total_base_price' => $total_base_price,
-            'total_tax_price' => $total_tax_price,
-            'total_price' => $total_price,
-            'active' => 1,
-            
-        ]);
-
-        $customer = $this->customer->create([
-            'id' => request('id'),
-            'customer_id' => $customer_id,
-            'name' => request('name'),
-            'email' => request('email'),
-            'phone' => request('phone'),
-            'address' => request('address'),
-            'city' => request('city'),
-            'country' => request('country'),
-            'postal_code' => request('postal_code'),
+            'customer_id' => $customer->id,
+            'total_base_price' => $total_base_price = $totals->base_total,
+            'total_tax_price' => $total_tax_price = $totals->total - $totals->base_total,
+            'total_price' => $total_price = $totals->total,
+            'visible' => 1,
             'active' => 1,
         ]);
 
-        
+        $cart = $this->cart
+        ->where('sell_id', NULL)
+        ->where('fingerprint', request('fingerprint'))
+        ->where('active', 1)
+        ->update([
+            'sell_id' => $sell->id,
+        ]);
             
         $view = View::make('front.pages.compra-realizada.index')
-        ->with('checkout', $checkout)
-        ->with('sell', $sell)
-        ->with('customer', $customer)
-        ->select(DB::raw(''),DB::raw('') )
         ->renderSections();        
 
         return response()->json([

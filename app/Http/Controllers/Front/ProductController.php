@@ -18,6 +18,8 @@ class ProductController extends Controller
 
     public function index()
     {
+
+        
         $view = View::make('front.pages.tienda.index')
         ->with('products', $this->product->where('active', 1)
         ->where('visible',1)->get());
@@ -64,8 +66,11 @@ class ProductController extends Controller
     }
 
     public function filter($filter){
+      
+
         $view = View::make('front.pages.tienda.index')
-        ->with('products', $this->products->where('active', 1)->orderBy('price', $filter)->get());
+        ->with('products', $this ->product->where('visible', 1))
+        ->join('prices', 'prices.product_id', '=', 'products.id')->orderBy('base_price', $filter)->get();
         
         if(request()->ajax()) {
             
