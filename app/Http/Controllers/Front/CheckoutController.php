@@ -82,6 +82,16 @@ class CheckoutController extends Controller
         ->select(DB::raw('sum(prices.base_price) as base_total'), DB::raw('round(sum(prices.base_price * taxes.multiplicator),2) as total') )
         ->first();
 
+        $ticket_number = $this-> sell->latest()->ticket_number;
+
+        if(content($ticket_number) == null) {
+            $ticket_number += 1;
+            
+        } else {
+            $ticket_number = date('Ymd')  + '001';
+            
+        }
+
         $customer = $this->customer->create([
             'name' => request('name'),
             'surname' => request('surname'),
@@ -96,7 +106,7 @@ class CheckoutController extends Controller
 
         $sell = $this->sell->create([
             'id' => 1,
-            'ticket_number' =>'1',
+            'ticket_number' => $ticket_number,
             'date_emision' => date('Y-m-d'),
             'time_emision' => date('H:i:s'),
             'payment_method_id' => request('payment_method_id'),
