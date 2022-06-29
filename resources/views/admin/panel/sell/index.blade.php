@@ -35,16 +35,7 @@
         @endif
 
         <div class="register-data">
-            <div>
-                <p>1 Registro</p>
-                <p>Mostrando la Pagina 1 de 1</p>
-            </div>
-            <ul>
-                <li>Primera</li>
-                <li>Anterior</li>
-                <li>Siguiente</li>
-                <li>Ultima</li>
-            </ul>   
+           
         </div>
     </div>
 
@@ -54,90 +45,158 @@
     @if(isset($sells))
         <form class="admin-form" action="{{route("sells_store")}}">
             <input type="hidden" name="id" value="{{isset($sells->id) ? $sells->id : ''}}">
-                
                 <div class="desktop-one-column">
-                    <div class="form-group">
-                        <div class="form-label">
-                            <label for="">Ticket:</label>
-                        </div>
-                        <div class="form-label">
-                            <label name="ticket_number_id" value="{{isset($sells->ticket_number_id) ? $sells->ticket_number_id : ''}}"></label>
+                    <div class="form-group label-group-info">
+                        <div class="form-label title">
+                            <label for="">Datos de la Venta:</label>
                         </div>
                     </div>
                 </div>
                 <div class="desktop-one-column">
-                    <div class="form-group">
+                    <div class="form-group label-group">
+                        <div class="form-label title">
+                            <label for="">Ticket:</label>
+                        </div>
+                        <div class="form-label content">
+                            <label name="ticket_number">{{$sell->ticket_number}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="desktop-one-column">
+                    <div class="form-group label-group">
                         <div class="form-label">
                             <label for="">Metodo de Pago:</label>
                         </div>
                         <div class="form-label">
-                            <label name="payment_method_id" value="{{isset($sells->payment_method_id) ? $sells->payment_method_id : ''}}"></label>
+                            <label name="payment_method_id">{{$sell->payment_method_id}}</label>
                         </div>
                     </div>
                 </div>
                 <div class="desktop-one-column">
-                    <div class="form-group">
+                    <div class="form-group label-group">
                         <div class="form-label">
                             <label for="">Total Base:</label>
                         </div>
                         <div class="form-label">
-                            <label name="total_base_price" value="{{isset($sells->total_base_price) ? $sells->total_base_price : ''}}"></label>
+                            <label name="total_base_price">{{ $sell->total_base_price }}</label>
                         </div>
                     </div>
                 </div>
                 <div class="desktop-one-column">
-                    <div class="form-group">
+                    <div class="form-group label-group">
                         <div class="form-label">
                             <label for="">Total IVA:</label>
                         </div>
                         <div class="form-label">
-                            <label name="total_tax_price" value="{{isset($sells->total_tax_price) ? $sells->total_tax_price : ''}}"></label>
+                            <label name="total_tax_price">{{ $sell->total_tax_price }}</label>
                         </div>
                     </div>
                 </div>
                 <div class="desktop-one-column">
-                    <div class="form-group">
+                    <div class="form-group label-group">
                         <div class="form-label">
                             <label for="">Total:</label>
                         </div>
                         <div class="form-label">
-                            <label name="total_price" value="{{isset($sells->total_price) ? $sells->total_price : ''}}"></label>
+                            <label name="total_price">{{ $sell->total_price }}</label>
                         </div>
                     </div>
                 </div>
-              
+                @if(isset($customers))
+                    <div class="desktop-one-column">
+                        <div class="form-group label-group">
+                            <div class="form-label">
+                                <label for="">Nombre:</label>
+                            </div>
+                            <div class="form-label">
+                                <label name="name">{{ $customer->name }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desktop-one-column">
+                        <div class="form-group label-group">
+                            <div class="form-label">
+                                <label for="">Email:</label>
+                            </div>
+                            <div class="form-label">
+                                <label name="email">{{ $customer->email }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desktop-one-column">
+                        <div class="form-group label-group">
+                            <div class="form-label">
+                                <label for="">Telefono:</label>
+                            </div>
+                            <div class="form-label">
+                                <label name="phone">{{ $customer->phone }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desktop-one-column">
+                        <div class="form-group label-group">
+                            <div class="form-label">
+                                <label for="">Direccion:</label>
+                            </div>
+                            <div class="form-label">
+                                <label name="address">{{ $customer->address }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desktop-one-column">
+                        <div class="form-group label-group">
+                            <div class="form-label">
+                                <label for="">Ciudad:</label>
+                            </div>
+                            <div class="form-label">
+                                <label name="city">{{ $customer->city }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desktop-one-column">
+                        <div class="form-group label-group">
+                            <div class="form-label">
+                                <label for="">Codigo Postal:</label>
+                            </div>
+                            <div class="form-label">
+                                <label name="postal_code">{{ $customer->postal_code }}</label>
+                            </div>
+                        </div>
+                    </div>
+                @endif
         </form>
-    @endif
-    <div class="resume">
-        <table>
-                        
-            <tr>
-                <th></th>
-                <th>Producto</th>
-                <th>Precio€</th>
-                <th>Cantidad</th>
-            </tr>
-
-            @if(isset($carts))
-                @foreach($carts as $cart)
-                    <tr>
-                        <td></td>
-                        <td>{{$cart->price->product->title}}</td>
-                        <td>{{$cart->price->base_price}}</td>
-                        <td>
-                            <div class="product-amount">
-                                <div class="amount">
-                                    <div class="number">
-                                        <input type="number" class="show" value="{{$cart->quantity}}"  name="quantity">
+        <div class="resume">
+            <table>
+                            
+                <tr>
+                    <th></th>
+                    <th>Producto</th>
+                    <th>Precio€</th>
+                    <th>Cantidad</th>
+                </tr>
+    
+                @if(isset($carts))
+                    @foreach($carts as $cart)
+                        <tr>
+                            <td></td>
+                            <td>{{$cart->price->product->title}}</td>
+                            <td>{{$cart->price->base_price}}</td>
+                            <td>
+                                <div class="product-amount">
+                                    <div class="amount">
+                                        <div class="number">
+                                            <input type="number" class="show" value="{{$cart->quantity}}"  name="quantity">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            @endif
-        </table>
-    </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+            </table>
+        </div>
+    @endif
+    
         
         
 @endsection

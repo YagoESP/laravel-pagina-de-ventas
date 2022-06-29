@@ -17,7 +17,9 @@ import {renderPlusCart} from './pluscart.js';
 import {renderCartBuy} from './cartbuy.js';
 import {renderPurchaseButton} from './purchase-button.js';
 import {renderBackButton} from './backbutton.js';
+import {renderFingerprint} from './fingerprint.js';
 
+renderFingerprint();
 renderBackButton();
 renderPurchaseButton();
 renderCartBuy();

@@ -7,20 +7,20 @@
 
     .registers{
         width: 100%;
-        margin-left: 4rem;
-        padding: 0.5rem;
+        margin-left: 3rem;
         margin-bottom: 1rem;
         .registers-item{
             margin: 1rem;
             border: 1px solid black;
             background: white;
             .register{
-                
+                padding: 1rem;
                 div{
                     
                     label{
                         font-size: 0.8rem;
-                            color: black;
+                        color: black;
+                        font-weight: 600;
                             
                     }
                 }
@@ -70,6 +70,7 @@
     .admin-form{
         width: 90%;
         margin: auto;
+        border: 1px solid rgb(98, 97, 97);
         background: white;
 
         #color-panel{
@@ -189,107 +190,7 @@
             }
         }
 
-        .resume{
-        
-            table{
-                display: flex;
-                justify-content: space-between;
-                
-                
-                tbody{
-                    width: 100%;
-                }
-    
-                tr{
-                    font-weight: 600;
-                    font-size: 1.2rem;
-                    color: white;
-                    margin-right: 1rem;
-                    text-align: center;
-    
-                    
-                    
-                    td{
-                        padding: 1rem ;
-    
-                        input{
-                            width: 10%;
-                        }
-                        
-                    }
-    
-                    .amount{
-                        display: flex;
-                        width:35%;
-                        margin-top: 0.5rem;
-                        margin-left: 7rem;
-                        
-                        
-                        .less{
-                            button{
-                               
-                                border: 1px solid #c4402f;
-                                border-radius: 4px;
-                                background-color: #CC4331;
-                                box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-                                color: white;
-                                text-align: center;
-                                text-decoration: none;
-                                text-shadow: 0 -1px -1px #af3a2a;
-                                font-weight: 800;
-                                font-size: 1rem;
-                                transition: all 0.15s ease-in-out;
-                                
-                            }
-                        }
-        
-                        .number{
-                            color: white;
-                            font-weight: 600;
-                            font-size: 1.6rem;
-                            padding: 0rem 1rem 0rem 1rem;
-                         
-                            .show{
-                                text-align: center;
-                                width: 70%;
-                                margin: auto;
-                                
-                            }
-                        }
-                        
-                        .more{
-                            button{
-                                
-                                border: 1px solid #c4402f;
-                                border-radius: 4px;
-                                background-color: #CC4331;
-                                box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-                                color: white;
-                                text-align: center;
-                                text-decoration: none;
-                                text-shadow: 0 -1px -1px #af3a2a;
-                                font-weight: 800;
-                                font-size: 1rem;
-                                transition: all 0.15s ease-in-out;
-                            }
-                        }
-                    }
-    
-                    th{
-                        padding: 1rem;
-                    }
-    
-                    img{
-                        max-width: 25%;
-                    }
-                }
-                
-                tr:first-child{
-                    border-bottom: 0.6rem solid white ;
-                    width: max-content;
-                }
-            }    
-        }    
+         
             
 
         .form-group{
@@ -319,5 +220,146 @@
                 
             }
         }
+
+        .label-group-info{
+            background: #2970D5;
+            width: 96.2%;
+            padding: 1rem;
+            border: 1px solid black;
+            
+            .title{
+                label{
+                    font-weight: 600;
+                    color: white;
+                    font-size: large;
+                }
+            }
+        }
+
+        .label-group{
+     
+            width: 20%;
+            
+
+
+            .title{
+                padding: 0.5rem;
+                padding-top:0.5rem;
+                label{
+                    font-weight: 600;
+                }
+            }
+
+            .content{
+
+                label{
+                    color: black;
+                    font-weight: 200;
+                }
+            }
+        }
+
+       
     }
+
+    .resume{
+        background: white;
+        border: 1px solid rgb(96, 96, 96);
+        width: 90%;
+        margin: auto;
+        table{
+            display: flex;
+            justify-content: space-between;
+            
+            
+            tbody{
+                width: 100%;
+            }
+
+            tr{
+                font-weight: 600;
+                font-size: 1.2rem;
+                margin-right: 1rem;
+                text-align: center;
+
+                
+                
+                td{
+                    padding: 1rem ;
+
+                    input{
+                        width: 10%;
+                    }
+                    
+                }
+
+                .amount{
+                    display: flex;
+                    width:35%;
+                    margin-top: 0.5rem;
+                    margin-left: 7rem;
+                    
+                    
+                    .less{
+                        button{
+                           
+                            border: 1px solid #c4402f;
+                            border-radius: 4px;
+                            background-color: #CC4331;
+                            box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                            text-align: center;
+                            text-decoration: none;
+                            text-shadow: 0 -1px -1px #af3a2a;
+                            font-weight: 800;
+                            font-size: 1rem;
+                            transition: all 0.15s ease-in-out;
+                            
+                        }
+                    }
+    
+                    .number{
+                        font-weight: 600;
+                        font-size: 1.6rem;
+                        padding: 0rem 1rem 0rem 1rem;
+                     
+                        .show{
+                            text-align: center;
+                            width: 70%;
+                            margin: auto;
+                            
+                        }
+                    }
+                    
+                    .more{
+                        button{
+                            
+                            border: 1px solid #c4402f;
+                            border-radius: 4px;
+                            background-color: #CC4331;
+                            box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                            text-align: center;
+                            text-decoration: none;
+                            text-shadow: 0 -1px -1px #af3a2a;
+                            font-weight: 800;
+                            font-size: 1rem;
+                            transition: all 0.15s ease-in-out;
+                        }
+                    }
+                }
+
+                th{
+                    padding: 1rem;
+                }
+
+                img{
+                    max-width: 25%;
+                }
+            }
+            
+            tr:first-child{
+                border-bottom: 0.6rem solid white ;
+                width: max-content;
+            }
+        }    
+    }   
 }

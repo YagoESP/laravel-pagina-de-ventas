@@ -1360,8 +1360,7 @@ form .form-send-button button:hover {
 }
 .admin-panel .registers {
   width: 100%;
-  margin-left: 4rem;
-  padding: 0.5rem;
+  margin-left: 3rem;
   margin-bottom: 1rem;
 }
 .admin-panel .registers .registers-item {
@@ -1369,9 +1368,13 @@ form .form-send-button button:hover {
   border: 1px solid black;
   background: white;
 }
+.admin-panel .registers .registers-item .register {
+  padding: 1rem;
+}
 .admin-panel .registers .registers-item .register div label {
   font-size: 0.8rem;
   color: black;
+  font-weight: 600;
 }
 .admin-panel .registers .registers-item .register-icons {
   text-align: center;
@@ -1403,6 +1406,7 @@ form .form-send-button button:hover {
 .admin-panel .admin-form {
   width: 90%;
   margin: auto;
+  border: 1px solid rgb(98, 97, 97);
   background: white;
 }
 .admin-panel .admin-form #color-panel {
@@ -1525,81 +1529,6 @@ form .form-send-button button:hover {
     transform: translateX(0);
   }
 }
-.admin-panel .admin-form .resume table {
-  display: flex;
-  justify-content: space-between;
-}
-.admin-panel .admin-form .resume table tbody {
-  width: 100%;
-}
-.admin-panel .admin-form .resume table tr {
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: white;
-  margin-right: 1rem;
-  text-align: center;
-}
-.admin-panel .admin-form .resume table tr td {
-  padding: 1rem;
-}
-.admin-panel .admin-form .resume table tr td input {
-  width: 10%;
-}
-.admin-panel .admin-form .resume table tr .amount {
-  display: flex;
-  width: 35%;
-  margin-top: 0.5rem;
-  margin-left: 7rem;
-}
-.admin-panel .admin-form .resume table tr .amount .less button {
-  border: 1px solid #c4402f;
-  border-radius: 4px;
-  background-color: #CC4331;
-  box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: 0 -1px -1px #af3a2a;
-  font-weight: 800;
-  font-size: 1rem;
-  transition: all 0.15s ease-in-out;
-}
-.admin-panel .admin-form .resume table tr .amount .number {
-  color: white;
-  font-weight: 600;
-  font-size: 1.6rem;
-  padding: 0rem 1rem 0rem 1rem;
-}
-.admin-panel .admin-form .resume table tr .amount .number .show {
-  text-align: center;
-  width: 70%;
-  margin: auto;
-}
-.admin-panel .admin-form .resume table tr .amount .more button {
-  border: 1px solid #c4402f;
-  border-radius: 4px;
-  background-color: #CC4331;
-  box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: 0 -1px -1px #af3a2a;
-  font-weight: 800;
-  font-size: 1rem;
-  transition: all 0.15s ease-in-out;
-}
-.admin-panel .admin-form .resume table tr th {
-  padding: 1rem;
-}
-.admin-panel .admin-form .resume table tr img {
-  max-width: 25%;
-}
-.admin-panel .admin-form .resume table tr:first-child {
-  border-bottom: 0.6rem solid white;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-}
 .admin-panel .admin-form .form-group {
   text-align: center;
 }
@@ -1623,6 +1552,108 @@ form .form-send-button button:hover {
 .admin-panel .admin-form .form-group .form-input textarea {
   width: 75%;
   margin: auto;
+}
+.admin-panel .admin-form .label-group-info {
+  background: #2970D5;
+  width: 96.2%;
+  padding: 1rem;
+  border: 1px solid black;
+}
+.admin-panel .admin-form .label-group-info .title label {
+  font-weight: 600;
+  color: white;
+  font-size: large;
+}
+.admin-panel .admin-form .label-group {
+  width: 20%;
+}
+.admin-panel .admin-form .label-group .title {
+  padding: 0.5rem;
+  padding-top: 0.5rem;
+}
+.admin-panel .admin-form .label-group .title label {
+  font-weight: 600;
+}
+.admin-panel .admin-form .label-group .content label {
+  color: black;
+  font-weight: 200;
+}
+.admin-panel .resume {
+  background: white;
+  border: 1px solid rgb(96, 96, 96);
+  width: 90%;
+  margin: auto;
+}
+.admin-panel .resume table {
+  display: flex;
+  justify-content: space-between;
+}
+.admin-panel .resume table tbody {
+  width: 100%;
+}
+.admin-panel .resume table tr {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  text-align: center;
+}
+.admin-panel .resume table tr td {
+  padding: 1rem;
+}
+.admin-panel .resume table tr td input {
+  width: 10%;
+}
+.admin-panel .resume table tr .amount {
+  display: flex;
+  width: 35%;
+  margin-top: 0.5rem;
+  margin-left: 7rem;
+}
+.admin-panel .resume table tr .amount .less button {
+  border: 1px solid #c4402f;
+  border-radius: 4px;
+  background-color: #CC4331;
+  box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px -1px #af3a2a;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: all 0.15s ease-in-out;
+}
+.admin-panel .resume table tr .amount .number {
+  font-weight: 600;
+  font-size: 1.6rem;
+  padding: 0rem 1rem 0rem 1rem;
+}
+.admin-panel .resume table tr .amount .number .show {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+}
+.admin-panel .resume table tr .amount .more button {
+  border: 1px solid #c4402f;
+  border-radius: 4px;
+  background-color: #CC4331;
+  box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px -1px #af3a2a;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: all 0.15s ease-in-out;
+}
+.admin-panel .resume table tr th {
+  padding: 1rem;
+}
+.admin-panel .resume table tr img {
+  max-width: 25%;
+}
+.admin-panel .resume table tr:first-child {
+  border-bottom: 0.6rem solid white;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .faqs {
