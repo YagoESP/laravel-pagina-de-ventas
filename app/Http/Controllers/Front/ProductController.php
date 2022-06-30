@@ -68,9 +68,14 @@ class ProductController extends Controller
     public function filter($filter){
       
 
+        $products =  $this->product->where('visible', 1)
+        ->join('prices', 'prices.product_id', '=', 'products.id')
+        ->select('products.*', 'prices.base_price')
+        ->orderBy('base_price', $filter)
+        ->get();
+
         $view = View::make('front.pages.tienda.index')
-        ->with('products', $this ->product->where('visible', 1))
-        ->join('prices', 'prices.product_id', '=', 'products.id')->orderBy('base_price', $filter)->get();
+        ->with('products', $products);
         
         if(request()->ajax()) {
             

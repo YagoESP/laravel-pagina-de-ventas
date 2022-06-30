@@ -1,4 +1,4 @@
-<div class="cart">
+<div class="cart page-section" id="cart">
     <div class="resume">
  
             <table>
@@ -20,7 +20,7 @@
                                 <div class="product-amount">
                                     <div class="amount">
                                         <div class="less">
-                                            <button class="subtract" data-url="{{route('front_cart_minus',['price_id'=> $cart->price_id, 'fingerprint' => $fingerprint])}}">-</button>
+                                            <button class="plus-minus-button" data-url="{{route('front_cart_minus',['price_id'=> $cart->price_id, 'fingerprint' => $fingerprint])}}">-</button>
                                         </div>
                                         
                                         <div class="number">
@@ -28,7 +28,7 @@
                                         </div>
                                         
                                         <div class="more">
-                                            <button class="add" data-url="{{route('front_cart_plus', ['price_id'=> $cart->price_id ,'fingerprint' => $fingerprint])}}">+</button>
+                                            <button class="plus-minus-button" data-url="{{route('front_cart_plus', ['price_id'=> $cart->price_id ,'fingerprint' => $fingerprint])}}">+</button>
                                         </div>  
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="payment">
-            
+        @if(isset($carts))
         <table>
             <tr>
                 <th></th>
@@ -64,6 +64,7 @@
                 <td>{{$total}}€</td>
             </tr>
         </table>
+        @endif
     
 
         <div class="payment-buttons">

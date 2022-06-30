@@ -1,4 +1,4 @@
-<div class="shop">
+<div class="shop page-section" id="shop">
     <div class="desktop-two-columns-aside">
         <div class="column-aside column">
             <div class="shop-categories">
@@ -29,12 +29,12 @@
                         </div>
                         <div class="column">
                             <div class="shop-articles-information-select" >
-                                <select id="filter" name="filter">
-                                    <option selected value="{{route('front_products')}}">Seleccionar</option>
-                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'asc'])}}">
+                                <select class="product-filter" name="filter">
+                                    <option selected>Filtrar</option>
+                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'desc'])}}">
                                         Mayor a menor
                                     </option>
-                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'desc'])}}">
+                                    <option class="filter" value="{{route('front_product_filter', ['filter'=>'asc'])}}">
                                         Menor a mayor
                                     </option>
                                 </select>

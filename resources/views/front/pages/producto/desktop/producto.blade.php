@@ -1,7 +1,7 @@
 <div class="notification desktop-only">
     <span id="notification-text desktop-only"></span>
 </div>
-<div class="product form-container">
+<div class="product form-container page-section" id="product">
     <div class="desktop-two-columns">
         <div class="column">
             <div class="product-carousel">

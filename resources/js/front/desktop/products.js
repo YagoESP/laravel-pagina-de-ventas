@@ -2,12 +2,14 @@ export let renderProducts = () => {
 
     let viewButtons = document.querySelectorAll(".view-button");
     let productCategories = document.querySelectorAll(".category");
-    let productFilters = document.querySelectorAll(".filter");
+    let productFilter = document.querySelector(".product-filter");
+    let buyButton = document.querySelector('.buy-button');
+    let forms = document.querySelectorAll('.front-form-product');
     let mainContainer = document.querySelector("main");
     
-    document.addEventListener("renderProductModules", (event => {
-        renderProducts();
-    }), { once: true });
+    document.addEventListener("products", (event => {
+            renderProducts();
+        }));
 
     if(viewButtons){
 
@@ -38,7 +40,7 @@ export let renderProducts = () => {
 
                         mainContainer.innerHTML = json.content;
 
-                        document.dispatchEvent(new CustomEvent('renderProductModules'));
+                        document.dispatchEvent(new CustomEvent('product'));
                               
                     })
                    
@@ -50,6 +52,56 @@ export let renderProducts = () => {
         });
     }
 
+    if(buyButton){
+
+        buyButton.addEventListener("click", (event) => {
+
+            event.preventDefault();
+
+            forms.forEach(form => { 
+
+                let data = new FormData(form);
+                let url = form.action;
+
+                for (var pair of data.entries()) {
+                    console.log(pair[0]+ ', ' + pair[1]); 
+                }
+    
+                let sendPostRequest = async () => {
+    
+                    
+                    let response = await fetch(url, {
+                        headers: {
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
+                        },
+                        method: 'POST',
+                        body: data
+                    })
+                    .then(response => {
+                    
+                        if (!response.ok) throw response;
+
+                        return response.json();
+                    })
+                    .then(json => {
+
+                        mainContainer.innerHTML = json.content;
+
+                        document.dispatchEvent(new CustomEvent('cart'));
+                    })
+                    .catch ( error =>  {
+    
+                        if(error.status == '500'){
+                            console.log(error);
+                        };
+                    });
+                };
+        
+                sendPostRequest();
+            });
+        });
+    }
 
     if(productCategories){
 
@@ -81,7 +133,11 @@ export let renderProducts = () => {
                                     
                         mainContainer.innerHTML = json.content;
 
-                        document.dispatchEvent(new CustomEvent('renderProductModules'));
+                        document.dispatchEvent(new CustomEvent('loadSection', {
+                            detail: {
+                                section: 'products'
+                            }
+                        }));
                     })
                     .catch(error =>  {
                                     
@@ -98,48 +154,49 @@ export let renderProducts = () => {
         });
     };
 
-    if(productFilters){
+    if(productFilter){
 
-        productFilters.forEach(productFilter => {
+        productFilter.addEventListener("change", () => {
 
-            productFilter.addEventListener("change", () => {
+            let url = productFilter.value;
 
-                let url = productFilter.value;
+            let sendFilterRequest = async () => {
 
-                let sendFilterRequest = async () => {
+                document.dispatchEvent(new CustomEvent('startWait'));
 
-                    document.dispatchEvent(new CustomEvent('startWait'));
+                let response = await fetch(url, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                    method: 'GET', 
+                })
+                .then(response => {
+                                
+                    if (!response.ok) throw response;
+                                
+                    return response.json();
+                })
+                .then(json => {
+                                
+                    mainContainer.innerHTML = json.content;
 
-                    let response = await fetch(url, {
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                        },
-                        method: 'GET', 
-                    })
-                    .then(response => {
-                                    
-                        if (!response.ok) throw response;
-                                    
-                        return response.json();
-                    })
-                    .then(json => {
-                                    
-                        mainContainer.innerHTML = json.content;
+                    document.dispatchEvent(new CustomEvent('loadSection', {
+                        detail: {
+                            section: 'products'
+                        }
+                    }));
+                })
+                .catch(error =>  {
+                                
+                    if(error.status == '500'){
+                        console.log(error);
+                    };
+                });
+                    
+            };
 
-                        document.dispatchEvent(new CustomEvent('renderProductModules'));
-                    })
-                    .catch(error =>  {
-                                    
-                        if(error.status == '500'){
-                            console.log(error);
-                        };
-                    });
-                      
-                };
-
-                sendFilterRequest();
-                
-            });
+            sendFilterRequest();
+            
         });
     };
 }    

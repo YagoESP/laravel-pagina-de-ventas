@@ -2,6 +2,11 @@ export let renderAccordion = () =>{
     
     let faqs = document.querySelectorAll(".faq-item");
 
+    document.addEventListener("faqs", (event => {
+            renderAccordion();
+        }
+    ));
+
     if(faqs){
         faqs.forEach((faq, i) => {
             faq.addEventListener("click", () => {

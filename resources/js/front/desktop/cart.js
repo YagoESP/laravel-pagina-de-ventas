@@ -1,62 +1,96 @@
 export let renderCart = () => {
 
     let mainContainer = document.querySelector("main");
-    let buyButton = document.querySelector('.buy-button');
-    let forms = document.querySelectorAll('.front-form-product');
+    let cartBuyButton = document.querySelector(".buy-button-cart");
+    let plusMinusButtons = document.querySelectorAll('.plus-minus-button');
 
-
-    document.addEventListener("renderProductModules",( event =>{
-        renderCart();
-    }), {once: true});
+    document.addEventListener("carts", (event => {
+            renderCart();
+        }
+    ));
     
-    if(buyButton){
+    if(cartBuyButton){
 
-        buyButton.addEventListener("click", (event) => {
+        cartBuyButton.addEventListener("click", (event) => {
 
             event.preventDefault();
 
-            forms.forEach(form => { 
+            let url = cartBuyButton.dataset.url;
 
-                let data = new FormData(form);
-                let url = form.action;
+            let sendCart = async () => {
 
-                for (var pair of data.entries()) {
-                    console.log(pair[0]+ ', ' + pair[1]); 
-                }
-    
-                let sendPostRequest = async () => {
-    
-                    
-                    let response = await fetch(url, {
-                        headers: {
-                            'Accept': 'application/json',
-                            'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
+                let response = await fetch(url, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
                         },
-                        method: 'POST',
-                        body: data
+                        method: 'GET' 
                     })
+
                     .then(response => {
-                    
+
                         if (!response.ok) throw response;
 
                         return response.json();
+
                     })
+
+                    .then(json => {
+                                
+                        mainContainer.innerHTML = json.content;
+    
+                        document.dispatchEvent(new CustomEvent('checkout'));
+    
+                        }
+                    )
+                }
+
+                sendCart();
+
+            }
+        )
+    }
+
+    if(plusMinusButtons){
+
+        plusMinusButtons.forEach(plusMinusButton => {
+            
+            plusMinusButton.addEventListener("click", (event) => {
+
+                event.preventDefault();
+
+                let url = plusMinusButton.dataset.url;
+                
+                let sendProduct = async () => {
+                
+                    let response = await fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                        },
+                        method: 'GET' 
+                    })
+                    
+                    .then(response => {
+
+                        if (!response.ok) throw response;
+
+                        return response.json();
+
+                    })
+
                     .then(json => {
 
                         mainContainer.innerHTML = json.content;
 
-                        document.dispatchEvent(new CustomEvent('renderProductModules'));
+                        document.dispatchEvent(new CustomEvent('cart'));
+                 
                     })
-                    .catch ( error =>  {
-    
-                        if(error.status == '500'){
-                            console.log(error);
-                        };
-                    });
-                };
-        
-                sendPostRequest();
+                   
+                }
+            
+                sendProduct();
+                
             });
         });
     }
+
 }

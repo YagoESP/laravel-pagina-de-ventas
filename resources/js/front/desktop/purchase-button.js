@@ -4,9 +4,10 @@ export let renderPurchaseButton = () => {
     let purchaseButton = document.querySelector('.purchase-button');
     let forms = document.querySelectorAll('.front-form-checkout');
 
-    document.addEventListener("renderProductModules",( event =>{
-        renderPurchaseButton();
-    }), {once: true});
+    document.addEventListener("checkout", (event => {
+            renderPurchaseButton();
+        }
+    ));
     
     if(purchaseButton){
 
@@ -46,7 +47,6 @@ export let renderPurchaseButton = () => {
 
                         mainContainer.innerHTML = json.content;
 
-                        document.dispatchEvent(new CustomEvent('renderProductModules'));
                     })
                     .catch ( error =>  {
     

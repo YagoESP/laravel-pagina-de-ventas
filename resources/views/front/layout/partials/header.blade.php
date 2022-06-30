@@ -21,7 +21,7 @@
                           </ul>
                         
                     </div>
-                    <div class="header-main-logo-title view-button-menu" id="header-menu" data-url="{{route('front_home')}}">
+                    <div class="header-main-logo-title view-button-menu" data-section="home" id="header-menu" data-url="{{route('front_home')}}">
                         
                         <h1>P U
                             <svg viewBox="0 0 24 24">
@@ -53,13 +53,13 @@
             <div class="column desktop-only">
                 <div class="header-main-menu">
                     <div class="header-main-menu-element ">
-                        <button class="view-button-menu" data-url="{{route('front_products')}}">TIENDA</button>
+                        <button class="view-button-menu" data-section="shop" data-url="{{route('front_products')}}">TIENDA</button>
                     </div>
                     <div class="header-main-menu-element">
-                        <button class="view-button-menu" data-url="{{route('front_faqs')}}">FAQS</button>
+                        <button class="view-button-menu" data-section="faqs" data-url="{{route('front_faqs')}}">FAQS</button>
                     </div>
                     <div class="header-main-menu-element-active">
-                        <button class="view-button-menu" data-url="{{route('front_contact')}}">CONTÁCTANOS</button>
+                        <button class="view-button-menu" data-section="contacts" data-url="{{route('front_contact')}}">CONTÁCTANOS</button>
                     </div>   
                 </div>
             </div>   

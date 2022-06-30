@@ -1,4 +1,4 @@
-<div class="check">
+<div class="check page-section" id="check">
     <form class="front-form-checkout" action="{{route('front_checkout_form')}}">
 
         <div class="desktop-two-columns">

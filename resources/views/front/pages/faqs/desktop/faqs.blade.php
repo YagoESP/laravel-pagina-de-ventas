@@ -1,4 +1,4 @@
-<div class="desktop-one-column faqs">  
+<div class="faqs page-section" id="faqs">  
     @if(isset($faqs))  
         @foreach($faqs as $faq)
             <div class="faq-item">

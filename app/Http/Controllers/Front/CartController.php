@@ -5,19 +5,21 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
-use App\Models\Product;
-
+use App\Models\Fingerprint;
 use Illuminate\Support\Facades\DB;
 use Debugbar;
 
 class CartController extends Controller
 {
     protected $cart;
+    protected $fingerprint;
     
-    public function __construct(Cart $cart)
+    public function __construct(Cart $cart, Fingerprint $fingerprint)
     {
         $this->cart = $cart;
+        $this->fingerprint = $fingerprint;
     }
+ 
 
     public function index()
     {
@@ -26,10 +28,11 @@ class CartController extends Controller
         return $view;
     }
 
-    public function show(Cart $cart)
+    public function show(Cart $cart,Fingerprint $fingerprint)
     {
         $view = View::make('front.pages.carrito.index')
-        ->with('cart', $cart);
+        ->with('cart', $cart)
+        ->with('fingerprint', $fingerprint);
 
         if(request()->ajax()) {
             
@@ -43,25 +46,6 @@ class CartController extends Controller
         return $view;
     
     }
-
-    public function back(Product $product)
-    {
-        $view = View::make('front.pages.producto.index')
-        ->with('product', $product);
-
-        if(request()->ajax()) {
-            
-            $sections = $view->renderSections(); 
-    
-            return response()->json([
-                'content' => $sections['content'],
-            ]); 
-        }
-
-        return $view;
-    
-    }
-
 
     public function store(Request $request )
     {
@@ -72,8 +56,9 @@ class CartController extends Controller
             $cart = $this->cart->create([
                 'id' => request('id'),
                 'price_id' => request('price_id'),
-                'fingerprint' => 1,
-                'customer_id' => request('customer_id'),
+                'fingerprint' => $request->cookie('fp'),
+                'customer_id' => NULL,
+                'sell_id' => null,
                 'active' => 1,
             ]);
         }
@@ -98,10 +83,10 @@ class CartController extends Controller
 
         $view = View::make('front.pages.carrito.index')
         ->with('carts', $carts)
-        ->with('fingerprint', $request->cookie('fp'))
         ->with('base_total', $totals->base_total)
         ->with('tax_total', ($totals->total - $totals->base_total))
         ->with('total', $totals->total)
+        ->with('fingerprint', $request->cookie('fp'))
         ->renderSections();
 
         return response()->json([
